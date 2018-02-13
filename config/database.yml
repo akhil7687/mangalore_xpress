@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: mangalore_xpress_production
+  database: mangalore_xpress
   username: kdkgowdas
   password: kdkgowdas
