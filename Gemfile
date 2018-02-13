@@ -52,7 +52,7 @@ group :development do
   gem 'capistrano3-puma',   require: false
   gem 'populator'
   gem 'faker'
-  gem 'capistrano-sidekiq'
+  # gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
