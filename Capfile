@@ -8,6 +8,7 @@ require 'capistrano/rvm'
 require 'capistrano/puma'
 require 'capistrano/sidekiq'
 
+install_plugin Capistrano::Puma
 
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
