@@ -1,0 +1,32 @@
+<div class="content">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @service_category.name %>
+  </p>
+
+  <p>
+    <strong>Description: </strong>
+    <%= @service_category.description %>
+  </p>
+
+  <p>
+    <strong>Enable: </strong>
+    <%= (@service_category.enable) ? "Enabled" : "Disabled"%>
+  </p>
+
+  <p>
+    <strong>Icon:</strong>
+    <%= image_tag @service_category.icon_img.url(:thumb) %>
+  </p>
+
+  <p>
+    <strong>Cover:</strong>
+    <%= image_tag @service_category.cover_img.url(:thumb),:style=>"width:50%;" %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_service_category_path(@service_category),:class=>"btn btn-primary" %>
+
+</div>

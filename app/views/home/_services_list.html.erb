@@ -1,0 +1,21 @@
+<section class="cat-v2-hom com-padd mar-bot-red-m30">
+  <div class="container">
+    <div class="row">
+      <div class="com-title">
+        <h2>Find your <span>Services</span></h2>
+        <p>Explore some of the best business from around the world from our partners and friends.</p>
+      </div>
+      <div class="cat-v2-hom-list">
+        <ul>
+          <%ServiceCategory.enabled_services.each do |sc|%>
+            <li>
+              <%=link_to service_category_path(sc) do%>
+                <%=image_tag sc.icon_img.url(:thumb)%> <%=sc.name%>
+              <%end%>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

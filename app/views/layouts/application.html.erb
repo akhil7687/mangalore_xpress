@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : 'MangaloreXpress' %> </title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <%= csrf_meta_tags %>
+    <link href="<%=asset_path('aff-logo.ico')%>" rel='icon'>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:500,700" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%=render 'layouts/navbar'%>
+    <%=render 'shared/flash'%>
+    <%= yield %>
+    <div id="modal_container"></div>
+    <%=render 'layouts/footer'%>
+  </body>
+</html>

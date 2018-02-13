@@ -1,0 +1,18 @@
+<%
+  styl_c = ""
+  if request.user_agent =~ /KDKAPP/
+    styl_c = "top:0px;"
+  end
+%>
+<div id="boot_msg" style="<%=styl_c%>">
+  <%if flash.keys.size > 0%>
+    <div class="bootstrap_msg">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-dismissible <%= bootstrap_class_for(type) %> fade in slide_msg" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+  <%end%>
+</div>
