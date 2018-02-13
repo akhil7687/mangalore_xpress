@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: mangalore_xpress_production
-  username: mangalore_xpress
-  password: <%= ENV['MANGALORE_XPRESS_DATABASE_PASSWORD'] %>
+  username: kdkgowdas
+  password: kdkgowdas
