@@ -43,6 +43,10 @@ body {
     overflow-x: hidden;
 }
 
+.page_header{
+    background: linear-gradient(to right, #243b55, #141e30);
+}
+
 @font-face {
     font-family: "Material Icons";
     font-style: normal;
@@ -261,10 +265,12 @@ a:hover {
 
 .dir-ho-tr ul li a {
     font-size: 11.25pt;
+    font-weight: bold;
+    text-shadow: 0in 0.75pt 0 rgba(0, 0, 0, .9);
 }
 
 .dir-ho-tr ul {
-    margin-top: .197916667in;
+    margin-top: 25px;
 }
 
 [class~=com-padd-redu-top] {
@@ -427,6 +433,13 @@ h1 {
 
 .dir-ho-tr ul li:nth-child(3) a {
     background-color: #263a78;
+}
+
+.dir-ho-tr ul li:nth-child(3) a{
+    background: none;
+    border:none;
+    border-top-color: none;
+    border-bottom-color:none;
 }
 
 [class~=bottomMenu] {
@@ -666,6 +679,9 @@ h1,
 
 [class~=dir-ho-tl] ul li a img {
     margin-top: 3.75pt;
+}
+[class~=dir-ho-tl] ul li a img{
+    height: 70px;
 }
 
 .dz-menu-inn ul li {}
@@ -21533,9 +21549,6 @@ textarea {
     color: #333;
 }
 
-[class~=tourz-search-form] input[type="submit"] {
-    background: none !important;
-}
 
 [class~=v3-m-2] ul li a {
     padding-left: .208333333in;
@@ -23984,4 +23997,64 @@ footer{
   font-size: .15625in;
   font-weight: bold;
   padding-left: 30px;
+}
+
+.dir-ho-tr ul li:nth-child(3) a{
+    border:none;
+}
+
+.header {
+  top:0;
+  z-index:0;
+  width:100%;
+  z-index:999;
+  position:absolute;
+  z-index: 999;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  transition: all 0.8s;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  transform: translateY(0%);
+}
+
+.header.affix {
+  background:linear-gradient(to right, #243b55, #141e30);;
+  width:100%;
+  top:0;
+  right:0;
+  position: fixed;
+  z-index: 1030;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+[class~=pg-list-1]{
+    margin-top: 0px;
+}
+
+.lp-ur-all-rat{
+    border: none;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 640px){
+  .header{
+    display: none;
+  }
+
+  .ts-menu-5{
+    float: right!important;
+    margin-right: 8px;
+  }
+
+  .bottomMenu{
+    display: block;
+  }
+
+  .dir-ho-t-sp{
+    padding-top: 75px!important;
+  }
 }

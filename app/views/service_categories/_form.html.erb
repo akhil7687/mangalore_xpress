@@ -17,7 +17,17 @@
 
   <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_field :description,:class=>"form-control" %>
+    <%= f.text_area :description,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :service_provided_desc %>
+    <%= f.text_area :service_provided_desc,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :service_provided %> (Comma seperated)
+    <%= f.text_area :service_provided,:class=>"form-control" %>
   </div>
 
 

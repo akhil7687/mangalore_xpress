@@ -1,3 +1,166 @@
+<%=render "home/page_header"%>
+
+
+<section class="pg-list-1">
+  <div class="container">
+    <div class="row">
+      <div class="pg-list-1-left" style="width:100%"><h3 style="padding-bottom:0px;"><%=@service_category.name%></h3>
+        <h4>Best <%=@service_category.name%> from all around Mangalore</h4>
+      </div>
+      <div class="pg-list-1-right" style="padding-left: 0px;">
+        <div class="list-enqu-btn pg-list-1-right-p1" style=" padding-top: 20px;">
+          <ul>
+            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+            <li><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i class="fa fa-usd" aria-hidden="true"></i> ENQUIRE NOW </a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="list-pg-bg">
+  <div class="container">
+    <div class="row">
+      <div class="com-padd">
+        <div class="list-pg-lt list-page-com-p">
+          <!--LISTING DETAILS: LEFT PART 1-->
+          <div class="pglist-p1 pglist-bg pglist-p-com" id="ld-abour">
+            <div class="pglist-p-com-ti">
+              <h3><span>About</span> <%=@service_category.name%></h3> </div>
+            <div class="list-pg-inn-sp">
+              <p>
+                <%=@service_category.description%>
+              </p>
+            </div>
+          </div>
+          <!--END LISTING DETAILS: LEFT PART 1-->
+          <!--LISTING DETAILS: LEFT PART 2-->
+          <div class="pglist-p2 pglist-bg pglist-p-com" id="ld-ser">
+            <div class="pglist-p-com-ti">
+              <h3><span>Services</span> Offered</h3> </div>
+            <div class="list-pg-inn-sp">
+              <p>Taj Luxury Hotels &amp; Resorts provide 24-hour Business Centre, Clinic, Internet Access Centre, Babysitting, Butler Service in Villas and Seaview Suite, House Doctor on Call, Airport Butler Service, Lobby Lounge </p>
+              <div class="row pg-list-ser">
+                <ul>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser1.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>Restaurant and Bar</h4> </div>
+                  </li>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser2.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>Room Booking</h4> </div>
+                  </li>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser3.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>Corporate Events</h4> </div>
+                  </li>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser4.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>Wedding Hall</h4> </div>
+                  </li>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser5.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>Travel &amp; Transport</h4> </div>
+                  </li>
+                  <li class="col-md-4">
+                    <div class="pg-list-ser-p1"><img src="images/services/ser6.jpg" alt=""> </div>
+                    <div class="pg-list-ser-p2">
+                      <h4>All Amenities</h4> </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--END LISTING DETAILS: LEFT PART 2-->
+
+          <!--LISTING DETAILS: LEFT PART 5-->
+          <div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
+            <div class="pglist-p-com-ti">
+              <h3><span>User</span> Reviews</h3> </div>
+            <div class="list-pg-inn-sp">
+              <div class="lp-ur-all-rat">
+                <ul>
+                  <li>
+                    <div class="lr-user-wr-img"> <img src="images/users/2.png" alt=""> </div>
+                    <div class="lr-user-wr-con">
+                      <h6>Jacob Michael <span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th January, 2017</span>
+                      <p>Good service... nice and clean rooms... very good spread of buffet and friendly staffs. Located in heart of city and easy to reach any places in a short distance. </p>
+                      <ul>
+                        <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                        <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--END LISTING DETAILS: LEFT PART 5-->
+        </div>
+        <div class="list-pg-rt">
+          <!--LISTING DETAILS: LEFT PART 7-->
+          <div class="pglist-p3 pglist-bg pglist-p-com">
+            <div class="pglist-p-com-ti pglist-p-com-ti-right">
+              <h3><span>Service</span> Guarantee</h3> </div>
+            <div class="list-pg-inn-sp">
+              <div class="list-pg-guar">
+                <ul>
+                  <li>
+                    <div class="list-pg-guar-img">
+                      <%=image_tag 'g1.png'%>
+                    </div>
+                    <h4>Service Guarantee</h4>
+                    <p>Instant service</p>
+                  </li>
+                  <li>
+                    <div class="list-pg-guar-img">
+                      <%=image_tag 'g2.png'%>
+                    </div>
+                    <h4>Professionals</h4>
+                    <p>100% certified professionals</p>
+                  </li>
+                  <li>
+                    <div class="list-pg-guar-img">
+                      <%=image_tag 'g3.png'%>
+                    </div>
+                    <h4>Cost Effective</h4>
+                    <p>Charges according to market</p>
+                  </li>
+                </ul> <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo">Quick Enquiry</a> </div>
+            </div>
+          </div>
+          <!--END LISTING DETAILS: LEFT PART 7-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style type="text/css">
+  [class~=pg-list-1]{
+    background: url(<%=@service_category.cover_img.url(:large)%>) no-repeat;
+    background-size:100%;
+    padding-top: 103px;
+  }
+</style>
+
 <div class="content">
   <p id="notice"><%= notice %></p>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211175047) do
+ActiveRecord::Schema.define(version: 20180218081110) do
 
   create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20180211175047) do
     t.string   "cover_img_content_type"
     t.integer  "cover_img_file_size"
     t.datetime "cover_img_updated_at"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "service_provided_desc",  limit: 10000
+    t.string   "service_provided",       limit: 5000
   end
 
 end
