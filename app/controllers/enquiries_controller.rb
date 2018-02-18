@@ -2,6 +2,11 @@ class EnquiriesController < ApplicationController
   before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
   def create
     @enquiry = Enquiry.new(enquiry_params)
+    if @enquiry.user_phone.blank?
+      flash[:error] = "Please enter your phone number"
+      respond_to :back
+      return
+    end
     if @enquiry.save
       flash[:success_enq] = "Thank you! Our representative will call back to you soon!"
       redirect_to :back

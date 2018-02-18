@@ -33,12 +33,12 @@
             <h1>Connect with the right Service Experts</h1>
             <p>Mangalore's best service experts all at one place.</p>
           </div>
-          <form class="tourz-search-form">
-            <div class="input-field search-field">
-              <%= text_field_tag 'select-search','' %>
-              <label for="select-search" class="search-hotel-type">Search your services like hotel, resorts, events and more</label>
+          <form class="tourz-search-form" autocomplete="false">
+            <div class="input-field search-field" style="width: 100%;">
+              <%= text_field_tag 'select-search','',:autocomplete=>"off" %>
+              <label for="select-search" class="search-hotel-type">Search your services like doctors, electrician, plumbing, hotel, resorts, events and more</label>
             </div>
-            <div class="input-field">
+            <div class="input-field hide">
               <input type="submit" value="search" class="waves-effect waves-light tourz-sear-btn"> </div>
           </form>
         </div>

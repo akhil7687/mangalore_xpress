@@ -11,6 +11,19 @@
                   <p>#28800 Kalyani Vista Building, Orchard Lake Road, Hampankatte, Mangalore - 574239</p>
                   <p> <span class="strong">Phone: </span> <span class="highlighted">+91-8904403233</span> </p>
                 </div>
+                <div class="col-sm-8 col-md-9">
+                  <div class="row text-center">
+                    <%ServiceCategory.enabled_services.limit(20).each do |sc|%>
+                      <div class="col-md-3">
+                        <div style="">
+                          <%=link_to service_category_path(sc) do%>
+                            <p>>> <%=sc.name%></p>
+                          <%end%>
+                        </div>
+                      </div>
+                    <%end%>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

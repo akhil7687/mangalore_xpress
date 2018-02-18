@@ -8,7 +8,7 @@ class ServiceCategoriesController < ApplicationController
   end
 
   def autocomplete
-    render json: ServiceCategory.where("enable=1").order('name asc').map { |contact| {:name => contact.name, :icon => contact.icon_img.url(:thumb)} }
+    render json: ServiceCategory.where("enable=1").order('name asc').map { |contact| {:name => contact.name, :icon => contact.icon_img.url(:thumb),:slug => contact.slug} }
   end
 
   # GET /service_categories/1

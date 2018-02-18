@@ -119,12 +119,17 @@ document.addEventListener("turbolinks:load", function() {
         success: function(response) {
           var countryArray = response;
           var dataCountry = {};
+          var slugs = {};
           for (var i = 0; i < countryArray.length; i++) {
             dataCountry[countryArray[i].name] = countryArray[i].icon; //countryArray[i].flag or null
+            slugs[countryArray[i].name] = countryArray[i].slug;
           }
           $('#select-search,#top-select-search').autocomplete({
             data: dataCountry,
             limit: 10, // The max amount of results that can be shown at once. Default: Infinity.
+            onAutocomplete: function(val) {
+                window.location.href = '/service_categories/'+slugs[val];
+            }
           });
         }
       });
