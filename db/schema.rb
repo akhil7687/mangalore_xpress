@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218090032) do
+ActiveRecord::Schema.define(version: 20180218174641) do
+
+  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "user_name"
+    t.string   "user_email"
+    t.string   "user_phone"
+    t.integer  "service_category_id"
+    t.integer  "status"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["service_category_id"], name: "index_enquiries_on_service_category_id", using: :btree
+  end
 
   create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -32,4 +43,5 @@ ActiveRecord::Schema.define(version: 20180218090032) do
     t.index ["slug"], name: "index_service_categories_on_slug", using: :btree
   end
 
+  add_foreign_key "enquiries", "service_categories"
 end

@@ -8306,7 +8306,7 @@ a {
 }
 
 [class~=dir-pop-head] {
-    background: url("../images/pop_bg.jpg") no-repeat center center;
+    background: #263b57;
 }
 
 [class~=dir-pop-body] form {
@@ -24046,6 +24046,67 @@ footer{
 
 [class~=list-enqu-btn] ul li a{
     padding: 10px 20px;
+}
+
+#boot_msg {
+  left: 0;
+  //position: absolute;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 90px;
+  z-index: 1028;
+}
+.bootstrap_msg {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+
+.bootstrap_msg .alert{
+  border-radius: 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color:#fff;
+}
+
+.alert-success{
+  background-color:#29b92b;
+  border-color:#29b92b;
+}
+
+.alert-warning{
+  background-color:#ffb809;
+  border-color:#ffb809;
+}
+
+.alert-info{
+  background-color: #13b7a5;
+  border-color: #13b7a5;
+}
+
+.alert-danger{
+  background-color: #f92d1f;
+  border-color: #f92d1f;
+}
+
+.alert-success-enq{
+    background: #ff0000;
+}
+
+.bootstrap_msg .alert .close{
+  color:#fff;
+  font-size: 25px;
+  opacity: 0.6;
+}
+
+.enquiries th{
+    text-transform: uppercase;
+}
+
+.enquiries td a{
+    margin: 0px 5px;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 640px){

@@ -15,6 +15,8 @@ module ApplicationHelper
       "alert-payment"
     when :sucess_high,'sucess_high'
       "alert-high-success"
+    when :success_enq, 'success_enq'
+      "alert-success-enq"
     else
       flash_type.to_s
     end
