@@ -83,6 +83,8 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.21)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.4)
@@ -225,6 +227,7 @@ DEPENDENCIES
   capistrano3-puma
   coffee-rails (~> 4.2)
   faker
+  friendly_id
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails

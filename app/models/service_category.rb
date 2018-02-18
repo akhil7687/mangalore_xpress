@@ -4,6 +4,9 @@ class ServiceCategory < ApplicationRecord
   has_attached_file :cover_img, styles: { large: "1286x400>", thumb: "320x240>" }, default_url: lambda { |image| ActionController::Base.helpers.asset_path('banner4.jpg')}
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\z/
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   def self.enabled_services
     where("enable=1").order('name asc')
   end

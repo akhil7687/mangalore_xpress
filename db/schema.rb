@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218081110) do
+ActiveRecord::Schema.define(version: 20180218090032) do
 
   create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20180218081110) do
     t.datetime "updated_at",                           null: false
     t.string   "service_provided_desc",  limit: 10000
     t.string   "service_provided",       limit: 5000
+    t.string   "slug"
+    t.index ["slug"], name: "index_service_categories_on_slug", using: :btree
   end
 
 end
