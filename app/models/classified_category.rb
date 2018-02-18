@@ -1,0 +1,2 @@
+class ClassifiedCategory < ApplicationRecord
+end

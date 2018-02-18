@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218174641) do
+ActiveRecord::Schema.define(version: 20180218194122) do
+
+  create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "classifieds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.text     "description",            limit: 65535
+    t.integer  "classified_category_id"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.string   "slug"
+    t.integer  "status"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["classified_category_id"], name: "index_classifieds_on_classified_category_id", using: :btree
+    t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
+  end
 
   create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "user_name"
@@ -43,5 +65,6 @@ ActiveRecord::Schema.define(version: 20180218174641) do
     t.index ["slug"], name: "index_service_categories_on_slug", using: :btree
   end
 
+  add_foreign_key "classifieds", "classified_categories"
   add_foreign_key "enquiries", "service_categories"
 end
