@@ -23,7 +23,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        format.html { redirect_to @classified, notice: 'Classified successfully created.' }
+        format.html { redirect_to classifieds_path, notice: 'Classified successfully created.' }
         format.json { render :show, status: :created, location: @classified }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class ClassifiedsController < ApplicationController
   def update
     respond_to do |format|
       if @classified.update(classified_params)
-        format.html { redirect_to @classified, notice: 'Classified was successfully updated.' }
+        format.html { redirect_to classifieds_path, notice: 'Classified was successfully updated.' }
         format.json { render :show, status: :ok, location: @classified }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class ClassifiedsController < ApplicationController
     @classified = Classified.find(params[:id])
   end
 
-  def enquiry_params
+  def classified_params
     params.require(:classified).permit(:title,:description,:classified_category_id,:status,:pic)
   end
 end
