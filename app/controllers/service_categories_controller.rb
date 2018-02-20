@@ -69,6 +69,7 @@ class ServiceCategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_service_category
       @service_category = ServiceCategory.friendly.find(params[:id])
+      @context = @service_category
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

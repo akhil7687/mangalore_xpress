@@ -1,10 +1,22 @@
 class ClassifiedsController < ApplicationController
-  before_action :set_classified, only: [:show, :edit, :update, :destroy]
+  before_action :set_classified, only: [:show, :edit, :update, :destroy,:enquire]
 
   def index
-    @classifieds = Classified.all
+    if params[:category].present?
+      @classifieds = Classified.with_category(params[:category])
+    else
+      @classifieds = Classified.order("created_at desc")
+    end
+    @classifieds = @classifieds.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html
+      format.js
+    end
+  end
+
+  def enquire
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -56,6 +68,7 @@ class ClassifiedsController < ApplicationController
   private
   def set_classified
     @classified = Classified.find(params[:id])
+    @context = @classified
   end
 
   def classified_params

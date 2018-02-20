@@ -11,7 +11,7 @@
           <!--<i class="fa fa-pencil dir-pop-head-icon" aria-hidden="true"></i>-->
         </div>
         <div class="modal-body dir-pop-body">
-          <%= form_for Enquiry.new,:html=>{:class=>"form-horizontal"} do |f| %>
+          <%= form_for [@context,Enquiry.new],:html=>{:class=>"form-horizontal"} do |f| %>
             <!--LISTING INFORMATION-->
             <div class="form-group has-feedback ak-field">
               <label class="col-md-4 control-label">Full Name *</label>
@@ -33,7 +33,6 @@
                 <%=f.text_field :user_email,:class=>"form-control",:placeholder=>"", :required=>true%>
               </div>
             </div>
-            <%=f.hidden_field :service_category_id,:value=>@service_category.id%>
             <!--LISTING INFORMATION-->
             <div class="form-group has-feedback ak-field">
               <div class="col-md-6 col-md-offset-4">

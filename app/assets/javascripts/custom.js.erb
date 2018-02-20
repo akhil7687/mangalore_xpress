@@ -7,6 +7,41 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
 
+    var isLoading = false;
+    if ($('#infinite-scrolling').length > 0) {
+      $(window).on('scroll', function() {
+        var more_posts_url = $('.pagination a.next_page').attr('href');
+        if (!isLoading && more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 500) {
+          isLoading = true;
+          var ldr = $(".ajax_loader_ic").attr('src');
+          $('.pagination').html('<img src="'+ldr+'" alt="Loading..." title="Loading..." /> LOADING MORE...')
+          $.getScript(more_posts_url).done(function (data,textStatus,jqxhr) {
+            isLoading = false;
+          }).fail(function() {
+            isLoading = false;
+          });
+        }
+      });
+    }
+
+    $(".classified_filter input[type=checkbox]").change(function(){
+      var categories = [];
+      $(".class_chck:checked").each(function() {
+          categories.push(this.value);
+      });
+      var pa = document.location.protocol +"//"+ document.location.hostname + document.location.pathname;
+      $.ajax({
+        url : window.location.pathname,
+        dataType : 'script',
+        cache : false,
+        type : 'GET',
+        data : {
+          "category" : categories,
+          "filter" : true
+        }
+      });
+    });
+
     //LEFT MOBILE MENU OPEN
     $(".ts-menu-5").on('click', function() {
         $(".mob-right-nav").css('right', '0px');

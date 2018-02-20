@@ -7,6 +7,8 @@ class ServiceCategory < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  has_many :enquiries, as: :enquiryable
+
   def self.enabled_services
     where("enable=1").order('name asc')
   end

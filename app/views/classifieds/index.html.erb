@@ -25,33 +25,41 @@
 </div>
 
 <section class="dir-alp-1 dir-pa-sp-top">
-  <div class="container">
-    <div class="row">
-      <div class="dir-alp-con dir-alp-con-1">
-        <div class="col-md-3 dir-alp-con-left">
-          <div class="dir-alp-con-left-1">
-            <h3 class="text-center">CLASSIFIED CATEGORY</h3>
-          </div>
-          <div class="dir-alp-l3 dir-alp-l-com">
-            <div class="dir-alp-l-com1 dir-alp-p3">
-              <ul>
-                <%ClassifiedCategory.find_each do |cat|%>
-                  <li>
-                    <%=check_box_tag cat.id, cat.id,false,:id=>"cc_#{cat.id}"%>
-                    <label for="cc_<%=cat.id%>"><%=cat.name%></label>
-                  </li>
-                <%end%>
-              </ul>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="dir-alp-con dir-alp-con-1">
+      <div class="col-md-3 dir-alp-con-left">
+        <div class="dir-alp-con-left-1">
+          <h3 class="text-center">CLASSIFIED CATEGORY</h3>
+        </div>
+        <div class="dir-alp-l3 dir-alp-l-com">
+          <div class="dir-alp-l-com1 dir-alp-p3 classified_filter">
+            <ul>
+              <%ClassifiedCategory.find_each do |cat|%>
+                <li>
+                  <%=check_box_tag cat.id, cat.id,false,:id=>"cc_#{cat.id}",:class=>"class_chck"%>
+                  <label for="cc_<%=cat.id%>"><%=cat.name%></label>
+                </li>
+              <%end%>
+            </ul>
           </div>
         </div>
-        <div class="col-md-9 dir-alp-con-right">
-          <div class="dir-alp-con-right-1">
-            <div class="row">
-              <%=render "classifieds/classifieds"%>
-            </div>
+      </div>
+      <div class="col-md-9 dir-alp-con-right">
+        <div class="dir-alp-con-right-1">
+          <div class="row classified_container">
+            <%=render "classifieds/classifieds"%>
+          </div>
+          <div id="infinite-scrolling" style="text-align:center;">
+            <%=image_tag "ajax-loader.gif",:class=>"ajax_loader_ic",:style=>"display:none"%>
+            <%= will_paginate @classifieds %>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<div id="callback_container">
+</div>
+<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo" class="hide modal_opener"><i class="fa fa-share" aria-hidden="true"></i> REQUEST CALL BACK </a>

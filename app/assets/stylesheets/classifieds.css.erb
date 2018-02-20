@@ -1,7 +1,6 @@
 .classified-banner{
   background: url("<%= asset_path 'banner4.jpg'%>") no-repeat center center fixed #2c2c2c;
   padding:80px 20px;
-  background-size: 100%;
   color:#fff;
   -webkit-background-size: cover; /* For WebKit*/
   -moz-background-size: cover;    /* Mozilla*/
@@ -27,6 +26,7 @@
 }
 
 .classified-banner .tagline{
+  margin-top: 15px;
   font-size: 18px;
 }
 
@@ -100,7 +100,16 @@
 .ribbon-wrapper .red{
   background: #e43;
 }
+
+.page_header .overlay{
+  height: 75px;
+}
+
 @media screen and (max-width: 640px){
+
+  .page_header .overlay{
+    height: 60px;
+  }
 
   .classified-banner{
     padding:0px;
@@ -112,9 +121,17 @@
     border-radius: 0px;
   }
   .classified-banner h1{
-    font-size:40px;
+    font-size:25px;
   }
 
+  .classified-banner .fa-search{
+    font-size: 25px;
+  }
+
+  .classified-banner .tagline{
+    margin: 15px auto 0px;
+    font-size: 16px;
+  }
   .classified-status{
 
   }

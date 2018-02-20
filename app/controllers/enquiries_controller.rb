@@ -1,7 +1,10 @@
 class EnquiriesController < ApplicationController
   before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
   def create
-    @enquiry = Enquiry.new(enquiry_params)
+
+    @context = context
+    @enquiry = @context.enquiries.new(enquiry_params)
+
     if @enquiry.user_phone.blank?
       flash[:error] = "Please enter your phone number"
       respond_to :back
@@ -46,5 +49,15 @@ class EnquiriesController < ApplicationController
 
   def enquiry_params
     params.require(:enquiry).permit(:user_name,:user_email,:user_phone,:service_category_id,:status)
+  end
+
+  def context
+    if params[:service_category_id]
+      id = params[:service_category_id]
+      ServiceCategory.friendly.find(params[:service_category_id])
+    else
+      id = params[:classified_id]
+      Classified.find(params[:classified_id])
+    end
   end
 end
