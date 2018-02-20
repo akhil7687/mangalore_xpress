@@ -1,8 +1,12 @@
 .classified-banner{
-  background: url("<%= asset_path 'banner4.jpg'%>") no-repeat left center #2c2c2c;
+  background: url("<%= asset_path 'banner4.jpg'%>") no-repeat center center fixed #2c2c2c;
   padding:80px 20px;
   background-size: 100%;
   color:#fff;
+  -webkit-background-size: cover; /* For WebKit*/
+  -moz-background-size: cover;    /* Mozilla*/
+  -o-background-size: cover;      /* Opera*/
+  background-size: cover;         /* Generic*/
 }
 
 .banner-inner{
@@ -95,4 +99,39 @@
 
 .ribbon-wrapper .red{
   background: #e43;
+}
+@media screen and (max-width: 640px){
+
+  .classified-banner{
+    padding:0px;
+    margin-bottom: 15px;
+  }
+
+  .classified-banner .banner-inner{
+    padding:5px;
+    border-radius: 0px;
+  }
+  .classified-banner h1{
+    font-size:40px;
+  }
+
+  .classified-status{
+
+  }
+
+  .classi_det{
+    float:none;
+    text-align: center;
+    margin-top: 3px;
+    display: block;
+  }
+
+  .ribbon-wrapper .ribbon {
+    font-size: 12px;
+  }
+
+  .ribbon-wrapper {
+   /* top: 0px;
+    left: 6px;*/
+  }
 }
