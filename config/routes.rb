@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :classified_categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>'home#index'
+  match "/cards"=>"home#cards", via: [:get]
 end

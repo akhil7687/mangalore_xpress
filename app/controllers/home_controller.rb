@@ -6,4 +6,10 @@ class HomeController < ApplicationController
       format.html
     end
   end
+
+  def cards
+    respond_to do |format|
+      format.html {render :layout => 'cards'}
+    end
+  end
 end
