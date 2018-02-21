@@ -1,247 +1,116 @@
-<div class="">
-  <div class="app">
-      <div style="font-size: 25px; text-align:center;font-family: 'Nanum Pen Script', cursive;">Whats happening in Mangalore?</div>
-      <div class="content">
-      </div>
-  </div>
+<div id="container">
+  <div class="buddy" style="display: block;"><div class="avatar"  style="display: block; background-image: url(https://1.bp.blogspot.com/_qEbjiFbQWGM/TCBVlN3mkYI/AAAAAAAADCM/7CjYqUHwbgY/s1600/workshop_modell_0126.jpg)"></div></div>
+  <div class="buddy"><div class="avatar" style="display: block; background-image: url(http://static.stylemagazin.hu/medias/29280/Nem-ehezik-a-Women-of-the-Year-legjobb-modell-dijara-eselyes-szepseg_32fc7c86954a8847610499a0fc7261e2.jpg)"></div></div>
+  <div class="buddy"><div class="avatar" style="display: block; background-image: url(http://w1nd.cc/promo/347.jpg)"></div></div>
+  <div class="buddy"><div class="avatar" style="display: block; background-image: url(http://ell.h-cdn.co/assets/cm/15/01/54a769be3112d_-_elle-rata-insta-1-24375723.png)"></div></div>
+  <div class="buddy"><div class="avatar" style="display: block; background-image: url(http://hircsarda.hu/wp-content/uploads/2016/03/orban1.jpeg)"></div></div>
 </div>
-
 
 <style type="text/css">
 
-  .app {
-    width: 100%;
-    height: 490px;
-    background-color: #FFF;
-    padding-top: 5px;
-  }
-
-  .content {
-    padding: 10px;
-    padding-top: 0px;
-  }
-
-  .header {
-    background-color: #FFF;
-    width:100%;
-    height:40px;
-    border-bottom: 1px solid #e2e2e2;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .header img {
-    width:70px;
-  }
-
-  div.photo {
-    position:absolute;
-    top:60px;
-    right: 20px;
-    left:10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border:1px solid #ccc;
-    border-radius: 8px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: -1px -1px 4px 4px #ddd;
-  }
-
-  span.meta {
-    display: block;
-    height:48px;
-    background: transparent;
-    margin-top: 100%;
-    border-radius: 0px 0px 8px 8px;
-    font-size: 18px;
-    box-sizing:border-box;
-    padding: 12px;
-  }
-
-  span.meta span {
-    float: right;
-    color:#cfcfcf;
-    display: none;
-  }
-
-  span.meta p {
-    display: none;
-  }
-  .users {
-    display: block;
-    width: 20px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/users.png);
-    background-size: 20px;
-    background-repeat: no-repeat;
-    padding-left: 30px;
-    background-position: 5px;
-  }
-
-  .moments {
-    display: block;
-    width: 14px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/moments.png);
-    background-size: 26px;
-    background-repeat: no-repeat;
-    padding-left: 35px;
-    background-position: 5px;
-  }
-
-  .chat {
-    display: block;
-    width: 34px;
-    height: 30px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/chat.png);
-    background-size: 30px;
-    background-repeat: no-repeat;
-    padding-left: 4px;
-    background-position: 5px;
-    float: right;
-    margin-top: 0px;
-  }
-
-  .settings {
-    display: block;
-    width: 34px;
-    height: 30px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/settings.png);
-    background-size: 30px;
-    background-repeat: no-repeat;
-    padding-left: 4px;
-    background-position: 5px;
-    float: left;
-    margin-top: 0px;
-  }
-
-  .footer {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 318px;
-    width: 100%;
-    padding-left: 40px;
-    padding-top: 6px;
-  }
-
-  .rate {
-    width: 70px;
-    height:70px;
-    border-radius: 70px;
-    background: #FFF;
-    border: 5px solid #f0f0f0;
-    float: left;
-    box-shadow: 1px 1px 1px 0px #e9e9e9;
-  }
-
-  .rate:nth-child(1) {
-    margin-left: 4px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/delete.png);
-    background-size: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-
-  .rate:nth-child(3) {
-    margin-left: -4px;
-    background: url(http://web.arjentienkamp.com/codepen/tinder/heart.png);
-    background-size: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .info {
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-    background: #FFF;
-    border: 5px solid #f0f0f0;
-    float: left;
-    box-shadow: 1px 1px 1px 0px #e9e9e9;
-    margin-top: 14px;
-    margin-left: -4px;
-
-    background: url(http://web.arjentienkamp.com/codepen/tinder/info.png);
-    background-size: 15px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  p {
-    padding:0;
-    margin:0;
-    float: left;
-  }
-
+#container {
+  width: 100%;
+  margin: auto !important;
+  display: block;
+  position: relative;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.buddy {
+  display: none;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #fff;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  padding:3px;
+  position: absolute;
+  cursor: hand;
+}
+.rotate-left {
+  transform: rotate(30deg) scale(0.8);
+  transition: 1s;
+  margin-left: 400px;
+  cursor: e-resize;
+  opacity: 0;
+  z-index: 10;
+}
+.rotate-right {
+  transform: rotate(-30deg) scale(0.8);
+  transition: 1s;
+  opacity: 0;
+  margin-left: -400px;
+  cursor: w-resize;
+  z-index: 10;
+}
+.avatar {
+  background: #222;
+  height: 340px;
+  border-radius: 6px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+ background-repeat: no-repeat;
+}
+.like {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid green;
+  color: green;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  text-shadow: none;
+}
+.dislike {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid red;
+  color: red;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  text-shadow: none;
+}
 </style>
-
-
 <script type="text/javascript">
-  $(document).ready(function(event) {
+  $(document).ready(function(){
 
-    $("div#swipe_like").on( "click", function() {
-      swipeLike();
+    $(".buddy").on("swiperight",function(){
+      $(this).addClass('rotate-left').delay(700).fadeOut(1);
+      $('.buddy').find('.status').remove();
+
+      $(this).append('<div class="status like">Like!</div>');
+      if ( $(this).is(':last-child') ) {
+        $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+       } else {
+          $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+       }
     });
 
-    $("div#swipe_dislike").on( "click", function() {
-      swipeDislike();
-    });
+   $(".buddy").on("swipeleft",function(){
+    $(this).addClass('rotate-right').delay(700).fadeOut(1);
+    $('.buddy').find('.status').remove();
+    $(this).append('<div class="status dislike">Dislike!</div>');
 
-    addNewProfile();
-
-    function swipe() {
-      Draggable.create("#photo", {
-          throwProps:true,
-          onDragEnd:function(endX) {
-            if(Math.round(this.endX) > 0 ) {
-              swipeLike();
-            }
-            else {
-              swipeDislike();
-            }
-            console.log(Math.round(this.endX));
-        }
-      });
+    if ( $(this).is(':last-child') ) {
+     $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+      alert('OUPS');
+     } else {
+        $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
     }
+  });
 
-    function swipeLike() {
-
-        var $photo = $("div.content").find('#photo');
-
-        var swipe = new TimelineMax({repeat:0, yoyo:false, repeatDelay:0, onComplete:remove, onCompleteParams:[$photo]});
-        swipe.staggerTo($photo, 0.8, {bezier:[{left:"+=400", top:"+=300", rotation:"60"}], ease:Power1.easeInOut});
-
-        addNewProfile();
-    }
-
-    function swipeDislike() {
-
-        var $photo = $("div.content").find('#photo');
-
-        var swipe = new TimelineMax({repeat:0, yoyo:false, repeatDelay:0, onComplete:remove, onCompleteParams:[$photo]});
-        swipe.staggerTo($photo, 0.8, {bezier:[{left:"+=-350", top:"+=300", rotation:"-60"}], ease:Power1.easeInOut});
-
-        addNewProfile();
-    }
-
-    function remove(photo) {
-        $(photo).remove();
-    }
-
-    function addNewProfile() {
-      var names = ['Lieke', 'Christina', 'Sanne', 'Soraya', 'Chanella', 'Larissa', 'Michelle'][Math.floor(Math.random() * 7)];
-      var ages = ['19','22','18','27','21', '18', '24'][Math.floor(Math.random() * 7)]
-      var photos = ['1', '2', '3', '4', '5', '6', '7'][Math.floor(Math.random() * 7)]
-      $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(http://web.arjentienkamp.com/codepen/tinder/photo'+photos+'.jpg)">'
-        + '<span class="meta">'
-        + '<p>'+names+', '+ages+'</p>'
-        + '<span class="moments">0</span>'
-        + '<span class="users">0</span>'
-        + '</span>'
-        + '</div>');
-
-        swipe();
-    }
 });
 </script>
