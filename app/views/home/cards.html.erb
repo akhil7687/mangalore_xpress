@@ -48,7 +48,7 @@ body{
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   color: #fff;
-  top: 10px;
+  top: 5px;
   left: 15px;
   right: 15px;
   padding:3px;
@@ -112,7 +112,7 @@ body{
   $(document).ready(function(){
 
     var h = $(window).height();
-    $(".avatar").css('height',h-65);
+    $(".avatar").css('height',h-75);
 
     $(".buddy").on("swiperight",function(){
       $(this).addClass('rotate-left').delay(700).fadeOut(1);
