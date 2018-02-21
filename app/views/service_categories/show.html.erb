@@ -1,4 +1,5 @@
-<section class="pg-list-1">
+<%=render "home/page_header"%>
+<section class="pg-list-1" style='padding-top:30px; padding-bottom:30px;'>
   <div class="container">
     <div class="row">
       <div class="pg-list-1-left" style="width:100%"><h3 style="padding-bottom:0px;"><%=@service_category.name%></h3>
@@ -20,7 +21,7 @@
 <section class="list-pg-bg">
   <div class="container">
     <div class="row">
-      <div class="com-padd">
+      <div class="com-padd" style="padding-top:20px;">
         <div class="list-pg-lt list-page-com-p">
           <!--LISTING DETAILS: LEFT PART 1-->
           <div class="pglist-p1 pglist-bg pglist-p-com" id="ld-abour">
@@ -135,9 +136,11 @@
 
 <style type="text/css">
   [class~=pg-list-1]{
-    background: url(<%=@service_category.cover_img.url(:large)%>) no-repeat;
-    background-size:100%;
-    padding-top: 200px;
+    background: url(<%=@service_category.cover_img.url(:large)%>) no-repeat center center fixed #2c2c2c;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
   }
 </style>
 
