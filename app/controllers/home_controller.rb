@@ -19,4 +19,16 @@ class HomeController < ApplicationController
       format.html
     end
   end
+
+  def contact_us
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def about_us
+    respond_to do |format|
+      format.html
+    end
+  end
 end

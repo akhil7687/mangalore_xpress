@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   root :to =>'home#index'
   match "/cards"=>"home#cards", via: [:get]
   match "/services"=>"home#services", via: [:get]
+  match "/about_us"=>"home#about_us", via: [:get]
+  match "/contact_us"=>"home#contact_us", via: [:get]
 end
