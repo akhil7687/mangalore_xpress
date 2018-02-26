@@ -12,4 +12,11 @@ class HomeController < ApplicationController
       format.html {render :layout => 'cards'}
     end
   end
+
+  def services
+    @services = ServiceCategory.enabled_services()
+    respond_to do |format|
+      format.html
+    end
+  end
 end
