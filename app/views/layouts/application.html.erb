@@ -11,10 +11,14 @@
   </head>
 
   <body>
-    <%=render 'layouts/navbar'%>
+    <%if request.user_agent !~ /MANGALOREXPRESS/%>
+      <%=render 'layouts/navbar'%>
+    <%end%>
     <%=render 'shared/flash'%>
     <%= yield %>
     <div id="modal_container"></div>
-    <%=render 'home/footer'%>
+    <%if request.user_agent !~ /MANGALOREXPRESS/%>
+      <%=render 'home/footer'%>
+    <%end%>
   </body>
 </html>
