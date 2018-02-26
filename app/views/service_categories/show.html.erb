@@ -2,7 +2,10 @@
 <section class="pg-list-1" style='padding-top:30px; padding-bottom:30px;'>
   <div class="container">
     <div class="row">
-      <div class="pg-list-1-left" style="width:100%"><h3 style="padding-bottom:0px;"><%=@service_category.name%></h3>
+      <div class="pg-list-1-left" style="width:100%">
+      <%=image_tag @service_category.icon_img.url(:medium),:style=>"width:50px;"%>
+      <h3 style="padding-bottom:0px;">
+        <%=@service_category.name%></h3>
         <h4>Best <%=@service_category.name%> from all around Mangalore</h4>
       </div>
       <div class="pg-list-1-right" style="padding-left: 0px;">
