@@ -1,8 +1,8 @@
 <%=render "home/page_header"%>
 <div class="classified-banner text-center">
   <div class="banner-inner">
-    <h1 class="text-center"><i class='fa fa-search'></i>Classifieds Around Mangalore</h1>
-    <div class="text-center tagline">BUY, SELL, RENT, JOBS, ADs etc...</div>
+    <h1 class="text-center"></i>BUY, SELL, RENT, JOBS</h1>
+    <div class="text-center tagline">ALL AROUND MANGALORE !</div>
     <div class="text-center cls_icons">
       <i class='fa fa-user'></i>
       <i class='fa fa-bullhorn'></i>
@@ -24,12 +24,18 @@
   </div>
 </div>
 
+
+
 <section class="dir-alp-1 dir-pa-sp-top">
+
 <div class="container">
   <div class="row">
     <div class="dir-alp-con dir-alp-con-1">
-      <div class="col-md-3 dir-alp-con-left">
-        <div class="dir-alp-con-left-1">
+      <div style="padding:3px; text-align:right;" class='classified_filter_btn'>
+        <a href='javascript:void(0);' class='btn btn-primary' style="height:30px; padding: 3px 15px; border-radius:1px; margin: 5px;" onclick="$('.classified_filter_container').slideToggle('slow');"><i class='fa fa-filter' style='margin-right:5px;'></i>FILTER</a>
+      </div>
+      <div class="col-md-3 dir-alp-con-left classified_filter_container">
+        <div class="classified-header">
           <h3 class="text-center">CLASSIFIED CATEGORY</h3>
         </div>
         <div class="dir-alp-l3 dir-alp-l-com">

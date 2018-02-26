@@ -105,7 +105,39 @@
   height: 75px;
 }
 
+.classified-header{
+  padding: 10px 0px;
+  background: #243b55;
+  color:#fff;
+  margin-top: 15px;
+}
+
+.classified-header h3{
+  font-size: 20px;
+}
+
+.classified_filter_btn{
+  display: none;
+}
+
+
 @media screen and (max-width: 640px){
+
+  .classified-header{
+    margin-top: 0px;
+  }
+
+  .classified_filter_btn{
+    display: block;
+  }
+
+  .classified_filter_container{
+    display: none;
+  }
+
+  .classified_filter_container h3{
+    font-size: 15px;
+  }
 
   .page_header .overlay{
     height: 60px;
