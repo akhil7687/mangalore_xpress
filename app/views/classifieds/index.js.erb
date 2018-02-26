@@ -1,6 +1,10 @@
 <%if params[:filter].present?%>
   $('.classified_container').html('<%= escape_javascript(render :partial => "classifieds/classifieds" )%>');
-  $('html, body').animate({ scrollTop: $('.classified_container').offset().top}, 800)
+  <%if request.user_agent !~ /MANGALOREXPRESS/%>
+    $('html, body').animate({ scrollTop: $('.classified_container').offset().top - 60}, 800);s
+  <%else%>
+    $('html, body').animate({ scrollTop: $('.classified_container').offset().top}, 800);
+  <%end%>
 <%else%>
   $('.classified_container').append('<%= escape_javascript(render :partial => "classifieds/classifieds" )%>');
 <%end%>
