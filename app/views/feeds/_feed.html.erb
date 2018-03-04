@@ -7,12 +7,13 @@
   <div style="font-size: 10px;color: #90949c;font-family: 'proxima_nova_rgregular'; margin-bottom:5px; auto; text-transform:uppercase;">
     POSTED - <%=feed.created_at.strftime("%d %b %Y %I:%M%p")%>
   </div>
-  <%if feed.pic.present?%>
-    <%=image_tag feed.pic.url(:original),:style=>"width:100%;","data-high-res-img"=>feed.pic.url(:original),:class=>"viewable-image"%>
-  <%else%>
-    <div class='post-ex'>
+  <%if feed.description.present?%>
+   <div class='post-ex'>
       <%=raw feed.description%>
     </div>
+  <%end%>
+  <%if feed.pic.present?%>
+    <%=image_tag feed.pic.url(:original),:style=>"width:100%;","data-high-res-img"=>feed.pic.url(:original),:class=>"viewable-image"%>
   <%end%>
 </div>
 
