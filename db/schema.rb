@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220181356) do
+ActiveRecord::Schema.define(version: 20180304163929) do
 
   create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 20180220181356) do
     t.integer  "enquiryable_id"
     t.index ["enquiryable_type", "enquiryable_id"], name: "index_enquiries_on_enquiryable_type_and_enquiryable_id", using: :btree
     t.index ["service_category_id"], name: "index_enquiries_on_service_category_id", using: :btree
+  end
+
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "description",      limit: 5000
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.boolean  "status"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

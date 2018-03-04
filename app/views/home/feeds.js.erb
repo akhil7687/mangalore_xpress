@@ -1,0 +1,9 @@
+$('.feed_container').append('<%= escape_javascript(render :partial => "feeds/feeds" )%>');
+<%end%>
+var c_url = "?page="+<%=@feeds.current_page%>;
+<% if @feeds.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @feeds %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

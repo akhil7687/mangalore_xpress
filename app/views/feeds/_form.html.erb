@@ -1,0 +1,43 @@
+<%= form_for(feed) do |f| %>
+  <% if feed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+      <% feed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group hide">
+    <%= f.label :title %>
+    <%= f.text_field :title,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %> (Leave blank if not available)
+    <%= f.text_area :description,:class=>"form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <div class='iimg'>
+      <%if feed.pic.present?%>
+        <%=image_tag feed.pic.img.url(:thumb)%>
+      <%end%>
+    </div>
+    <%= f.label :pic %>
+    <%= f.file_field :pic,:dest_img=>"iimg",:class=>"file_with_thumb"  %>
+  </div>
+
+  <div class="form-group">
+    <%=f.check_box :status%>
+    <label for="feed_status">Enable</label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<%=render "home/page_header"%>
+<div class="row-fluid wall">
+  <div class="col-md-2 hidden-xs">
+    <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto; padding: 10px;text-align: center;">
+      SOMETHING HERE
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="feeds_container" style="margin: 15px auto;">
+      <%=render "feeds/feeds"%>
+    </div>
+    <div id="infinite-scrolling" style="text-align:center;">
+      <%=image_tag "ajax-loader.gif",:class=>"ajax_loader_ic",:style=>"display:none"%>
+      <%= will_paginate @feeds %>
+    </div>
+  </div>
+
+  <div class="col-md-3 hidden-xs">
+    <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto;padding: 10px;text-align: center;">
+      SOMETHING HERE
+    </div>
+  </div>
+
+  <div class="col-md-2 hidden-xs">
+    <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto;padding: 10px;text-align: center;">
+      SOMETHING HERE
+    </div>
+  </div>
+</div>

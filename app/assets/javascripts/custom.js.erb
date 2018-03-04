@@ -176,17 +176,28 @@ document.addEventListener("turbolinks:load", function() {
       $('html, body').animate({ scrollTop: $('#'+hash.slice(1)).offset().top-70}, 2000)
     }
 
+  var imageViewHtml = '<div class="iv-loader"></div> <div class="iv-snap-view">' + '<div class="iv-snap-image-wrap">' + '<div class="iv-snap-handle"></div>' + '</div>' + '<div class="iv-zoom-slider"><div class="iv-zoom-handle"></div></div></div>' + '<div class="iv-image-view" ><div class="iv-image-wrap" ></div></div>';
+  $("body").append('<div id="iv-container">' + imageViewHtml + '<div class="iv-close" style="display:none;"></div> <div class="iv-sclose" onclick="history.back();"></div><div>');
 
-    //HOME PAGE FIXED MENU
-    // $(window).scroll(function() {
 
-    //     if ($(this).scrollTop() > 450) {
-    //         $('.hom-top-menu').fadeIn();
-    //         $('.cat-menu').hide();
-    //     } else {
-    //         $('.hom-top-menu').fadeOut();
-    //     }
-    // });
+  var viewer = ImageViewer();
+  $(document).off('click','.viewable-image');
+  $(document).on('click', '.viewable-image', function () {
+    var imgSrc = this.src,
+    highResolutionImage = $(this).data('high-res-img');
+    viewer.show(imgSrc, highResolutionImage);
+    history.replaceState(null, document.title, location);
+    history.pushState(null, document.title, location);
+  });
+
+  if (window.history && window.history.pushState) {
+    window.addEventListener("popstate", function(e) {
+      if ($("#iv-container").is(":visible")) {
+        $(".iv-close").trigger('click');
+        e.stopPropagation();
+      }
+    }, false);
+  }
 
 
   $('.file_with_thumb').on('change', function(event) {
