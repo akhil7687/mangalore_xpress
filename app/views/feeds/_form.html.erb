@@ -25,7 +25,7 @@
   <div class="form-group">
     <div class='iimg'>
       <%if feed.pic.present?%>
-        <%=image_tag feed.pic.img.url(:thumb)%>
+        <%=image_tag feed.pic.url(:thumb)%>
       <%end%>
     </div>
     <%= f.label :pic %>
