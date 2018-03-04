@@ -1,6 +1,6 @@
 <div class="post">
   <%if feed.pic.present?%>
-    <%=image_tag feed.pic.url(:large),:style=>"width:100%;","data-high-res-img"=>feed.pic.url(:original),:class=>"viewable-image"%>
+    <%=image_tag feed.pic.url(:original),:style=>"width:100%;","data-high-res-img"=>feed.pic.url(:original),:class=>"viewable-image"%>
   <%else%>
     <%=raw feed.description%>
   <%end%>
