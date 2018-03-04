@@ -1,0 +1,30 @@
+<div style="background:#fff; border:1px solid #e2e2e2; margin-bottom:15px;">
+  <div style="padding:15px; border-bottom:1px solid #e2e2e2;">
+    <h3 style='text-transform:uppercase; color: #828282; font-weight: 500;    font-family: "Montserrat", sans-serif;     font-size: 13.5pt;'>Our few esteemed service providers</h3>
+  </div>
+  <div class="row-fluid">
+    <%@service_category.enabled_providers.each do |service_provider|%>
+      <div class="col-md-4 col-xs-12">
+        <div style="background: #fff;border: 1px solid #d2d2d2; margin-bottom: 10px; padding: 10px; margin: 10px auto;">
+          <div class="text-center">
+            <%=image_tag service_provider.pic.url(:large),:class=>"viewable-image",:style=>"width:100%;"%>
+          </div>
+          <div style="text-align:center; font-weight:bold; font-size: 15px; margin-top:5px;">
+            <%=service_provider.name%>
+          </div>
+          <div style="text-align:center; font-size: 13px; color: #777;">
+            <%=service_provider.speciality%>
+          </div>
+          <div style="text-align:left; font-size: 15px; color:#555;">
+            <%=service_provider.description%>
+          </div>
+          <div style="font-size: 15px; margin: 5px auto;">
+            CONTACT - <%=service_provider.contact_no%>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class='clearfix'></div>
+</div>

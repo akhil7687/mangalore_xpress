@@ -1,26 +1,28 @@
 <%=render "home/page_header"%>
 
-<p id="notice"><%= notice %></p>
+<div class="content">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @feed.title %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @feed.title %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @feed.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @feed.description %>
+  </p>
 
-<p>
-  <strong>Pic:</strong>
-  <%= @feed.pic %>
-</p>
+  <p>
+    <strong>Pic:</strong>
+    <%= @feed.pic %>
+  </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @feed.status %>
-</p>
+  <p>
+    <strong>Status:</strong>
+    <%= @feed.status %>
+  </p>
 
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+  <%= link_to 'Edit', edit_feed_path(@feed) %> |
+  <%= link_to 'Back', feeds_path %>
+</div>

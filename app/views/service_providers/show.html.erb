@@ -1,0 +1,44 @@
+<%=render "home/page_header"%>
+
+<div class="content">
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @service_provider.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @service_provider.description %>
+  </p>
+
+  <p>
+    <strong>Speciality:</strong>
+    <%= @service_provider.speciality %>
+  </p>
+
+  <p>
+    <strong>Contact no:</strong>
+    <%= @service_provider.contact_no %>
+  </p>
+
+  <p>
+    <strong>Pic:</strong>
+    <%= @service_provider.pic %>
+  </p>
+
+  <p>
+    <strong>Service category:</strong>
+    <%= @service_provider.service_category %>
+  </p>
+
+  <p>
+    <strong>Enable:</strong>
+    <%= @service_provider.enable %>
+  </p>
+
+  <%= link_to 'Edit', edit_service_provider_path(@service_provider) %> |
+  <%= link_to 'Back', service_providers_path %>
+</div>

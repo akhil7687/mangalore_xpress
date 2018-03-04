@@ -69,6 +69,10 @@
             </div>
           </div>
 
+          <%if @service_category.enabled_providers.count > 0%>
+            <%=render 'service_categories/service_providers'%>
+          <%end%>
+
           <!--LISTING DETAILS: LEFT PART 5-->
           <div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
             <div class="pglist-p-com-ti">
