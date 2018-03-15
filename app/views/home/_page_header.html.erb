@@ -5,7 +5,11 @@
 <%end%>
 
 <%if user_signed_in?%>
-  <div style="padding:5px 10px; background:#000; text-align:right; color:#fff; font-size:15px;">
-    Signed in - <%=current_user.email%> <%= link_to "Logout", destroy_user_session_path, :method => :delete,:style=>"margin-left:10px;" %>
+  <div style="padding:5px 10px; background:#000;">
+    <%=link_to "ADMIN DASHBOARD",admin_dashboard_path,:style=>"color:#1481ce;"%>
+    <span style='float:right;color:#fff; font-size:15px;'>
+      Signed in as - <%=current_user.email%> <%= link_to "LOGOUT", destroy_user_session_path, :method => :delete,:style=>"margin-left:10px;" %>
+    </span>
+    <div class='clearfix'></div>
   </div>
 <%end%>

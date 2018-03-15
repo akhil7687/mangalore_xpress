@@ -6,7 +6,7 @@
 
   <h1>Service Providers</h1>
 
-  <table>
+  <table class='table table-bordered'>
     <thead>
       <tr>
         <th>Name</th>
@@ -27,8 +27,8 @@
           <td><%= service_provider.description %></td>
           <td><%= service_provider.speciality %></td>
           <td><%= service_provider.contact_no %></td>
-          <td><%= service_provider.pic %></td>
-          <td><%= service_provider.service_category %></td>
+          <td><%= image_tag service_provider.pic.url(:thumb) %></td>
+          <td><%= service_provider.service_category.name %></td>
           <td><%= service_provider.enable %></td>
           <td><%= link_to 'Show', service_provider %></td>
           <td><%= link_to 'Edit', edit_service_provider_path(service_provider) %></td>

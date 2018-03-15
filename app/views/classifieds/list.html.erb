@@ -1,0 +1,31 @@
+<%=render "home/page_header"%>
+
+<div class='content'>
+  <p id="notice"><%= notice %></p>
+  <h1>CLASSIFIEDS</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @classifieds.each do |classified| %>
+        <tr>
+          <td><%= classified.title %></td>
+          <td><%= classified.description %></td>
+          <td><%= link_to 'Edit', edit_classified_path(classified) %></td>
+          <td><%= link_to 'Destroy', classified, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Classified', new_classified_path %> | <%= link_to 'New Classified Category', new_classified_category_path %>
+</div>

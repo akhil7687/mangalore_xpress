@@ -14,6 +14,13 @@ class ClassifiedsController < ApplicationController
     end
   end
 
+  def list
+    @classifieds = Classified.all
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def enquire
     respond_to do |format|
       format.js
