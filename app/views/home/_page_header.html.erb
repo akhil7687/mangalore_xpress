@@ -1,5 +1,11 @@
 <%if request.user_agent !~ /MANGALOREXPRESS/%>
-<div class="page_header">
-  <div class="overlay"></div>
-</div>
+  <div class="page_header">
+    <div class="overlay"></div>
+  </div>
+<%end%>
+
+<%if user_signed_in?%>
+  <div style="padding:5px 10px; background:#000; text-align:right; color:#fff; font-size:15px;">
+    Signed in - <%=current_user.email%> <%= link_to "Logout", destroy_user_session_path, :method => :delete,:style=>"margin-left:10px;" %>
+  </div>
 <%end%>

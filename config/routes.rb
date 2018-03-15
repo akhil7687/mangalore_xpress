@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :service_providers
   resources :feeds
   resources :service_categories do
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   match "/services"=>"home#services", via: [:get]
   match "/about_us"=>"home#about_us", via: [:get]
   match "/contact_us"=>"home#contact_us", via: [:get]
+  match "/admin_dashboard"=>"admin#index",via: [:get],:as=>"admin_dashboard"
 end
