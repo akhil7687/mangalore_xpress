@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :list
     end
   end
+  resources :real_estate_requirements
   resources :classified_categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>'home#index'
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   match "/about_us"=>"home#about_us", via: [:get]
   match "/contact_us"=>"home#contact_us", via: [:get]
   match "/admin_dashboard"=>"admin#index",via: [:get],:as=>"admin_dashboard"
+  match "/mangalore-rent-real-estate"=>"home#real_estate",via: [:get],:as=>"real_estate"
 end

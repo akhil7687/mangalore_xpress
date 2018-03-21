@@ -7,6 +7,13 @@ class HomeController < ApplicationController
     end
   end
 
+  def real_estate
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def cards
     respond_to do |format|
       format.html {render :layout => 'cards'}

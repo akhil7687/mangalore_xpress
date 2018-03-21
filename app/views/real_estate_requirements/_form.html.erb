@@ -1,0 +1,62 @@
+<%= form_for(real_estate_requirement) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Your Name" %>
+    <%= f.text_field :name,:class=>"form-control",:required=>true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email,:class=>"form-control",:required=>true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone,"Phone Number" %>
+    <%= f.text_field :phone,:class=>"form-control",:required=>true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :property_type,"Looking For",:style=>"margin-top:5px;" %>
+    <%= f.select :property_type, options_for_select([['House For Rent' ,'House For Rent'], ['Shop For Rent', 'Shop For Rent'],['Property For Sale','Property For Sale'],['Other','Other']]) %>
+  </div>
+  <div class="form-group property_detail_cont">
+    <%= f.label :property_detail,"Type",:style=>"margin-top:5px;" %>
+    <%= f.select :property_detail, options_for_select([['1 BHK' ,'1 BHK'], ['2 BHK', '2 BHK'],['3 BHK','3 BHK'],['Single Room','Single Room']]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pref_area,"Preferred Area",:style=>'margin-top:5px;' %>
+    <%= f.select :pref_area, options_for_select([['Within City Limits' ,'Within City Limits'], ['City Outskirts', 'City Outskirts'],['Anywhere','Anywhere']]) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :remarks,"A line about your requirement",:style=>"margin-top:5px;" %>
+    <%= f.text_area :remarks,:class=>"form-control",:style=>"margin-top:0px;" %>
+  </div>
+
+  <div class="actions text-center" style="margin-top:15px;">
+    <%= f.submit (f.object.new_record? ? "SUBMIT" : "Update"),:class=>"btn btn-primary",:style=>"width:80%;" %>
+  </div>
+<%end%>
+
+<style type="text/css">
+  .select-dropdown{
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #6B6B6B;
+  }
+
+  #new_real_estate_requirement .form-control{
+    font-weight: normal;
+  }
+
+  @media screen and (max-width: 640px){
+    h2{
+      font-size: 20px;
+    }
+    h3{
+      font-size: 18px;
+    }
+
+    .col-md-4,.col-md-8{
+      padding-left:5px;
+      padding-right: 5px;
+    }
+  }
+</style>

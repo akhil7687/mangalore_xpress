@@ -16,6 +16,8 @@ class Enquiry < ApplicationRecord
       return "Service - #{self.enquiryable.name}"
     elsif self.enquiryable.class.name == 'Classified'
       return "Classified - #{self.enquiryable.title}"
+    elsif self.enquiryable.class.name == 'RealEstateRequirement'
+      return "Looking For - #{self.enquiryable.description}"
     end
   end
 end

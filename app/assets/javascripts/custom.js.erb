@@ -24,6 +24,25 @@ document.addEventListener("turbolinks:load", function() {
       });
     }
 
+    $("#real_estate_requirement_property_type").change(function(){
+      var val = $(this).val();
+      if (val == 'House For Rent'){
+        $("#real_estate_requirement_property_detail").html("<option value='1 BHK'>1 BHK</option><option value='2 BHK'>2 BHK</option><option value='3 BHK'>3 BHK</option><option value='Singe Room'>Single Room</option>");
+        $('#real_estate_requirement_property_detail').material_select();
+        $(".property_detail_cont").slideUp().slideDown();
+      }else if(val == 'Shop For Rent'){
+        $("#real_estate_requirement_property_detail").html("<option value='1000 Sq.ft'>1000 Sq.ft</option><option value='2000 Sq.ft'>2000 Sq.ft</option><option value='> 2000 Sq.ft'>> 2000 Sq.ft</option><option value='Godown'>Godown</option>");
+        $('#real_estate_requirement_property_detail').material_select();
+        $(".property_detail_cont").slideUp().slideDown();
+      }else if(val == 'Property For Sale'){
+        $("#real_estate_requirement_property_detail").html("<option value='PLOT / SITE'>PLOT / SITE</option><option value='FLAT / APARTMENT / VILLA'>FLAT / APARTMENT / VILLA</option><option value='AGRI LAND'>AGRI LAND</option><option value='COMMERCIAL PROPERTY'>COMMERCIAL PROPERTY</option>");
+        $('#real_estate_requirement_property_detail').material_select();
+        $(".property_detail_cont").slideUp().slideDown();
+      }else{
+        $(".property_detail_cont").slideUp();
+      }
+    });
+
     $(".classified_filter input[type=checkbox]").change(function(){
       var categories = [];
       $(".class_chck:checked").each(function() {
