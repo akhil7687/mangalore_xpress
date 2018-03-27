@@ -69,6 +69,17 @@
             </div>
           </div>
 
+          <%if @service_category.slug == 'doctors-hospitals'%>
+            <div class="pglist-p3 pglist-bg pglist-p-com">
+              <div class="pglist-p-com-ti">
+                <h3><span>ARE YOU A </span> Doctor?</h3>
+              </div>
+              <div style="padding:15px; text-align:center;">
+                <%=link_to "REGISTER AS DOCTOR",new_service_provider_path,:class=>"waves-effect waves-light btn-large full-btn list-pg-btn btn-success",:style=>"width:250px; margin: 0 auto;"%>
+              </div>
+            </div>
+          <%end%>
+
           <%if @service_category.enabled_providers.count > 0%>
             <%=render 'service_categories/service_providers'%>
           <%end%>
@@ -77,7 +88,8 @@
             <!--LISTING DETAILS: LEFT PART 5-->
             <div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
               <div class="pglist-p-com-ti">
-                <h3><span>User</span> Reviews</h3> </div>
+                <h3><span>User</span> Reviews</h3>
+              </div>
               <div class="list-pg-inn-sp">
                 <div class="lp-ur-all-rat">
                   <ul>

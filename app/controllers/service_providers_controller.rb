@@ -28,7 +28,12 @@ class ServiceProvidersController < ApplicationController
 
     respond_to do |format|
       if @service_provider.save
-        format.html { redirect_to @service_provider, notice: 'Service provider was successfully created.' }
+        if user_signed_in?
+          format.html { redirect_to @service_provider, notice: 'Service provider was successfully created.' }
+        else
+          flash[:success_enq] = "Thank you! Our executive will approve you soon!"
+          format.html { redirect_to :back}
+        end
         format.json { render :show, status: :created, location: @service_provider }
       else
         format.html { render :new }

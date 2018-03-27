@@ -1,10 +1,13 @@
 <%=render "home/page_header"%>
 
 <div class="content">
+  <%if user_signed_in?%>
+    <h1>New Service Provider</h1>
+    <%= render 'form', service_provider: @service_provider %>
+    <%= link_to 'Back', service_providers_path %>
+  <%else%>
+    <h2 class='text-center' style="margin-bottom:10px;">Register yourself as Doctor in MangaloreXpress</h2>
+    <%= render 'form_doctor', service_provider: @service_provider %>
+  <%end%>
 
-  <h1>New Service Provider</h1>
-
-  <%= render 'form', service_provider: @service_provider %>
-
-  <%= link_to 'Back', service_providers_path %>
 </div>

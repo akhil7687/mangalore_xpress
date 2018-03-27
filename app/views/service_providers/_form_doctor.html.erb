@@ -1,0 +1,41 @@
+<%= form_for(service_provider) do |f| %>
+  <div class="form-group">
+    <%= f.label :name,"Your Name" %>
+    <%= f.text_field :name,:class=>"form-control",:required=>true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description,"About You" %>
+    <%= f.text_area :description,:class=>"form-control",:style=>"margin-top:3px;",:required=>true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :speciality %>
+    <%= f.text_field :speciality,:class=>"form-control",:required=>true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :contact_no %>
+    <%= f.text_field :contact_no,:class=>"form-control",:required=>true %>
+  </div>
+
+  <div class="form-group">
+    <div class='iimg'>
+      <%if service_provider.pic.present?%>
+        <%=image_tag service_provider.pic.url(:thumb)%>
+      <%end%>
+    </div>
+    <%= f.label :pic,"Your Photo" %>
+    <%= f.file_field :pic,:dest_img=>"iimg",:class=>"file_with_thumb"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :service_category_id, :value=>1%>
+  </div>
+  <div class="actions" style="margin:20px auto 0px; text-align:center ">
+    <%= f.submit "SUBMIT",:class=>"btn btn-primary",:style=>"padding:5px 25px; height: 40px; width:80%; font-weight:bold; font-size:18px;" %>
+  </div>
+  <div style="padding: 10px; font-size: 14px; background: #eee; margin-top:15px; margin-left:-13px; margin-right:-13px;">
+   [ Note: You profile will be live once our executive approves. ]
+  </div>
+<% end %>
