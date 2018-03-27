@@ -2,10 +2,10 @@
   <div style="padding:15px; border-bottom:1px solid #e2e2e2;">
     <h3 style='text-transform:uppercase; color: #828282; font-weight: 500;    font-family: "Montserrat", sans-serif;     font-size: 13.5pt;'>Our few esteemed service providers</h3>
   </div>
-  <div class="row-fluid">
-    <%@service_category.enabled_providers.each do |service_provider|%>
-      <div class="col-md-4 col-xs-12">
-        <div style="background: #fff;border: 1px solid #d2d2d2; margin-bottom: 10px; padding: 10px; margin: 10px auto;">
+  <div class="service_provider_list">
+    <ul>
+      <%@service_category.enabled_providers.each do |service_provider|%>
+        <li>
           <div class="text-center">
             <%=image_tag service_provider.pic.url(:large),:class=>"viewable-image",:style=>"width: 60%;margin-bottom: 5px;"%>
           </div>
@@ -21,9 +21,9 @@
           <div style="font-size: 15px; margin: 10px auto; font-weight: bold; text-align:center;">
             CONTACT - <%=service_provider.contact_no%>
           </div>
-        </div>
-      </div>
-    <%end%>
+        </li>
+      <%end%>
+    </ul>
   </div>
 
   <div class='clearfix'></div>
