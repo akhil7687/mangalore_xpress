@@ -8,7 +8,6 @@
       <div class="cat-v2-hom-list">
         <ul>
           <%ServiceCategory.enabled_services.each do |sc|%>
-            <%next if sc.slug == 'doctors-hospitals'%>
             <li>
               <%=link_to service_category_path(sc) do%>
                 <%=image_tag sc.icon_img.url(:thumb)%> <%=sc.name%>
