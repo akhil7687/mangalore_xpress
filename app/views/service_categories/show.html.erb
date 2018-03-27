@@ -73,26 +73,48 @@
             <%=render 'service_categories/service_providers'%>
           <%end%>
 
-          <!--LISTING DETAILS: LEFT PART 5-->
-          <div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
-            <div class="pglist-p-com-ti">
-              <h3><span>User</span> Reviews</h3> </div>
-            <div class="list-pg-inn-sp">
-              <div class="lp-ur-all-rat">
-                <ul>
-                  <li style="margin-bottom:10px; padding-top:0px;">
-                    <div class="lr-user-wr-img">
-                      <%=image_tag 'u3.png'%>
-                    </div>
-                    <div class="lr-user-wr-con">
-                      <h6>Jacob Michael <span>5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th January, 2017</span>
-                      <p>Good service... nice and clean rooms... very good spread of buffet and friendly staffs. Located in heart of city and easy to reach any places in a short distance. </p>
-                    </div>
-                  </li>
-                </ul>
+          <%if @service_category.slug == 'doctors-hospitals'%>
+            <!--LISTING DETAILS: LEFT PART 5-->
+            <div class="pglist-p3 pglist-bg pglist-p-com" id="ld-rer">
+              <div class="pglist-p-com-ti">
+                <h3><span>User</span> Reviews</h3> </div>
+              <div class="list-pg-inn-sp">
+                <div class="lp-ur-all-rat">
+                  <ul>
+                    <li style="margin-bottom:10px; padding-top:0px;">
+                      <div class="lr-user-wr-img">
+                        <%=image_tag 'vimalesh.jpg',:style=>"border-radius:50%;"%>
+                      </div>
+                      <div class="lr-user-wr-con">
+                        <h6>Vimalesh Rao <span>5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th March, 2018</span>
+                        <p>Good service... Exccellent service from Mangalore express. I wanted to connect doctor near by my area, this app really helped me. Thank you Mangalore Xpress Team </p>
+                      </div>
+                    </li>
+                    <li style="margin-bottom:10px; padding-top:0px;">
+                      <div class="lr-user-wr-img">
+                        <%=image_tag 'manju.jpg',:style=>"border-radius:50%;"%>
+                      </div>
+                      <div class="lr-user-wr-con">
+                        <h6>Manju Prasad <span>4 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">22th Feb, 2018</span>
+                        <p>Super!. This new service in Mangalore is really going to rock. All the best guys!</p>
+                      </div>
+                    </li>
+                    <li style="margin-bottom:10px; padding-top:0px;">
+                      <div class="lr-user-wr-img">
+                        <%=image_tag 'kj.jpg',:style=>"border-radius:50%;"%>
+                      </div>
+                      <div class="lr-user-wr-con">
+                        <h6>Sandeep K J <span>5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th Feb, 2018</span>
+                        <p>
+                          Excellent!. I was new to Mangalore and looking for doctors, this app has accurate information. Thank you Mangalore Express!
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          <%end%>
           <!--END LISTING DETAILS: LEFT PART 5-->
         </div>
         <div class="list-pg-rt">
