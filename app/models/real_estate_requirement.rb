@@ -19,6 +19,6 @@ class RealEstateRequirement < ApplicationRecord
   end
 
   def description
-    "#{self.property_type} - #{self.format_property_detail} - #{self.pref_area} - #{self.remarks}"
+    "#{self.property_type} - #{self.format_property_detail} - #{self.pref_area} -#{self.budget} - #{self.remarks}"
   end
 end
