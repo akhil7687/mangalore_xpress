@@ -7,12 +7,14 @@
     <p><%=raw classified.description%></p>
     <div class="list-enqu-btn">
       <ul>
-        <li>
-          <a href="tel:8904403233" style="background:#172437; color:#fff;     border-top-color: #172233; border-right-color: #172233; border-bottom-color: #172233;border-left-color: #172233;">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            CALL NOW
-          </a>
-        </li>
+        <%if false%>
+          <li>
+            <a href="tel:8904403233" style="background:#172437; color:#fff;     border-top-color: #172233; border-right-color: #172233; border-bottom-color: #172233;border-left-color: #172233;">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              CALL NOW
+            </a>
+          </li>
+        <%end%>
         <li>
           <%=link_to enquire_classified_path(classified),:remote=>true do%>
             <i class="fa fa-usd" aria-hidden="true"></i>
