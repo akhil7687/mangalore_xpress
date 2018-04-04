@@ -1,4 +1,4 @@
-server '139.59.25.40', port: 76, roles: [:web, :app, :db], primary: true
+server '167.99.93.120', port: 76, roles: [:web, :app, :db], primary: true
 set :repo_url,        'git@github.com:akhil7687/mangalore_xpress.git'
 set :application,     'mangalore_xpress'
 set :user,            'akhil'
