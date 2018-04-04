@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: mangalore_xpress
-  username: kdkgowdas
-  password: kdkgowdas
+  username: mangalorexp
+  password: mangalorexp
