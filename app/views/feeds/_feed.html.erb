@@ -15,6 +15,9 @@
       <%=raw feed.description%>
     </div>
   <%end%>
+  <%if feed.details.present?%>
+    <%=link_to "READ MORE",feed_path(feed),:style=>"text-decoration:underline;"%>
+  <%end%>
 </div>
 
 

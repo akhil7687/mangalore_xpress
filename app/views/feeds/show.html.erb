@@ -1,28 +1,75 @@
 <%=render "home/page_header"%>
+<div class="row-fluid wall">
+  <div class="col-md-3 hidden-xs">
+    <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto; padding: 10px;text-align: center;">
+      <%=image_tag 'news.jpg',:style=>"width:100%;"%>
+      <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
+        NEWS FROM ALL AROUND MANGALORE
+      </div>
+    </div>
+  </div>
 
-<div class="content">
-  <p id="notice"><%= notice %></p>
+  <div class="col-md-6">
+    <div class="feeds_container">
+      <div class="post">
+        <%if @feed.title.present?%>
+          <div class='post-head'>
+            <%=@feed.title%>
+          </div>
+        <%end%>
+        <div style="font-size: 10px;color: #90949c;font-family: 'proxima_nova_rgregular'; margin-bottom:5px; auto; text-transform:uppercase;">
+          POSTED - <%=@feed.created_at.strftime("%d %b %Y %I:%M%p")%>
+        </div>
+        <%if @feed.pic.present?%>
+          <%=image_tag @feed.pic.url(:original),:style=>"width:100%;","data-high-res-img"=>@feed.pic.url(:original),:class=>"viewable-image"%>
+        <%end%>
+        <%if @feed.description.present?%>
+         <div class='post-ex'>
+            <%=raw @feed.description%>
+          </div>
+        <%end%>
+        <%if @feed.details.present?%>
+          <%=raw @feed.details%>
+        <%end%>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <strong>Title:</strong>
-    <%= @feed.title %>
-  </p>
+  <div class="col-md-3 hidden-xs">
+    <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto;padding: 10px;text-align: center;">
+      <%=image_tag 'ad_1.jpg',:style=>"width:100%;"%>
+      <div style="font-size: 12px; font-weight:bold; margin-top:15px;text-align:right;color:#ccc;">
+        Ad sponsored
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @feed.description %>
-  </p>
-
-  <p>
-    <strong>Pic:</strong>
-    <%= @feed.pic %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= @feed.status %>
-  </p>
-
-  <%= link_to 'Edit', edit_feed_path(@feed) %> |
-  <%= link_to 'Back', feeds_path %>
 </div>
+
+
+<style type="text/css">
+  .post {
+    background: #fff;
+    border: 1px solid #d2d2d2;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .post-ex{
+    font-size: 15px;
+    color: #565656;
+    margin-bottom: 4px;
+  }
+
+  .post-head{
+    font-size: 16px;
+    font-weight: bold;
+    color:#424141;
+  }
+</style>
+
+<%if user_signed_in?%>
+  <div style="padding:10px;">
+    <%= link_to 'Edit', edit_feed_path(@feed) %> |
+    <%= link_to 'Back', feeds_path %>
+  </div>
+<%end%>

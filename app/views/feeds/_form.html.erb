@@ -1,3 +1,4 @@
+<%= javascript_include_tag Ckeditor.cdn_url%>
 <%= form_for(feed) do |f| %>
   <% if feed.errors.any? %>
     <div id="error_explanation">
@@ -17,10 +18,16 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :description %> (Leave blank if not available)
+    <%= f.label :description %> (Leave blank if not available, if this is image only news)
     <%= f.text_area :description,:class=>"form-control" %>
   </div>
 
+  <div class="form-group">
+    <label for="content" class="control-label">Details - (Optional) <span class="required-field">*</span><span class='proxima-regular' style='text-transform:none;'>Avoid changing font size, colors etc. Standard sizes and colors will be picked automatically</span></label>
+    <div class="has-feedback" data-no-turbolink>
+      <%= f.cktext_area :details, autofocus: false,:class=>"form-control" %>
+    </div>
+  </div>
 
   <div class="form-group">
     <div class='iimg'>

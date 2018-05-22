@@ -68,6 +68,10 @@ document.addEventListener("turbolinks:load", function() {
       });
     });
 
+    $('.myckeditor').each(function() {
+      CKEDITOR.replace($(this).attr('id'));
+    });
+
     //LEFT MOBILE MENU OPEN
     $(".ts-menu-5").on('click', function() {
         $(".mob-right-nav").css('right', '0px');
