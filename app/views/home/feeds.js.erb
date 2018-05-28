@@ -1,3 +1,4 @@
+<%if @feeds.count > 0%>
 $('.feed_container').append('<%= escape_javascript(render :partial => "feeds/feeds" )%>');
 <%end%>
 var c_url = "?page="+<%=@feeds.current_page%>;
