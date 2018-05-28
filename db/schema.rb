@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20180522215929) do
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
+  create_table "market_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "item_id"
+    t.string   "item_group"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"

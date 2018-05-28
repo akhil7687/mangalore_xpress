@@ -1,0 +1,10 @@
+<div class="market_watch" style="position:relative; cursor:pointer;">
+  <%=link_to market_reports_path,:style=>"" do%>
+    <marquee scrollamount="8" onmouseover="this.stop();" onmouseout="this.start();" style="margin-top:5px;">
+      <%=MarketPrice.market_strip.html_safe%>
+    </marquee>
+  <%end%>
+  <%=link_to market_reports_path,:style=>"position:absolute; right:10px; color:#ff0000; top:2px;" do%>
+    <i class='fa fa-hand-o-left' style='font-size:17px;'></i>
+  <%end%>
+</div>
