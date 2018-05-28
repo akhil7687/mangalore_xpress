@@ -14,6 +14,22 @@ class HomeController < ApplicationController
     end
   end
 
+  def download_market_price
+
+
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def reports
+    respond_to do |format|
+      format.html
+    end
+  end
+
+
   def cards
     respond_to do |format|
       format.html {render :layout => 'cards'}

@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   match "/contact_us"=>"home#contact_us", via: [:get]
   match "/admin_dashboard"=>"admin#index",via: [:get],:as=>"admin_dashboard"
   match "/mangalore-rent-real-estate"=>"home#real_estate",via: [:get],:as=>"real_estate"
+  match "/market_reports",:to=>"home#reports",:via=>[:get],:as=>"market_reports"
 end

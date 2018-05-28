@@ -1,0 +1,61 @@
+<%=render "home/page_header"%>
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">CURRENT MARKET PRICES</h3>
+    <p style="text-align:center;">Updated <%=Date.today%></p>
+    <p style="text-align:center; font-size:11px;">(Prices are as per APMC rates. Actual rate may vary slightly)</p>
+    <div class="col-md-4">
+      <div style="padding:10px; background:#fff; border:1px solid #ccc;margin-bottom:10px;">
+        <div style="padding:4px; text-align:center; font-weight:bold;">ARRECANUT / COCONUT</div>
+        <table class="table table-bordered">
+          <%MarketPrice.where("item_group like ? or item_group like ?","%Arecanut%","%Coconut%").each do |arec|%>
+            <tr>
+              <td><%=arec.item_group.strip%></td>
+              <td><%=arec.name%></td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div style="padding:10px; background:#fff; border:1px solid #ccc;margin-bottom:10px;">
+        <div style="padding:4px; text-align:center; font-weight:bold;">RUBBER</div>
+        <table class="table table-bordered">
+          <%MarketPrice.where("item_group like ? ","%Rubber%").each do |arec|%>
+            <tr>
+              <td><%=arec.item_group.strip%></td>
+              <td><%=arec.name%></td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+
+      <div style="padding:10px; background:#fff; border:1px solid #ccc; margin-top:10px;margin-bottom:10px;">
+        <div style="padding:4px; text-align:center; font-weight:bold;">CASHEW</div>
+        <table class="table table-bordered">
+          <%MarketPrice.where("item_group like ?","%CASHEW%").each do |arec|%>
+            <tr>
+              <td><%=arec.item_group.strip%></td>
+              <td><%=arec.name%></td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div style="padding:10px; background:#fff; border:1px solid #ccc; margin-bottom:10px;">
+        <div style="padding:4px; text-align:center; font-weight:bold;">COFFEE / PEPPER</div>
+        <table class="table table-bordered">
+          <%MarketPrice.where("item_group like ? or item_group like ?","%Coffee%","Pepper").each do |arec|%>
+            <tr>
+              <td><%=arec.item_group.strip%></td>
+              <td><%=arec.name%></td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
