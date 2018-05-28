@@ -42,7 +42,12 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        format.html { redirect_to classifieds_path, notice: 'Classified successfully created.' }
+        if user_signed_in?
+          flash[:success] = "Classified successfully created."
+        else
+          flash[:success] = "Thank you! Our executive will look in to your ad and approve it soon!"
+        end
+        format.html { redirect_to classifieds_path }
         format.json { render :show, status: :created, location: @classified }
       else
         format.html { render :new }
