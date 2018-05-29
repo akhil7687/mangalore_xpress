@@ -16,9 +16,7 @@ class HomeController < ApplicationController
 
 
   def update_token
-
     ut = UserToken.where("app_id=?",params[:app_token]).take
-
     if ut.blank?
       ut = UserToken.new
       ut.app_id = params[:app_token]
