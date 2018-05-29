@@ -14,6 +14,22 @@ class HomeController < ApplicationController
     end
   end
 
+
+  def update_token
+
+    ut = UserToken.where("app_id=?",params[:app_token]).take
+
+    if ut.blank?
+      ut = UserToken.new
+      ut.app_id = params[:app_token]
+      ut.save
+    end
+
+    respond_to do |format|
+      format.json{render :json=>{:update_status=>"success",:status=>200}}
+    end
+  end
+
   def download_market_price
     require 'net/http'
     require 'json'

@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   match "/mangalore-rent-real-estate"=>"home#real_estate",via: [:get],:as=>"real_estate"
   match "/market_reports",:to=>"home#reports",:via=>[:get],:as=>"market_reports"
   match "/download_market_report",:to=>"home#download_market_price",:via=>[:get],:as=>"download_market_report"
+  match "/users/update_token"=>"home#update_token",via: [:post]
 end
