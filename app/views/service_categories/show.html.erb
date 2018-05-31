@@ -14,7 +14,13 @@
             <%if false%>
               <li><a href="tel:8904403233"><i class="fa fa-reply" aria-hidden="true"></i> CALL NOW</a> </li>
             <%end%>
-            <li><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i class="fa fa-share" aria-hidden="true"></i> REQUEST CALL BACK </a> </li>
+            <li>
+              <%if @service_category.is_enabled%>
+                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i class="fa fa-share" aria-hidden="true"></i> REQUEST CALL BACK </a>
+              <%else%>
+                <a href="javascript:void(0);"><i class="fa fa-share" aria-hidden="true"></i> THIS SERVICE COMING SOON</a>
+              <%end%>
+            </li>
           </ul>
         </div>
       </div>
@@ -67,7 +73,11 @@
               <p><strong>Its Simple..</strong> Yes! Just request a call back, our executive will get back to you instantly and arrange you the service as per your requirement</p>
             </div>
             <div style="padding:0px 20px 20px; text-align:center;">
-              <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo" style="width:auto; display: inline-block!important;">REQUEST CALL BACK</a>
+              <%if @service_category.is_enabled%>
+                <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo" style="width:auto; display: inline-block!important;">REQUEST CALL BACK</a>
+              <%else%>
+                <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="javascript:void(0);" style="width:auto; display: inline-block!important;">THIS SERVICE COMING SOON</a>
+              <%end%>
             </div>
           </div>
 
@@ -161,7 +171,12 @@
                     <p>Charges according to market</p>
                   </li>
                 </ul>
-                <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo">REQUEST CALL BACK</a> </div>
+                <%if @service_category.is_enabled%>
+                  <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo">REQUEST CALL BACK</a>
+                <%else%>
+                  <a class="waves-effect waves-light btn-large full-btn list-pg-btn" href="javascript:void(0);">THIS SERVICE COMING SOON</a>
+                <%end%>
+                </div>
             </div>
           </div>
           <!--END LISTING DETAILS: LEFT PART 7-->

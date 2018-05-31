@@ -8,8 +8,11 @@
       <div class="cat-v2-hom-list">
         <ul>
           <%ServiceCategory.enabled_services.each do |sc|%>
-            <li>
-              <%=link_to service_category_path(sc) do%>
+            <li style="position:relative;">
+              <% if not sc.is_enabled%>
+              <span style='position:absolute; right:15px; bottom: 8px; font-size: 11px; color:#bbb;'>Coming Soon</span>
+              <%end%>
+              <%=link_to service_category_path(sc),:style=>"text-transform:uppercase;" do%>
                 <%=image_tag sc.icon_img.url(:thumb)%> <%=sc.name%>
               <%end%>
             </li>

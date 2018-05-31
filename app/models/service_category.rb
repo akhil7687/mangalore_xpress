@@ -10,7 +10,11 @@ class ServiceCategory < ApplicationRecord
   has_many :enquiries, as: :enquiryable
 
   def self.enabled_services
-    where("enable=1").order('name asc')
+    where("enable=1").order('created_at desc')
+  end
+
+  def is_enabled
+    self.name =~ /health/
   end
 
   def enabled_providers
