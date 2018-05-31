@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   match "/market_reports",:to=>"home#reports",:via=>[:get],:as=>"market_reports"
   match "/download_market_report",:to=>"home#download_market_price",:via=>[:get],:as=>"download_market_report"
   match "/users/update_token"=>"home#update_token",via: [:post]
+  match "/users/toggle_subscribe"=>"home#toggle_subscribe",via: [:post]
 end

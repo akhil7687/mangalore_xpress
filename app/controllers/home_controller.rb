@@ -14,15 +14,27 @@ class HomeController < ApplicationController
     end
   end
 
+  def toggle_subscribe
+    ut = UserToken.where("app_id=?",params[:app_token]).take
+    if ut.present?
+      ut.subscribe = params[:subscribe]
+      ut.save
+    end
+    respond_to do |format|
+      format.json{render :json=>{:update_status=>"success",:status=>200}}
+    end
+  end
 
   def update_token
     ut = UserToken.where("app_id=?",params[:app_token]).take
     if ut.blank? && params[:app_token].present?
       ut = UserToken.new
       ut.app_id = params[:app_token]
+      if params[:is_admin].present?
+        ut.is_admin = 1
+      end
       ut.save
     end
-
     respond_to do |format|
       format.json{render :json=>{:update_status=>"success",:status=>200}}
     end
