@@ -15,7 +15,7 @@
                 <div class="col-sm-8 col-md-9">
                   <div class="row">
                     <%ServiceCategory.enabled_services.limit(20).each do |sc|%>
-                      <div class="col-md-3">
+                      <div class="col-md-3" style="text-align:left;">
                         <div style="">
                           <%=link_to service_category_path(sc) do%>
                             <p>>> <%=sc.name%></p>
