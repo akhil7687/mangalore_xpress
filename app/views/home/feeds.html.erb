@@ -8,10 +8,17 @@
 <div class="row-fluid wall">
   <div class="col-md-3 hidden-xs">
     <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto; padding: 10px;text-align: center;">
-      <%=image_tag 'news.jpg',:style=>"width:100%;"%>
-      <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
-        NEWS FROM ALL AROUND MANGALORE
-      </div>
+      <%if request.original_url =~ /\/articles/%>
+        <%=image_tag 'articles_icon.png',:style=>"width:100%;"%>
+        <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
+          ARTICLES
+        </div>
+      <%else%>
+        <%=image_tag 'news.jpg',:style=>"width:100%;"%>
+        <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
+          NEWS FROM ALL AROUND MANGALORE
+        </div>
+      <%end%>
     </div>
   </div>
 

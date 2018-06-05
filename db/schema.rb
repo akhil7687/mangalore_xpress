@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531184306) do
+ActiveRecord::Schema.define(version: 20180605174646) do
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "data_file_name",               null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20180531184306) do
     t.datetime "updated_at",                     null: false
     t.text     "details",          limit: 65535
     t.string   "slug"
+    t.boolean  "is_article"
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
