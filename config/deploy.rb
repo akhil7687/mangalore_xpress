@@ -36,6 +36,16 @@ namespace :puma do
   before :start, :make_dirs
 end
 
+before 'deploy:assets:precompile', :symlink_config_files
+
+desc "Link shared files"
+task :symlink_config_files do
+  on roles(:app) do
+    execute :ln, '-nfs', "#{shared_path}/config/database.yml", "#{release_path}/config/database.yml"
+    execute :ln, '-nfs', "#{shared_path}/config/local_env.yml", "#{release_path}/config/local_env.yml"
+  end
+end
+
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
