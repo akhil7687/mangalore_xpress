@@ -9,6 +9,7 @@
       <tr>
         <th>Title</th>
         <th>Description</th>
+        <th>Phone Number</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
         <tr>
           <td><%= classified.title %></td>
           <td><%= classified.description %></td>
+          <td><%= classified.phone %></td>
           <td><%= link_to 'Edit', edit_classified_path(classified) %></td>
           <td><%= link_to 'Destroy', classified, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

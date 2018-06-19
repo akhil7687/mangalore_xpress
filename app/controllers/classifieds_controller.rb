@@ -84,6 +84,6 @@ class ClassifiedsController < ApplicationController
   end
 
   def classified_params
-    params.require(:classified).permit(:title,:description,:classified_category_id,:status,:pic)
+    params.require(:classified).permit(:title,:description,:classified_category_id,:status,:pic,:phone)
   end
 end
