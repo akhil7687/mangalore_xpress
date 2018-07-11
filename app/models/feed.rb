@@ -34,6 +34,10 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"Indian Express",false,true)
     end
+    urls = ["https://vijaykarnataka.indiatimes.com/rssfeeds/11182260.cms"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"Vijaya Karnataka",false,true)
+    end
   end
 
   def self.load_from_rss(url,source,to_offset,selective=false)
