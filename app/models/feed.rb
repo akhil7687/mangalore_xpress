@@ -36,7 +36,7 @@ class Feed < ApplicationRecord
     end
     urls = ["https://vijaykarnataka.indiatimes.com/rssfeeds/11182260.cms"]
     urls.each do |u|
-      Feed.load_from_rss(u,"Vijaya Karnataka",false,true)
+      Feed.load_from_rss(u,"Vijaya Karnataka",false,false)
     end
   end
 
