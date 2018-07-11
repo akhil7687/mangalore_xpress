@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619181355) do
+ActiveRecord::Schema.define(version: 20180711165621) do
 
-  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
     t.integer  "data_file_size"
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
   end
 
-  create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "classifieds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "classifieds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "title"
-    t.text     "description",            limit: 65535
+    t.text     "description",            limit: 16777215
     t.integer  "classified_category_id"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.datetime "pic_updated_at"
     t.string   "slug"
     t.integer  "status"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "phone"
     t.index ["classified_category_id"], name: "index_classifieds_on_classified_category_id", using: :btree
     t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
   end
 
-  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "user_name"
     t.string   "user_email"
     t.string   "user_phone"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.index ["service_category_id"], name: "index_enquiries_on_service_category_id", using: :btree
   end
 
-  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "title"
     t.string   "description",      limit: 5000
     t.string   "pic_file_name"
@@ -70,15 +70,17 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "status"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.text     "details",          limit: 65535
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
+    t.text     "details",          limit: 16777215
     t.string   "slug"
     t.boolean  "is_article"
+    t.string   "news_source"
+    t.datetime "published_date",                    default: -> { "CURRENT_TIMESTAMP" }
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
-  create_table "market_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "market_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name"
     t.string   "item_id"
     t.string   "item_group"
@@ -86,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
@@ -99,7 +101,7 @@ ActiveRecord::Schema.define(version: 20180619181355) do
     t.datetime "updated_at",                   null: false
   end
 
-  create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name"
     t.string   "description"
     t.boolean  "enable"

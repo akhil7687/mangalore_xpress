@@ -88,7 +88,7 @@ class HomeController < ApplicationController
     if request.original_url =~ /\/articles/
       @feeds = Feed.articles.order("created_at desc").paginate(:page => params[:page], :per_page => 10)
     else
-      @feeds = Feed.news.order("created_at desc").paginate(:page => params[:page], :per_page => 10)
+      @feeds = Feed.news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|
