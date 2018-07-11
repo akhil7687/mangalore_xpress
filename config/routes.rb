@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   resources :service_providers
-  resources :feeds
+  resources :feeds do
+    collection do
+      get :load_feed
+    end
+  end
   resources :service_categories do
     collection do
       get :autocomplete

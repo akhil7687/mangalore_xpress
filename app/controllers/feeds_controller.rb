@@ -21,6 +21,13 @@ class FeedsController < ApplicationController
   def edit
   end
 
+  def load_feed
+    Feed.load_news
+    respond_to do |format|
+      format.json{render :json=>{:update_status=>"success",:status=>200}}
+    end
+  end
+
   # POST /feeds
   # POST /feeds.json
   def create
