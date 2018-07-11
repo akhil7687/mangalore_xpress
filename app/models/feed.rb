@@ -36,11 +36,11 @@ class Feed < ApplicationRecord
     end
     urls = ["https://vijaykarnataka.indiatimes.com/rssfeeds/11182260.cms"]
     urls.each do |u|
-      Feed.load_from_rss(u,"Vijaya Karnataka",false)
+      Feed.load_from_rss(u,"Vijaya Karnataka",false,true)
     end
   end
 
-  def self.load_from_rss(url,source,to_offset,selective=false)
+  def self.load_from_rss(url,source,to_offset,selective=false,tim_correct=false)
     require 'rss'
     require 'open-uri'
     rss_results = []
@@ -62,6 +62,10 @@ class Feed < ApplicationRecord
         f.published_date = result.pubDate + (rand(6*60...6*60+120).minutes)
       else
         f.published_date = result.pubDate
+      end
+      if tim_correct
+        puts "Time corect"
+        f.published_date = Time.now
       end
       f.news_source = source
       f.save
