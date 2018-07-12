@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711165621) do
+ActiveRecord::Schema.define(version: 20180712164532) do
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "data_file_name",               null: false
@@ -62,21 +62,21 @@ ActiveRecord::Schema.define(version: 20180711165621) do
     t.index ["service_category_id"], name: "index_enquiries_on_service_category_id", using: :btree
   end
 
-  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
     t.string   "title"
-    t.string   "description",      limit: 5000
+    t.string   "description",      limit: 1000
     t.string   "pic_file_name"
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "status"
-    t.datetime "created_at",                                                             null: false
-    t.datetime "updated_at",                                                             null: false
-    t.text     "details",          limit: 16777215
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.text     "details",          limit: 65535
     t.string   "slug"
     t.boolean  "is_article"
     t.string   "news_source"
-    t.datetime "published_date",                    default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "published_date",                 default: -> { "CURRENT_TIMESTAMP" }
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
