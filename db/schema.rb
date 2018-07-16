@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712164532) do
+ActiveRecord::Schema.define(version: 20180716154305) do
+
+  create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.string   "ad_img_file_name"
+    t.string   "ad_img_content_type"
+    t.integer  "ad_img_file_size"
+    t.datetime "ad_img_updated_at"
+    t.boolean  "enable"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "data_file_name",               null: false

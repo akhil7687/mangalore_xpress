@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
   resources :real_estate_requirements
   resources :classified_categories
+  resources :ads
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>'home#index'
   match "/cards"=>"home#feeds", via: [:get],:as=>"cards"
