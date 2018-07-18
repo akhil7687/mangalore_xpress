@@ -8,11 +8,52 @@ class HomeController < ApplicationController
   end
 
   def real_estate
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def new_notification
+    if user_signed_in? && current_user.is_admin?
+    else
+      flash[:error]= "You are not admin"
+      redirect_to root_path
+      return
+    end
 
     respond_to do |format|
       format.html
     end
   end
+
+
+  def send_notification
+    if user_signed_in? && current_user.is_admin?
+    else
+      flash[:error]= "You are not admin"
+      redirect_to root_path
+      return
+    end
+
+    if params[:title].blank? || params[:body].blank? || params[:target_url].blank?
+      flash[:error]= "Please fill all the field"
+      redirect_to :back
+      return
+    end
+
+    fcm = FCM.new(ENV["MXP_FCM_TOKEN"])
+    options = {data: {url: params[:target_url],title: params[:title],body: params[:body],:notification_id=>params[:title][0..20], collapse_key: params[:title][0..20]}}
+    response = fcm.send_to_topic("members",options)
+    puts response
+
+    flash[:success] = "Notification sent"
+    redirect_to :back
+    return
+    respond_to do |format|
+      format.html
+    end
+  end
+
 
   def toggle_subscribe
     ut = UserToken.where("app_id=?",params[:app_token]).take

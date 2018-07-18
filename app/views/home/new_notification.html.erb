@@ -1,0 +1,39 @@
+<%=render "home/page_header"%>
+<div class="row-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div style="padding:20px; background:#fff; border:1px solid #ccc; margin-top:20px;">
+      <%= form_tag({controller: "home", action: "send_notification"}, method: "post") do %>
+        <div class="form-group">
+          <label for="name" class="control-label">Title <span class="required-field">*</span></label>
+          <div class="has-feedback">
+            <%= text_field_tag :title,"",:class=>"form-control",:placeholder=>"Notification title" %>
+            <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name" class="control-label">Body <span class="required-field">*</span></label>
+          <div class="has-feedback">
+            <%= text_field_tag :body,"",:class=>"form-control",:placeholder=>"Notification body" %>
+            <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name" class="control-label">URL <span class="required-field">*</span></label>
+          <div class="has-feedback">
+            <%= text_field_tag :target_url,"",:class=>"form-control",:placeholder=>"Notification url" %>
+            <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%=submit_tag "SEND NOW",:class=>"btn btn-hero",:style=>"margin-top:5px; margin-bottom:10px; font-size: 20px; padding: 8px 30px;" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<div style="height:400px;"></div>

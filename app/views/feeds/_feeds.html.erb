@@ -1,6 +1,6 @@
 <%@feeds.each_with_index do |feed,index|%>
   <%=render 'feeds/feed',:feed=>feed%>
-  <%if (index>0) && (index%5==0)%>
+  <%if (index>0) && (index%4==0)%>
     <%current_img = Ad.where("enable=1").sample%>
     <%if current_img.present?%>
       <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090;text-align:right" class="ad_div">
