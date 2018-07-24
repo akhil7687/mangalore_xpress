@@ -117,7 +117,7 @@ class MarketPrice < ApplicationRecord
   end
 
   def self.market_strip
-    txt = "<span style='color:#00ff00; margin-right:10px; margin-left:10px;'>Market Updates: #{Date.today}</span>"
+    txt = "<span style='color:#4c0e11; margin-right:10px; margin-left:10px;'>Market Updates: #{Date.today}</span>"
     MarketPrice.order("created_at asc").each do |mk|
       txt = txt+"<span style='margin-left:10px; margin-right:10px;'><strong>#{mk.item_group} : #{mk.name}</strong></span>"
     end
