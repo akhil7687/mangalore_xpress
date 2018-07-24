@@ -4,7 +4,11 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.order("created_at desc")
+    if params[:type].blank?
+      @feeds = Feed.where("is_article is null or is_article=0").order("created_at desc").paginate(:page => params[:page], :per_page => 10)
+    else
+      @feeds = Feed.where("is_article=1").order("created_at desc").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   # GET /feeds/1

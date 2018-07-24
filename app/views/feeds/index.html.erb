@@ -2,7 +2,16 @@
 <div class="content">
   <p id="notice"><%= notice %></p>
 
-  <h1>NEWS</h1>
+  <div style="padding:10px;">
+    <%=link_to "NEWS",feeds_path,:class=>"btn btn-primary"%>
+    <%=link_to "ARTICLES",feeds_path(:type=>'article'),:class=>"btn btn-primary"%>
+  </div>
+
+  <%if params[:type].blank?%>
+    <h1>SHOWING NEWS</h1>
+  <%else%>
+    <h1>SHOWING ARTICLES</h1>
+  <%end%>
 
   <div style="padding:10px 0px;">
     <%= link_to 'New Feed', new_feed_path %>
@@ -31,6 +40,9 @@
       <% end %>
     </tbody>
   </table>
+  <div style="text-align:center;">
+    <%= will_paginate @feeds :params => { :type => params[:type] } %>
+  </div>
 
   <br>
 
