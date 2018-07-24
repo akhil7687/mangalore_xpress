@@ -41,7 +41,7 @@
     </tbody>
   </table>
   <div style="text-align:center;">
-    <%= will_paginate (@feeds :params => { :type => params[:type] }) %>
+    <%= will_paginate(@feeds, :params => { :type => params[:type] }) %>
   </div>
 
   <br>
