@@ -52,11 +52,14 @@ document.addEventListener("turbolinks:load", function() {
 
     $(".language_filter input[type=checkbox]").change(function(){
       var lang = "All";
-      if($("#kannada_lang").is(":checked")){
-        lang = "Kannada";
-      }else if($("#english_lang").is(":checked")){
-        lang = "English";
-      }
+
+      if($(this).is(":checked")){
+        if($(this).attr("id") == "kannada_lang"){
+          lang = "Kannada";
+        }else{
+          lang = "English"
+        }
+      } 
       window.location = "/cards?lang="+lang;
     });
     
