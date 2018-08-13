@@ -12,6 +12,25 @@ class Feed < ApplicationRecord
   scope :news, -> { where(is_article: [false,nil]) }
   scope :articles, -> { where(is_article: true) }
 
+  before_save :add_lang
+
+
+  def add_lang
+    return if news_source.blank?
+    if news_source == "One India" || news_source == "Vijaya Karnataka"
+      self.language = "Kannada"
+    end
+  end
+
+  def self.with_lang(lang)
+    if lang == "Kannada"
+      return self.where("language=?","Kannada")
+    elsif lang == "English"
+      return self.where("language=?","English")
+    end
+    return self
+  end
+
   def self.load_news
     # kannada prabha karnataka
     # urls = ["http://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","http://www.kannadaprabha.com/rss/kannada-nation-4.xml"]

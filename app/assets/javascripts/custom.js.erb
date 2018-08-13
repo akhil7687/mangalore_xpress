@@ -50,6 +50,17 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
 
+    $(".language_filter input[type=checkbox]").change(function(){
+      var lang = "All";
+      if($("#kannada_lang").is(":checked") && !$("#english_lang").is(":checked")){
+        lang = "Kannada";
+      }else if(!$("#kannada_lang").is(":checked") && $("#english_lang").is(":checked")){
+        lang = "English";
+      }
+      window.location = "/cards?lang="+lang;
+    });
+    
+
     $(".classified_filter input[type=checkbox]").change(function(){
       var categories = [];
       $(".class_chck:checked").each(function() {
