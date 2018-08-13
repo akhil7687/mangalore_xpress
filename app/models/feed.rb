@@ -9,6 +9,7 @@ class Feed < ApplicationRecord
   #ALTER TABLE feeds CHANGE COLUMN description description TEXT CHARACTER SET 'utf8' NOT NULL;
   #ALTER TABLE feeds CHANGE COLUMN title title VARCHAR(255) CHARACTER SET 'utf8' NOT NULL;
 
+  scope :enabled, -> { where(status: [true,nil]) }
   scope :news, -> { where(is_article: [false,nil]) }
   scope :articles, -> { where(is_article: true) }
 

@@ -17,15 +17,20 @@
           eng_lang = "checked"
         elsif cookies[:lang] == "Kannada"
           kan_lang = "checked"
-        end 
+        end
       %>
-      <div style="margin-top: 5px;" class="language_filter">
-        <input name="kannada_lang" type="hidden" value="1">
-        <input type="checkbox" value="1" name="kannada_lang" id="kannada_lang" <%=kan_lang%>>
-        <label for="kannada_lang" style="padding-left: 25px; font-size: 20px; margin-right: 15px;">KANNADA </label>
-        <input name="english_lang" type="hidden" value="1"><input type="checkbox" value="1" name="english_lang" id="english_lang" <%=eng_lang%>>
-        <label for="english_lang" style="padding-left: 25px; font-size: 20px; margin-left: 15px;">ENGLISH</label>
-      </div>
+
+      <%if request.original_url =~ /\/articles/%>
+
+      <%else%>
+        <div style="margin-top: 5px;" class="language_filter">
+          <input name="kannada_lang" type="hidden" value="1">
+          <input type="checkbox" value="1" name="kannada_lang" id="kannada_lang" <%=kan_lang%>>
+          <label for="kannada_lang" style="padding-left: 25px; font-size: 20px; margin-right: 15px;">KANNADA </label>
+          <input name="english_lang" type="hidden" value="1"><input type="checkbox" value="1" name="english_lang" id="english_lang" <%=eng_lang%>>
+          <label for="english_lang" style="padding-left: 25px; font-size: 20px; margin-left: 15px;">ENGLISH</label>
+        </div>
+      <%end%>
 
       <div class="hidden-xs">
         <%if request.original_url =~ /\/articles/%>
