@@ -7,6 +7,22 @@ class HomeController < ApplicationController
     end
   end
 
+
+  def app
+
+    if request.env['HTTP_USER_AGENT'].include? 'Android'
+      redirect_to 'market://details?id=mangalorexpress.com'
+    else
+      redirect_to 'https://play.google.com/store/apps/details?id=mangalorexpress.com&referrer=utm_source%3Dhome_page_redirect%26utm_medium%3Dcakart%26utm_campaign%3Dwebsite_display'
+    end
+
+    return
+
+    redirect_to do |format|
+      format.html
+    end
+  end
+
   def real_estate
     respond_to do |format|
       format.html
