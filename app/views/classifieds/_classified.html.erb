@@ -5,6 +5,9 @@
   <div class="col-md-9 home-list-pop-desc inn-list-pop-desc">
     <h3><%=classified.title%></h3>
     <p><%=raw classified.description%></p>
+    <%if classified.phone.present?%>
+      <p>Contact - <%=classified.phone%></p>
+    <%end%>
     <div class="list-enqu-btn">
       <ul>
         <%if false%>
