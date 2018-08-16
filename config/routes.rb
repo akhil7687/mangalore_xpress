@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   match "/users/toggle_subscribe"=>"home#toggle_subscribe",via: [:post]
   match "/home/new_notification"=>"home#new_notification",via: [:get],:as=>"new_notification"
   match "/home/send_notification"=>"home#send_notification",via: [:post],:as=>"send_notification"
+  match "/app"=>"home#app",via: [:get]
 end
