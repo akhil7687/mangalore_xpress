@@ -21,7 +21,7 @@
   <%end%>
   <%if feed.description.present?%>
    <div class='post-ex'>
-      <%=raw feed.description%>
+      <%=raw feed.description.to_s.force_encoding("UTF-8")%>
     </div>
   <%end%>
   <%if feed.details.present?%>
