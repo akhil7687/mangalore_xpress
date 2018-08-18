@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180813094424) do
+ActiveRecord::Schema.define(version: 20180818062359) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
     t.string   "ad_img_file_name"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20180813094424) do
 
   create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
     t.string   "title"
-    t.string   "description",      limit: 1000
+    t.binary   "description",      limit: 65535
     t.string   "pic_file_name"
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
