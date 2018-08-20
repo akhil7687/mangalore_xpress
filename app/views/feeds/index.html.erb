@@ -31,7 +31,7 @@
       <% @feeds.each do |feed| %>
         <tr>
           <td><%= feed.title %></td>
-          <td><%= feed.description %></td>
+          <td><%= feed.description.to_s.force_encoding("UTF-8") %></td>
           <td><%= image_tag feed.pic.url(:thumb) %></td>
           <td><%= feed.status %></td>
           <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
