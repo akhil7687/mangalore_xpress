@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :description %> (Leave blank if not available, if this is image only news)
-    <%= f.text_area :description,:class=>"form-control" %>
+    <%= f.text_area :description,:class=>"form-control",:value=>feed.description.to_s.force_encoding("UTF-8") %>
   </div>
 
   <div class="form-group">
