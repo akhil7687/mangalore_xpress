@@ -1,0 +1,35 @@
+<%=render "home/page_header"%>
+
+<div class="post">
+  <h2 class="text-center"><%=@contest.name%></h2>
+  <h3 class="text-center" style="margin-top:10px;"> Fill your details below!</h3>
+  <div style="padding:3px;">
+    <%=form_for(@contest_registration) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name,:class=>"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email,:class=>"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, "Phone Number" %>
+        <%= f.text_field :phone,:class=>"form-control" %>
+        <%= f.hidden_field :contest_id,:value=>@contest.id%>
+      </div>
+      <div class="actions text-center" style="padding:10px 0px;;">
+        <%= f.submit "REGISTER",:class=>"btn btn-primary" %>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<style type="text/css">
+  .post{
+    background: #fff;
+    border: 1px solid #d2d2d2;
+    padding: 10px;
+    margin:10px;
+  }
+</style>

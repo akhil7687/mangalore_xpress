@@ -1,0 +1,30 @@
+<%=render "home/page_header"%>
+
+<div class='content'>
+  <h1>Contest Registations</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Contest Name</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contest_registrations.each do |contest_registration| %>
+        <tr>
+          <td><%= contest_registration.contest.name %></td>
+          <td><%= contest_registration.name %></td>
+          <td><%= contest_registration.email %></td>
+          <td><%= contest_registration.phone %></td>
+          <td><%= link_to 'Destroy', contest_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

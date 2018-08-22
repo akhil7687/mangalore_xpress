@@ -1,0 +1,25 @@
+<%= form_for(contest) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pic, 'Pic' %>
+    <%= f.file_field :pic,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :btn_text %>
+    <%= f.text_field :btn_text,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%=f.check_box :status%>
+    <label for="contest_status">Enable</label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit (f.object.new_record? ? "Create" : "Update"),:class=>"btn btn-primary" %>
+  </div>
+<% end %>

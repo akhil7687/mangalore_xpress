@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180818062359) do
+ActiveRecord::Schema.define(version: 20180822142418) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
     t.string   "ad_img_file_name"
@@ -56,6 +56,28 @@ ActiveRecord::Schema.define(version: 20180818062359) do
     t.string   "phone"
     t.index ["classified_category_id"], name: "index_classifieds_on_classified_category_id", using: :btree
     t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
+  end
+
+  create_table "contest_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.integer  "contest_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_contest_registrations_on_contest_id", using: :btree
+  end
+
+  create_table "contests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.string   "name"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.boolean  "status"
+    t.string   "btn_text"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
@@ -174,6 +196,7 @@ ActiveRecord::Schema.define(version: 20180818062359) do
   end
 
   add_foreign_key "classifieds", "classified_categories"
+  add_foreign_key "contest_registrations", "contests"
   add_foreign_key "enquiries", "service_categories"
   add_foreign_key "service_providers", "service_categories"
 end

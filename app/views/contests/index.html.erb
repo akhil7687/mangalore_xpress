@@ -1,0 +1,33 @@
+<%=render "home/page_header"%>
+
+<div class='content'>
+  <h1>Contests</h1>
+
+  <%= link_to 'New Contest', new_contest_path %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Button Text</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contests.each do |contest| %>
+        <tr>
+          <td><%= contest.name %></td>
+          <td><%= image_tag contest.pic.url(:thumb) %></td>
+          <td><%= (contest.status ? "Enabled" : "Disabled") %></td>
+          <td><%= contest.btn_text%></td>
+          <td><%= link_to 'Edit', edit_contest_path(contest) %></td>
+          <td><%= link_to 'Destroy', contest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

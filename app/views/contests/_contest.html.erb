@@ -1,0 +1,12 @@
+<%cont = Contest.where("status=1").take%>
+<%if cont.present?%>
+  <div class="post" style="">
+    <%=image_tag cont.pic.url(:original),:style=>"max-width:100%;"%>
+    <div style="margin:10px auto; text-align:center; padding:5px;">
+      <%=link_to new_contest_registration_path(:contest_id=>cont.id), :class=>"btn btn-primary",:style=>"font-weight:bold; border-radius:1px; padding:4px 25px; height:30px;" do%>
+        <i class="fa fa-trophy" style="margin-right:5px;"></i>
+        <%=cont.btn_text%>
+      <%end%>
+    </div>
+  </div>
+<%end%>
