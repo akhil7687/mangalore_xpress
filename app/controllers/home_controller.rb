@@ -133,13 +133,11 @@ class HomeController < ApplicationController
 
 
   def cards
-
-
-
     respond_to do |format|
       format.html {render :layout => 'cards'}
     end
   end
+
 
   def feeds
     if request.original_url =~ /\/articles/
