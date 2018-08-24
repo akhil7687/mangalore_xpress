@@ -58,9 +58,35 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"Vijaya Karnataka",false,false)
     end
+
+    urls = ["https://www.drivespark.com/rss/four-wheelers-fb.xml","https://www.drivespark.com/rss/two-wheelers-fb.xml"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"Drive Spark",false,false,"Auto")
+    end
+
+    urls = ["https://www.gizbot.com/rss/computer-fb.xml","https://www.gizbot.com/rss/mobile-fb.xml","https://www.gizbot.com/rss/tablet-pc-laptop-fb.xml","https://www.gizbot.com/rss/camera-fb.xml","https://www.gizbot.com/rss/accessories-fb.xml"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"GizBot",false,false,"Gadgets")
+    end
+
+    urls = ["https://www.filmibeat.com/rss/filmibeat-bollywood-fb.xml"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"FilmiBeat",false,false,"Bollywood")
+    end
+
+    urls = ["https://www.mykhel.com/rss/sports-cricket-fb.xml","https://www.mykhel.com/rss/sports-fb.xml","https://www.mykhel.com/rss/sports-football-fb.xml","https://www.mykhel.com/rss/sports-hockey-fb.xml","https://www.mykhel.com/rss/sports-kabaddi-fb.xml"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"MyKhel",false,false,"Sports")
+    end
+
+    urls = ["https://www.boldsky.com/rss/boldsky-beauty-fb.xml","https://www.boldsky.com/rss/boldsky-health-fb.xml","https://www.boldsky.com/rss/boldsky-recipes-fb.xml","https://www.boldsky.com/rss/boldsky-home-garden-fb.xml"]
+    urls.each do |u|
+      Feed.load_from_rss(u,"BoldSky",false,false,"Beauty")
+    end
+
   end
 
-  def self.load_from_rss(url,source,to_offset,selective=false,tim_correct=false)
+  def self.load_from_rss(url,source,to_offset,selective=false,tim_correct=false,category=nil)
     require 'rss'
     require 'open-uri'
     rss_results = []
@@ -88,6 +114,7 @@ class Feed < ApplicationRecord
         f.published_date = Time.now
       end
       f.news_source = source
+      f.category = category
       f.save
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822142418) do
+ActiveRecord::Schema.define(version: 20180824073108) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
@@ -58,8 +58,7 @@ ActiveRecord::Schema.define(version: 20180822142418) do
     t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
   end
 
-<<<<<<< HEAD
-  create_table "contest_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "contest_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "contest_id"
     t.string   "name"
     t.string   "email"
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180822142418) do
     t.index ["contest_id"], name: "index_contest_registrations_on_contest_id", using: :btree
   end
 
-  create_table "contests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "contests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
@@ -81,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180822142418) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "user_name"
     t.string   "user_email"
     t.string   "user_phone"
@@ -111,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180822142418) do
     t.string   "news_source"
     t.datetime "published_date",                 default: -> { "CURRENT_TIMESTAMP" }
     t.string   "language",                       default: "English"
+    t.string   "category"
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
