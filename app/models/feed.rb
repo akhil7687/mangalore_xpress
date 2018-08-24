@@ -13,6 +13,7 @@ class Feed < ApplicationRecord
   scope :news, -> { where(is_article: [false,nil]) }
   scope :articles, -> { where(is_article: true) }
 
+
   before_save :add_lang
 
 
@@ -61,27 +62,27 @@ class Feed < ApplicationRecord
 
     urls = ["https://www.drivespark.com/rss/four-wheelers-fb.xml","https://www.drivespark.com/rss/two-wheelers-fb.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"Drive Spark",false,false,"Auto")
+      Feed.load_from_rss(u,"Drive Spark",false,false,false,"Auto")
     end
 
     urls = ["https://www.gizbot.com/rss/computer-fb.xml","https://www.gizbot.com/rss/mobile-fb.xml","https://www.gizbot.com/rss/tablet-pc-laptop-fb.xml","https://www.gizbot.com/rss/camera-fb.xml","https://www.gizbot.com/rss/accessories-fb.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"GizBot",false,false,"Gadgets")
+      Feed.load_from_rss(u,"GizBot",false,false,false,"Gadgets")
     end
 
     urls = ["https://www.filmibeat.com/rss/filmibeat-bollywood-fb.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"FilmiBeat",false,false,"Bollywood")
+      Feed.load_from_rss(u,"FilmiBeat",false,false,false,"Bollywood")
     end
 
     urls = ["https://www.mykhel.com/rss/sports-cricket-fb.xml","https://www.mykhel.com/rss/sports-fb.xml","https://www.mykhel.com/rss/sports-football-fb.xml","https://www.mykhel.com/rss/sports-hockey-fb.xml","https://www.mykhel.com/rss/sports-kabaddi-fb.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"MyKhel",false,false,"Sports")
+      Feed.load_from_rss(u,"MyKhel",false,false,false,"Sports")
     end
 
     urls = ["https://www.boldsky.com/rss/boldsky-beauty-fb.xml","https://www.boldsky.com/rss/boldsky-health-fb.xml","https://www.boldsky.com/rss/boldsky-recipes-fb.xml","https://www.boldsky.com/rss/boldsky-home-garden-fb.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"BoldSky",false,false,"Beauty")
+      Feed.load_from_rss(u,"BoldSky",false,false,false,"Beauty")
     end
 
   end
