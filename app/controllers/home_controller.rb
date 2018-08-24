@@ -155,7 +155,7 @@ class HomeController < ApplicationController
       if cookies[:lang].blank?
         cookies[:lang] = "All"
       end
-      @feeds = Feed.enabled.with_lang(cookies[:lang]).news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
+      @feeds = Feed.enabled.where("category is null").with_lang(cookies[:lang]).news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|
