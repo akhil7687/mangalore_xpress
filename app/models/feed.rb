@@ -93,10 +93,11 @@ class Feed < ApplicationRecord
     rss_results = []
     rss = RSS::Parser.parse(open(url).read, false).items
     rss.each do |result|
-      if selective
-        if ((result.title !~ /mangalore/i) && (result.title !~ /mangaluru/i) && (result.title !~ /ಮಂಗಳೂರು/i))
-          next
-        end
+      if ((result.title !~ /mangalore/i) && (result.title !~ /mangaluru/i) && (result.title !~ /ಮಂಗಳೂರು/i))
+        category = "Mangalore"
+      end
+      if ((result.description !~ /mangalore/i) && (result.description !~ /mangaluru/i) && (result.description !~ /ಮಂಗಳೂರು/i))
+        category = "Mangalore"
       end
       f = Feed.where("title=?",result.title).take
       next if f.present?
