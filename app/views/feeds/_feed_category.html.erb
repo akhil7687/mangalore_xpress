@@ -1,0 +1,142 @@
+<h4 class="text-center">NEWS & UPDATES</h4>
+<div class="row-fluid wall">
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Mangalore") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "mangalore.png",:style=>"height:120px;width:100%;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					MANGALORE
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Karnataka") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "karnataka.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					KARNATAKA
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"India") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "india.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					INDIA
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"International") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "world.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					INTERNATIONAL
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Auto") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "auto.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					AUTO
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Bollywood") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "bolly.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					BOLLYWOOD
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Sports") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "sports.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					SPORTS
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Gadgets") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "gadgets.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					Gadgets
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+
+	<div class="col-md-2 col-xs-6">
+		<%=link_to cards_path(:category=>"Beauty") do %>
+			<div style="padding:10px; background: #fff;border:1px solid #ddd;">
+				<div style="text-align: center; padding:10px;">
+					<%=image_tag "beauty.png",:style=>"height:120px; width:120px;"%>
+				</div>
+				<div style="text-align: center; font-weight: bold; padding:10px;" class="tagline">
+					BEAUTY / HEALTH
+				</div>
+			</div>
+		<%end%>
+	</div>
+
+</div>
+
+<style type="text/css">
+
+	.tagline{
+		font-size: 20px;
+	}
+	
+	@media screen and (max-width: 640px){
+		.col-xs-6{
+			padding-left: 5px;
+			padding-right: 5px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.tagline{
+			font-size: 15px;
+		}
+	}
+</style>

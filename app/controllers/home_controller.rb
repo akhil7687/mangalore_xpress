@@ -143,17 +143,21 @@ class HomeController < ApplicationController
     if request.original_url =~ /\/articles/
       @feeds = Feed.articles.order("created_at desc").paginate(:page => params[:page], :per_page => 10)
     else
-      if params[:lang] == "Kannada"
-        cookies[:lang] = "Kannada"
-      elsif params[:lang] == "English"
-        cookies[:lang] = "English"
-      elsif params[:lang] == "All"
-        cookies[:lang] = "All"
+      # if params[:lang] == "Kannada"
+      #   cookies[:lang] = "Kannada"
+      # elsif params[:lang] == "English"
+      #   cookies[:lang] = "English"
+      # elsif params[:lang] == "All"
+      #   cookies[:lang] = "All"
+      # end
+      # if cookies[:lang].blank?
+      #   cookies[:lang] = "All"
+      # end
+      if params[:category].blank?
+        @feeds = Feed.enabled.with_lang(cookies[:lang]).news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
+      else
+        @feeds = Feed.enabled.where("category =?",params[:category]).news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
       end
-      if cookies[:lang].blank?
-        cookies[:lang] = "All"
-      end
-      @feeds = Feed.enabled.where("category is null").with_lang(cookies[:lang]).news.order("published_date desc").paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|
