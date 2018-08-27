@@ -32,8 +32,8 @@
 
 
     <%if user_signed_in?%>
-      <a href="javascript:void(0);" data-toggle="modal" data-target="#contest_modal" style="position: fixed; bottom:10px; right:10px;">
-        <%=image_tag "win.png",:style=>"width:60px; border-radius:50%;box-shadow:  0 0 10px  #FFBF00; -moz-box-shadow: 0 0 10px  #FFBF00;-webkit-box-shadow: 0 0 10px  #FFBF00;-o-box-shadow: 0 0 10px  #FFBF00; border: 2px solid #ff0000;"%>
+      <a href="javascript:void(0);" data-toggle="modal" data-target="#contest_modal" style="position: fixed; bottom:10px; right:10px; outline: none;">
+        <%=image_tag "win.png",:style=>"width:60px; border-radius:50%;box-shadow:  0 0 10px  #FFBF00; -moz-box-shadow: 0 0 10px  #FFBF00;-webkit-box-shadow: 0 0 10px  #FFBF00;-o-box-shadow: 0 0 10px  #FFBF00; border: 2px solid #ff0000; outline:none;"%>
       </a>
       <%=render "layouts/contest_popup"%>
     <%end%>
