@@ -4,87 +4,83 @@
   <%=render "home/market_watch"%>
 </div>
 
-<%if request.original_url =~ /\/articles/%>
 
-
+<%if params[:category].blank? && request.original_url !~ /\/articles/%>
+  <div style="margin-bottom: 20px; overflow: auto;" class="category_cat">
+    <%=render "feeds/feed_category"%>
+  </div>
 <%else%>
-  <%if params[:category].blank?%>
-    <div style="margin-bottom: 20px; overflow: auto;" class="category_cat">
-      <%=render "feeds/feed_category"%>
-    </div>
-  <%else%>
-    <div class="row-fluid wall">
-      <div class="col-md-3">
-        <div style="background: #fff;border: 1px solid #d2d2d2; padding: 10px;text-align: center;" class="filter_cont">
-          <%
-            eng_lang = 0
-            kan_lang = 0
-            if cookies[:lang] == "All"
-              eng_lang = "na"
-              kan_lang = "na"
-            elsif cookies[:lang] == "English"
-              eng_lang = "checked"
-            elsif cookies[:lang] == "Kannada"
-              kan_lang = "checked"
-            end
-          %>
+  <div class="row-fluid wall">
+    <div class="col-md-3">
+      <div style="background: #fff;border: 1px solid #d2d2d2; padding: 10px;text-align: center;" class="filter_cont">
+        <%
+          eng_lang = 0
+          kan_lang = 0
+          if cookies[:lang] == "All"
+            eng_lang = "na"
+            kan_lang = "na"
+          elsif cookies[:lang] == "English"
+            eng_lang = "checked"
+          elsif cookies[:lang] == "Kannada"
+            kan_lang = "checked"
+          end
+        %>
 
-          <%if request.original_url =~ /\/articles/%>
+        <%if request.original_url =~ /\/articles/%>
 
-          <%else%>
-            <%if false%>
-              <div style="margin-top: 5px;" class="language_filter">
-                <input name="kannada_lang" type="hidden" value="1">
-                <input type="checkbox" value="1" name="kannada_lang" id="kannada_lang" <%=kan_lang%>>
-                <label for="kannada_lang" style="padding-left: 25px; font-size: 20px; margin-right: 15px;">KANNADA </label>
-                <input name="english_lang" type="hidden" value="1"><input type="checkbox" value="1" name="english_lang" id="english_lang" <%=eng_lang%>>
-                <label for="english_lang" style="padding-left: 25px; font-size: 20px; margin-left: 15px;">ENGLISH</label>
-              </div>
-            <%end%>
+        <%else%>
+          <%if false%>
+            <div style="margin-top: 5px;" class="language_filter">
+              <input name="kannada_lang" type="hidden" value="1">
+              <input type="checkbox" value="1" name="kannada_lang" id="kannada_lang" <%=kan_lang%>>
+              <label for="kannada_lang" style="padding-left: 25px; font-size: 20px; margin-right: 15px;">KANNADA </label>
+              <input name="english_lang" type="hidden" value="1"><input type="checkbox" value="1" name="english_lang" id="english_lang" <%=eng_lang%>>
+              <label for="english_lang" style="padding-left: 25px; font-size: 20px; margin-left: 15px;">ENGLISH</label>
+            </div>
           <%end%>
-
-          <div class="hidden-xs">
-            <%if request.original_url =~ /\/articles/%>
-              <%=image_tag 'articles_icon.png',:style=>"width:100%;"%>
-              <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
-                ARTICLES
-              </div>
-            <%else%>
-              <%=image_tag 'news.jpg',:style=>"width:100%;"%>
-              <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
-                NEWS & UPDATES
-              </div>
-            <%end%>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <%if user_signed_in?%>
-          <%=render "contests/contest"%>
         <%end%>
-        <div class="feeds_container">
-          <%=render "feeds/feeds"%>
-        </div>
-        <div id="infinite-scrolling" style="text-align:center;">
-          <%=image_tag "ajax-loader.gif",:class=>"ajax_loader_ic",:style=>"display:none"%>
-          <%if params[:category].present?%>
-            <%= will_paginate(@feeds, :params => { :category => params[:category] })%>
+
+        <div class="hidden-xs">
+          <%if request.original_url =~ /\/articles/%>
+            <%=image_tag 'articles_icon.png',:style=>"width:100%;"%>
+            <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
+              ARTICLES
+            </div>
           <%else%>
-            <%= will_paginate @feeds %>
+            <%=image_tag 'news.jpg',:style=>"width:100%;"%>
+            <div style="font-size: 14px; font-weight:bold; margin-top:15px;">
+              NEWS & UPDATES
+            </div>
           <%end%>
         </div>
       </div>
+    </div>
 
-      <div class="col-md-3 hidden-xs">
-        <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto;padding: 10px;text-align: center;">
-          <%=image_tag 'ad_1.jpg',:style=>"width:100%;"%>
-          <div style="font-size: 12px; font-weight:bold; margin-top:15px;text-align:right;color:#ccc;">
-            Ad sponsored
-          </div>
+    <div class="col-md-6">
+      <%if user_signed_in?%>
+        <%=render "contests/contest"%>
+      <%end%>
+      <div class="feeds_container">
+        <%=render "feeds/feeds"%>
+      </div>
+      <div id="infinite-scrolling" style="text-align:center;">
+        <%=image_tag "ajax-loader.gif",:class=>"ajax_loader_ic",:style=>"display:none"%>
+        <%if params[:category].present?%>
+          <%= will_paginate(@feeds, :params => { :category => params[:category] })%>
+        <%else%>
+          <%= will_paginate @feeds %>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-md-3 hidden-xs">
+      <div style="background: #fff;border: 1px solid #d2d2d2;margin: 15px auto;padding: 10px;text-align: center;">
+        <%=image_tag 'ad_1.jpg',:style=>"width:100%;"%>
+        <div style="font-size: 12px; font-weight:bold; margin-top:15px;text-align:right;color:#ccc;">
+          Ad sponsored
         </div>
       </div>
-
     </div>
-  <%end%>
+
+  </div>
 <%end%>
