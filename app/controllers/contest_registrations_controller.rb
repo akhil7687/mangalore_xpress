@@ -18,9 +18,16 @@ class ContestRegistrationsController < ApplicationController
   end
 
   def create
-    flash[:success] = "Thank You For Registring!"
+    
+    @contest_registration = ContestRegistration.where("email=? or phone=?",params[:contest_registration][:email],params[:contest_registration][:phone]).take
+    if @contest_registration.present?
+      flash[:success] = "You are already registered!"
+      redirect_to cards_path
+      return
+    end
     @contest_registration = ContestRegistration.new(contest_registration_params)
     @contest_registration.save
+    flash[:success] = "Thank You For Registring!"
     cookies[:registered_contest] = @contest_registration.contest_id
     redirect_to cards_path
     respond_to do |format|
