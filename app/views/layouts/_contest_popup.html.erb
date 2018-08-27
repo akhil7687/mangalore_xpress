@@ -1,0 +1,26 @@
+<%cont = Contest.where("status=1").take%>
+<%if cont.present?%>
+  <div id="contest_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center"><%=cont.name%></h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <%=image_tag cont.pic.url(:original),:style=>"max-width:100%;"%>
+          </div>
+        </div>
+        <div class="modal-footer" style="text-align:center;">
+          <div style="margin:10px auto; text-align:center; padding:5px; padding-bottom: 20px;">
+            <%=link_to new_contest_registration_path(:contest_id=>cont.id), :class=>"btn btn-primary",:style=>"font-weight:bold; border-radius:1px; padding:4px 25px; height:30px; float:none; margin-top:-10px;" do%>
+              <i class="fa fa-trophy" style="margin-right:5px;"></i>
+              <%=cont.btn_text%>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
