@@ -43,14 +43,19 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"One India",false,false,false,"Karnataka")
     end
-    urls = ["https://timesofindia.indiatimes.com/rssfeeds/3942690.cms","https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms","https://timesofindia.indiatimes.com/rssfeeds/1898272.cms"]
+    urls = ["https://timesofindia.indiatimes.com/rssfeeds/3942690.cms"]
     urls.each do |u|
       Feed.load_from_rss(u,"TOI",false,false,false,"Mangalore")
     end
+
+    Feed.load_from_rss("https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms","TOI",false,false,false,"India")
+    Feed.load_from_rss("https://timesofindia.indiatimes.com/rssfeeds/1898272.cms","TOI",false,false,false,"International")
+
     urls = ["https://www.thehindu.com/news/cities/Mangalore/?service=rss"]
     urls.each do |u|
       Feed.load_from_rss(u,"HINDU",false,false,false,"Mangalore")
     end
+
     urls = ["http://www.newindianexpress.com/States/Karnataka/rssfeed/?id=175&getXmlFeed=true"]
     urls.each do |u|
       Feed.load_from_rss(u,"Indian Express",false,true,false,"Karnataka")
@@ -79,7 +84,7 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"BoldSky",false,false,false,"Beauty")
     end
-    urls = ["http://www.oneindia.com/rss/news-india-fb.xml","https://www.oneindia.com/rss/news-fb.xml"]
+    urls = ["https://www.oneindia.com/rss/news-india-fb.xml","https://www.oneindia.com/rss/news-fb.xml"]
     urls.each do |u|
       Feed.load_from_rss(u,"OneIndia",false,false,false,"India")
     end
