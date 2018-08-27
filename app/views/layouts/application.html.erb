@@ -31,7 +31,7 @@
     <%end%>
 
 
-    <%if user_signed_in?%>
+    <%if true || user_signed_in?%>
       <a href="javascript:void(0);" data-toggle="modal" data-target="#contest_modal" style="position: fixed; bottom:15px; right:15px; outline: none;">
         <%=image_tag "win.png",:style=>"width:55px; border-radius:50%; box-shadow:  0 0 10px  #FFBF00; -moz-box-shadow: 0 0 10px  #FFBF00;-webkit-box-shadow: 0 0 10px  #FFBF00;-o-box-shadow: 0 0 10px  #FFBF00; border: 2px solid #ff0000; outline:none;"%>
         <div class="sonar-wave"></div>
