@@ -113,6 +113,15 @@ class Feed < ApplicationRecord
       f.title = result.title
       next if result.description.blank?
       f.description = "#{result.description}<br><br><a href='#{result.link}'>Read More @ #{source}</a>"
+      
+      if result.enclosure.present?
+        if result.enclosure.url.present?
+          if result.enclosure.type =~ /image/
+            f.description = "<img src='#{result.enclosure.url}'> <br> #{f.description}"
+          end
+        end
+      end
+
       f.status = true
       if to_offset
         f.published_date = result.pubDate + (rand(6*60...6*60+120).minutes)
