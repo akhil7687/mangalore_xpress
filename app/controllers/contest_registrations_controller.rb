@@ -19,7 +19,14 @@ class ContestRegistrationsController < ApplicationController
 
   def create
     
-    @contest_registration = ContestRegistration.where("email=? or phone=?",params[:contest_registration][:email],params[:contest_registration][:phone]).take
+    if params[:contest_registration][:email].present?
+      @contest_registration = ContestRegistration.where("email=?",params[:contest_registration][:email]).take  
+    end
+    
+    if params[:contest_registration][:phone].present?
+      @contest_registration = ContestRegistration.where("phone=?",params[:contest_registration][:phone]).take  
+    end
+    
     if @contest_registration.present?
       flash[:success] = "You are already registered!"
       redirect_to cards_path
