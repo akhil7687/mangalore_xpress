@@ -28,6 +28,13 @@
     <div id="modal_container"></div>
     <%if request.user_agent !~ /MANGALOREXPRESS/%>
       <%=render 'home/footer'%>
+
+    <%else%>
+      <style type="text/css">
+        .contest_link{
+          top:50px!important;
+        }
+      </style>
     <%end%>
 
 
