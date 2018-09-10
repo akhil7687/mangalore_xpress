@@ -7,6 +7,58 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
 
+    $(".post_photo_btn").click(function(){
+      $("#wall_post_photo").trigger("click");
+    });
+
+    $(".post_photo_remove").click(function(){
+      $("#wall_post_photo").val('');
+      $("#wall_post_target").html('');
+      $(".post_photo_remove").hide();
+      $("#post_remove_photo").val("1");
+    });
+
+
+    $('#user_photo, #article_cover_pic, #wall_post_photo, #album_photo_photo, #family_detail_cover_pic, #family_detail_album_photo').on('change', function(event) {
+      var files = event.target.files;
+      var image = files[0]
+      // here's the file size
+      console.log(image.size);
+      var reader = new FileReader();
+      var trgt = "prof_target";
+      if($(this).attr('id') == 'article_cover_pic'){
+        trgt = "article_target";
+      }else if($(this).attr('id') == 'wall_post_photo'){
+        trgt = "post_target";
+      }else if($(this).attr('id') == 'album_photo_photo' || $(this).attr('id') == 'family_detail_album_photo'){
+        trgt = "album_target";
+      }else if($(this).attr('id') == 'family_detail_cover_pic'){
+        trgt = "family_cover_pic_target"
+      }
+
+      reader.onload = function(file) {
+        var img = new Image();
+        console.log(trgt);
+        img.src = file.target.result;
+        if(trgt == 'post_target' || trgt == 'family_cover_pic_target'){
+          img.setAttribute('width', '100%');
+        }else if(trgt == 'album_target'){
+          img.setAttribute('width', '100%');
+          $(".post_album_btn").hide();
+        }else{
+          img.height = 100;
+          img.width = 100;
+        }
+        $('#'+trgt).html(img);
+      }
+      reader.readAsDataURL(image);
+      if($(this).attr('id') == 'post_photo'){
+        $(".post_photo_remove").show();
+        $("#post_remove_photo").val(null);
+      }
+
+    });
+
     var isLoading = false;
     if ($('#infinite-scrolling').length > 0) {
       $(window).on('scroll', function() {

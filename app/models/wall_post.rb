@@ -6,6 +6,6 @@ class WallPost < ApplicationRecord
   attr_accessor :remove_photo
   
   def self.enabled
-  	where("enable=1")
+  	where("status=1")
   end
 end

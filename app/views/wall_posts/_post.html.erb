@@ -1,0 +1,32 @@
+<div class="post">
+  <div>
+    <%=link_to member_path(post.user) do%>
+      <div style="display:inline; float:left; width:50px;">
+        <%=image_tag post.user.photo.url(:thumb),:class=>"user-img"%>
+      </div>
+    <%end%>
+    <div style="display:inline; float:left; padding-left:8px; width:79%;">
+      <%=link_to member_path(post.user) do%>
+        <div style="color: #365899; font-size:15px;">
+          <%=post.user.nice_name%>
+          <span style="margin-left:3px;color: #3e3e3e;">posted</span>
+        </div>
+      <%end%>
+      <div style="font-size:12px;color:#90949c; font-family: 'proxima_nova_rgregular';">
+       <%=post.created_at.strftime("%d %b %y %l:%M %p")%>
+      </div>
+    </div>
+    <div style="display:inline; float:right;">
+      <%if user_signed_in? && (current_user.is_admin? || current_user.id == post.user_id)%>
+        <%=link_to wall_post_path(post,:wall_post=>{:status=>current_user.is_admin? ? 3 : 0}),:style=>"margin-left:5px;",:method => :put,:data=>{:confirm=>"Are you sure you want to remove this post?"} do%>
+          <i class='fa fa-trash' style="margin-right:15px;"></i>
+        <%end%>
+        <%=link_to edit_wall_post_path(post),:style=>"margin-left:5px;" do%>
+          <i class='fa fa-pencil' style="margin-right:4px;"></i>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="clearfix"></div>
+    <%=render "wall_posts/post_body",:post=>post%>
+  </div>
+</div>

@@ -17,6 +17,13 @@ class WallPostsController < ApplicationController
   def edit
   end
 
+  def member
+
+    respond_to do |html|
+      formt.html{}
+    end
+  end
+
 
   # POST /feeds
   # POST /feeds.json
@@ -25,7 +32,7 @@ class WallPostsController < ApplicationController
     @wall_post.user = current_user
     respond_to do |format|
       if @wall_post.save
-        format.html { redirect_to @wall_post, notice: 'Post was successfully created.' }
+        format.html { redirect_to :back, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @wall_post }
       else
         format.html { render :new }
@@ -34,17 +41,20 @@ class WallPostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /feeds/1
-  # PATCH/PUT /feeds/1.json
   def update
-    respond_to do |format|
-      if @wall_post.update(wall_post_params)
-        format.html { redirect_to @wall_post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @wall_post }
-      else
-        format.html { render :edit }
-        format.json { render json: @wall_post.errors, status: :unprocessable_entity }
-      end
+    if params[:wall_post][:description].blank?
+      flash[:success] = "Post successfuly deleted!"
+    else
+      flash[:success] = "Your post updated!"
+    end
+    if params[:wall_post][:remove_photo].present?
+      @wall_post.photo = nil
+    end
+
+    if @wall_post.update(wall_post_params)
+      redirect_to :back
+    else
+      render 'edit'
     end
   end
 
@@ -72,6 +82,6 @@ class WallPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wall_post_params
-      params.require(:feed).permit(:photo, :description, :status,:user_id)
+      params.require(:wall_post).permit(:photo, :description, :status,:user_id)
     end
 end
