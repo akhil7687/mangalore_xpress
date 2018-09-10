@@ -1,0 +1,42 @@
+<div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto;">
+
+  <%if current_user.present?%>
+
+    <div style="background-color: #f6f7f9; color: #365899;
+  padding: 5px; border-bottom:1px solid #eee;">
+      <i class='fa fa-pencil' style='margin-right:5px; margin-left:5px;'></i>
+      <%=(action_name=='edit') ? 'Edit' : 'Create' %> post
+    </div>
+    <div style="position:relative;">
+      <div class="text-center" id="post_target">
+        <%if @wall_post.photo.present?%>
+          <%=image_tag @wall_post.photo.url(:large),:style=>"width:100%;"%>
+        <%end%>
+      </div>
+      <%=link_to "javascript:void(0);",:style=>"position:absolute; top:5px; right:15px; font-size:20px; color:#fff; #{@wall_post.photo.present? ? '' : 'display:none;'}",:class=>"post_photo_remove",:title=>"Remove Photo" do%>
+          <i class="fa fa-trash"></i>
+      <%end%>
+    </div>
+    <%= form_for @wall_post, :html => { :class => '' } do |f| %>
+      <div style="padding:3px;">
+        <%= f.text_area :description, autofocus: false,:class=>"form-control",:placeholder=>"Whats on your mind?",:style=>"border:none;resize: none;", :rows=>"2" %>
+      </div>
+      <div style="margin:5px 10px;height:1px; background:#dedede;">
+      </div>
+      <div style="padding:5px;overflow:auto;text-align:right;">
+        <%= f.hidden_field :remove_photo%>
+        <%= f.file_field :photo,:class=>"hide",:accept=>"image/gif, image/jpeg, image/png, image/jpg"%>
+        <%=link_to "javascript:void(0);",:style=>"color:#fff; font-size:14px; padding:3px 20px; margin-right:10px",:class=>"btn btn-primary post_photo_btn" do%>
+          <i class='fa fa-camera' style="font-size: 20px;"></i>
+        <%end%>
+        <%= f.submit "#{(action_name=='edit') ? 'UPDATE' : 'POST'}",:class=>"btn btn-primary",:style=>"padding:3px 15px; font-weight:bold;" %>
+      </div>
+    <%end%>
+    <div class="clearfix"></div>
+  <%else%>
+    <div style="text-align: center; padding:20px;">
+      <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in"%>
+      <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up"%> 
+    </div>
+  <%end%>
+</div>

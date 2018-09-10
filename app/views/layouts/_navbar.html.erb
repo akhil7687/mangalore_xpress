@@ -17,8 +17,9 @@
         <div class="dir-ho-tr">
           <ul>
             <li><%=link_to "NEWS",cards_path%></li>
+            <li><%=link_to "WALL",wall_path%></li>
             <li><%=link_to "ARTICLES",articles_path%></li>
-            <li><%=link_to "RENT & REAL ESTATE",real_estate_path%></li>
+            <li><%=link_to "REAL ESTATE",real_estate_path%></li>
             <li><%=link_to "HEALTH","/service_categories/doctors-hospitals"%></li>
             <li><%=link_to "CLASSIFIEDS",classifieds_path%></li>
             <li><%=link_to "SERVICES",services_path%> </li>
@@ -81,6 +82,7 @@
           <div class="mob-right-nav-close"><i class="fa fa-times" aria-hidden="true"></i> </div>
           <ul class="mob-menu-icon">
             <li><%=link_to "NEWS",cards_path%></li>
+            <li><%=link_to "WALL",wall_path%></li>
             <li><%=link_to "ARTICLES",articles_path%></li>
             <li><a href="/services">HOME SERVICES</a> </li>
             <li><a href="/service_categories/doctors-hospitals">HEALTH</a> </li>
@@ -88,7 +90,7 @@
             <li><a href="/classifieds">CLASSIFIEDS</a> </li>
             <li><a href="#">CONTACT US</a> </li>
             <%if user_signed_in?%>
-              <li><%=current_user.nice_name%> <%= link_to('LOGOUT', destroy_user_session_path, :method => :delete) %>
+              <li> <%= link_to("#{current_user.nice_name.upcase} - LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
               </li>
             <%else%>
               <li>

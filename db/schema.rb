@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910055513) do
+ActiveRecord::Schema.define(version: 20180910080037) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
@@ -208,9 +208,10 @@ ActiveRecord::Schema.define(version: 20180910055513) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "status",             default: 1
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "status",                           default: 1
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "description",        limit: 10000
     t.index ["user_id"], name: "index_wall_posts_on_user_id", using: :btree
   end
 

@@ -23,6 +23,16 @@ class HomeController < ApplicationController
     end
   end
 
+  def wall_post
+
+    @wall_posts = WallPost.enabled.paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def real_estate
     respond_to do |format|
       format.html

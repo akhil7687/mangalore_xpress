@@ -1,0 +1,39 @@
+<%=render "home/page_header"%>
+
+<div class="row-fluid wall">
+  <div class="col-md-2 hidden-xs">
+    <%if current_user.present?%>
+    	<div style="background:#1a2c4d; border:1px solid #d2d2d2; margin:15px auto;  text-align:center;">
+        <div style="background:#1a2c4d;padding:10px;">
+          <div>
+            <%=image_tag current_user.photo.url(:thumb),:class=>"user-img",:style=>"width: 100px;"%>
+          </div>
+          <div style="padding:10px 0px 0px;font-size:16px; color:#fff">
+            <%=current_user.nice_name%>
+          </div>
+        </div>
+      </div>
+    <%else%>
+      <div style="text-align: center; padding:20px;">
+        <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in"%>
+        <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up"%>     
+      </div>
+    <%end%>
+  </div>
+
+  <div class="col-md-5">
+    <%@wall_post = WallPost.new%>
+    <%=render "wall_posts/form"%>
+  </div>
+
+  <div class="col-md-5 hidden-xs">
+    <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090; text-align:right">
+      <%Ad.where("enable=1").sample(3).each do |current_img|%>
+        <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090;text-align:right" class="ad_div">
+          <%=image_tag current_img.ad_img.url(:original),:style=>"width:100%;","data-high-res-img"=>current_img.ad_img.url(:original),:class=>"viewable-image"%>
+          Ad Sponsored
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
