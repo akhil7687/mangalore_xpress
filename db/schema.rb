@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910042240) do
+ActiveRecord::Schema.define(version: 20180910055513) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
@@ -202,8 +202,21 @@ ActiveRecord::Schema.define(version: 20180910042240) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "wall_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "status",             default: 1
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["user_id"], name: "index_wall_posts_on_user_id", using: :btree
+  end
+
   add_foreign_key "classifieds", "classified_categories"
   add_foreign_key "contest_registrations", "contests"
   add_foreign_key "enquiries", "service_categories"
   add_foreign_key "service_providers", "service_categories"
+  add_foreign_key "wall_posts", "users"
 end

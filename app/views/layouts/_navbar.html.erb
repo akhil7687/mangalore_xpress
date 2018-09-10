@@ -2,7 +2,7 @@
 <section id="background" class="dir1-home-head">
   <div class="container-fluid affix-top header">
     <div class="row-fluid">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-2 col-sm-2 col-xs-12">
         <div class="dir-ho-tl">
           <ul>
             <li>
@@ -13,7 +13,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-9 col-sm-9">
+      <div class="col-md-10 col-sm-10">
         <div class="dir-ho-tr">
           <ul>
             <li><%=link_to "NEWS",cards_path%></li>
@@ -22,8 +22,18 @@
             <li><%=link_to "HEALTH","/service_categories/doctors-hospitals"%></li>
             <li><%=link_to "CLASSIFIEDS",classifieds_path%></li>
             <li><%=link_to "SERVICES",services_path%> </li>
-            <li><%=link_to "ABOUT US","/about_us"%></li>
             <li><%=link_to "CONTACT US","/contact_us"%></li>
+            <%if user_signed_in?%>
+              <li> <%= link_to("#{current_user.nice_name.upcase} - LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
+              </li>
+            <%else%>
+              <li>
+                <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in"%>
+              </li>
+              <li>
+                <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up"%>
+              </li>
+            <%end%>
           </ul>
         </div>
       </div>
@@ -76,8 +86,18 @@
             <li><a href="/service_categories/doctors-hospitals">HEALTH</a> </li>
             <li><%=link_to "RENT & REAL ESTATE",real_estate_path%></li>
             <li><a href="/classifieds">CLASSIFIEDS</a> </li>
-            <li><a href="#">ABOUT US</a> </li>
             <li><a href="#">CONTACT US</a> </li>
+            <%if user_signed_in?%>
+              <li><%=current_user.nice_name%> <%= link_to('LOGOUT', destroy_user_session_path, :method => :delete) %>
+              </li>
+            <%else%>
+              <li>
+                <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in"%>
+              </li>
+              <li>
+                <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up"%>
+              </li>
+            <%end%>
           </ul>
         </div>
       </div>
