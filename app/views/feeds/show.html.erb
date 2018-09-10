@@ -70,7 +70,7 @@
   }
 </style>
 
-<%if user_signed_in?%>
+<%if user_signed_in? && current_user.is_admin?%>
   <div style="padding:10px;">
     <%= link_to 'Edit', edit_feed_path(@feed) %> |
     <%= link_to 'Back', feeds_path %>

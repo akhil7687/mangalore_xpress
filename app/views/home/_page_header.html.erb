@@ -4,7 +4,7 @@
   </div>
 <%end%>
 
-<%if user_signed_in?%>
+<%if user_signed_in? && current_user.is_admin?%>
   <div style="padding:5px 10px; background:#000;">
     <%=link_to "ADMIN DASHBOARD",admin_dashboard_path,:style=>"color:#1481ce;"%>
     <span style='float:right;color:#fff; font-size:15px;'>

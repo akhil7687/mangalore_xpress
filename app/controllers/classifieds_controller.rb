@@ -42,7 +42,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        if user_signed_in?
+        if user_signed_in? && current_user.is_admin?
           flash[:success] = "Classified successfully created."
         else
           flash[:success] = "Thank you! Our executive will look in to your ad and approve it soon!"

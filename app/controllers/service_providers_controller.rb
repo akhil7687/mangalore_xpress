@@ -28,7 +28,7 @@ class ServiceProvidersController < ApplicationController
 
     respond_to do |format|
       if @service_provider.save
-        if user_signed_in?
+        if user_signed_in? && current_user.is_admin?
           format.html { redirect_to @service_provider, notice: 'Service provider was successfully created.' }
         else
           flash[:success_enq] = "Thank you! Our executive will approve you soon!"

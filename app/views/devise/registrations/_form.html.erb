@@ -15,15 +15,19 @@
         <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
       </div>
     </div>
+    <div class="form-group">
+      <label for="password" class="control-label">Password Confirmation<span class="required-field">*</span></label>
+      <div class="has-feedback">
+        <%= f.password_field :password_confirmation,:class=>"form-control",autocomplete: "off" %>
+        <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
     <div class="text-center">
-       <%= f.submit "SIGN IN",:class=>"btn btn-hero",:style=>"margin-top:5px; margin-bottom:10px; font-size: 20px; padding: 4px 30px; height:41px;" %>
+       <%= f.submit "SIGN UP",:class=>"btn btn-hero",:style=>"margin-top:5px; margin-bottom:10px; font-size: 20px; padding: 4px 30px; height:41px;" %>
     </div>
     <div style="margin:10px auto; text-align: center;">
-      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-      <% end -%>
       <div style="font-size: .15625in; margin-top: 5px;">
-        Don't have an account yet? <%=link_to "Sign up", new_user_registration_path,:style=>"margin-left:6px;"%>
+        Already have an account? <%=link_to "Sign in", new_user_session_path,:style=>"margin-left:6px;"%>
       </div>
     </div>
   <% end %>

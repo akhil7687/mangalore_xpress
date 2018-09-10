@@ -6,7 +6,7 @@
 <%end%>
 <%=render 'home/business_promo'%>
 <div style="text-align:center; padding: 3px; background:#000;">
-  <%if user_signed_in?%>
+  <%if user_signed_in? && current_user.is_admin?%>
     <div style="background:#000; padding: 5px 10px;">
     <%=link_to "ADMIN DASHBOARD",admin_dashboard_path,:style=>"color:#1481ce;"%>
   <%else%>
