@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require imageviewer.min
+//= require jquery.mobile.min
 //= require turbolinks
 //= require bootstrap
 //= require materialize.min
 //= require custom
+//= require imageviewer.min
 //= require_self
 
