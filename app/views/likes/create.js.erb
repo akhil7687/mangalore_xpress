@@ -1,0 +1,1 @@
+("#new_like_<%= @liked.id %>").replaceWith('<%= escape_javascript(render('likes/unlike', :f => @liked)) %>');

@@ -11,6 +11,11 @@
           <div style="padding:10px 0px 0px;font-size:16px; color:#fff">
             <%=current_user.nice_name%>
           </div>
+          <%if user_signed_in?%>
+            <div style="padding:3px; text-align:center; font-size:11px; margin-top:10px">
+              <%= link_to "EDIT PROFILE", profile_path,:class=>"sign_in_btn",:style=>"padding:2px 10px; font-size:12px; text-transform:uppercase; border-radius:2px;  margin-right:3px;" %>
+            </div>
+          <%end%>
         </div>
       </div>
     <%else%>
@@ -19,7 +24,7 @@
           <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in_btn"%>
         </div>
         <div style="margin-top: 20px; margin-bottom: 10px;">
-          <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up_btn"%>     
+          <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up_btn"%>
         </div>
       </div>
     <%end%>

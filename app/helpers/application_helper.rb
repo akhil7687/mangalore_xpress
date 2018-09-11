@@ -32,6 +32,18 @@ module ApplicationHelper
     return false
   end
 
+
+  def to_like_or_not_to_like(object)
+    if object.likes.where(user_id: current_user.id).count != 0
+      content_tag :i, '', class: 'like fa fa-heart fa-lg', onclick: 'hit_like($(this))',
+        data: {id: object.id, type: object.class.to_s, likes: object.likes_count }
+    else
+      content_tag :i, '', class: 'like fa fa-heart-o fa-lg', onclick: 'hit_like($(this))',
+        data: {id: object.id, type: object.class.to_s, likes: (object.likes_count || 0) }
+    end
+  end
+
+
   def title(page_title)
     content_for(:title) { page_title }
   end

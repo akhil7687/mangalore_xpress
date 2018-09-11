@@ -111,10 +111,10 @@ document.addEventListener("turbolinks:load", function() {
         }else{
           lang = "English"
         }
-      } 
+      }
       window.location = "/cards?lang="+lang;
     });
-    
+
 
     $(".classified_filter input[type=checkbox]").change(function(){
       var categories = [];
@@ -351,3 +351,28 @@ $(document).on('turbolinks:click', function (event) {
     return true;
   }
 })
+
+function hit_like(lik_element){
+    object_id = lik_element.data('id');
+    object_type = lik_element.data('type');
+    likes_count = lik_element.data('likes');
+    like_div = lik_element;
+    $.ajax({
+      url: '/likes/toggle',
+      method: 'post',
+      data: { object_id: object_id, object_type: object_type  },
+      success: function() {
+        if (like_div.hasClass('fa-heart')) {
+          like_div.removeClass('fa-heart');
+          like_div.addClass('fa-heart-o');
+          like_div.siblings('.likes-counter').html( (likes_count-1) + ' like' + ((likes_count == 1) ? 's' : ''));
+          like_div.data('likes', likes_count-1);
+        } else {
+          like_div.removeClass('fa-heart-o');
+          like_div.addClass('fa-heart');
+          like_div.siblings('.likes-counter').html( (likes_count+1) + ' like' + ((likes_count == 1) ? 's' : ''));
+          like_div.data('likes', likes_count+1);
+        }
+      }
+    });
+  }

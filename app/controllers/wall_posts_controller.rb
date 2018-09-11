@@ -26,9 +26,6 @@ class WallPostsController < ApplicationController
   end
 
   def profile
-
-    
-
     respond_to do |format|
       format.html{}
     end
@@ -38,6 +35,12 @@ class WallPostsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
+    if params[:wall_post][:description].blank? && params[:wall_post][:photo].blank?
+      flash[:notice] = "Can not post blank!"
+      redirect_to :back
+      return
+    end
+
     @wall_post = WallPost.new(wall_post_params)
     @wall_post.user = current_user
     respond_to do |format|

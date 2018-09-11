@@ -1,4 +1,4 @@
-<div style="font-weight:bold; font-size:16px; padding:10px 0px 0px; font-family: 'proxima_novalight';color:#1d2129">
+<div style="font-size:16px; padding:10px 0px 0px; color:#1d2129">
   <%=post.description%>
 </div>
 
@@ -9,21 +9,9 @@
 <div style="margin:15px 5px 10px; height:1px; background:#dedede;">
 </div>
 
-<%if false%>
-  <div>
-    <div style="float:left; display:inline;">
-      <%=render "likes/like",:obj=>post%>
-    </div>
-    <div style="float:right; display:inline;font-size:13px; margin-left:15px;">
-      <%=link_to comment_post_path(:id=>post.id),:style=>"color:#365899",:remote=>true do%>
-        <i class="fa fa-pencil-square" style="font-size:16px;"></i>
-        <span class="<%=post.id%>_comments_count" style="text-transform:uppercase;">
-          <%= pluralize(post.comments_count, 'COMMENT') %>
-        </span>
-      <%end%>
-    </div>
-    <div class="clearfix"></div>
+<div>
+  <div style="float:right; display:inline;">
+    <%=render "likes/like",:obj=>post%>
   </div>
-  <div class="<%=post.id%>_comment_container post_comments">
-  </div>
-<%end%>
+  <div class="clearfix"></div>
+</div>

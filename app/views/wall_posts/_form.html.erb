@@ -3,7 +3,7 @@
   <%if current_user.present?%>
 
     <div style="background-color: #f6f7f9; color: #365899;
-  padding: 5px; border-bottom:1px solid #eee;">
+  padding: 5px; border-bottom:1px solid #eee; font-size: 14px;">
       <i class='fa fa-pencil' style='margin-right:5px; margin-left:5px;'></i>
       <%=(action_name=='edit') ? 'Edit' : 'Create' %> post
     </div>
@@ -19,7 +19,7 @@
     </div>
     <%= form_for @wall_post, :html => { :class => '' } do |f| %>
       <div style="padding:3px;">
-        <%= f.text_area :description, autofocus: false,:class=>"form-control",:placeholder=>"Whats on your mind?",:style=>"border:none;resize: none;", :rows=>"2" %>
+        <%= f.text_area :description, autofocus: false,:class=>"form-control whats_on_mind",:placeholder=>"Whats on your mind?",:style=>"border:none;resize: none;", :rows=>"2" %>
       </div>
       <div style="margin:5px 10px;height:1px; background:#dedede;">
       </div>
@@ -36,7 +36,7 @@
   <%else%>
     <div style="text-align: center; padding:20px;">
       <%=link_to "LOGIN",new_user_session_path,:class=>"sign_in_btn"%>
-      <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up_btn"%>   
+      <%=link_to "REGISTER",new_user_registration_path,:class=>"sign_up_btn"%>
     </div>
   <%end%>
 </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :service_providers
   resources :feeds do
     collection do
@@ -50,4 +50,8 @@ Rails.application.routes.draw do
   match "/home/send_notification"=>"home#send_notification",via: [:post],:as=>"send_notification"
   match "/app"=>"home#app",via: [:get]
   match "/member/:id"=>"wall_posts#member",via: [:get],:as=>"member"
+
+  resources :likes
+  post '/likes/toggle', to: 'likes#toggle', via:[:post]
+
 end

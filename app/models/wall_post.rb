@@ -4,7 +4,9 @@ class WallPost < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
   attr_accessor :remove_photo
-  
+
+  has_many :likes, as: :likeable, dependent: :destroy
+
   def self.enabled
   	where("status=1").order("created_at desc")
   end

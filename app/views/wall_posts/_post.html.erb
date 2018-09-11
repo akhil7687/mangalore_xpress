@@ -1,13 +1,13 @@
 <div class="post">
   <div>
-    
+
     <%=link_to member_path(post.user) do%>
       <div style="display:inline; float:left; width:50px;">
         <%=image_tag post.user.photo.url(:thumb),:class=>"user-img"%>
       </div>
     <%end%>
-    
-    <div style="display:inline; float:left; padding-left:8px; width:79%;">
+
+    <div style="display:inline; float:left; padding-left:8px; width:77%;">
       <%=link_to member_path(post.user) do%>
         <div style="color: #365899; font-size:15px;">
           <%=post.user.nice_name.capitalize%>

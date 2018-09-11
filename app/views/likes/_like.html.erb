@@ -1,0 +1,15 @@
+<div class="likes">
+  <span class="toggle-likes">
+    <% if current_user.nil? %>
+      <i class="fa fa-heart-o fa-lg" data-toggle="modal" data-target="#loginModal"></i>
+    <% else %>
+      <%= to_like_or_not_to_like(obj) %>
+    <% end %>
+    <span class="likes-counter counter">
+      <%key_id = "#{obj.class.name.downcase}_id"%>
+      <%=link_to likes_path(key_id=>obj.id),:remote=>true do %>
+        <%= pluralize(obj.likes_count, 'like') %>
+      <%end%>
+    </span>
+  </span>
+</div>
