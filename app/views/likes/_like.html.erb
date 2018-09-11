@@ -1,7 +1,7 @@
 <div class="likes">
   <span class="toggle-likes">
     <% if current_user.nil? %>
-      <i class="fa fa-heart-o fa-lg" data-toggle="modal" data-target="#loginModal"></i>
+      <i class="fa fa-heart-o fa-lg pulsing" data-toggle="modal" data-target="#loginModal"></i>
     <% else %>
       <%= to_like_or_not_to_like(obj) %>
     <% end %>

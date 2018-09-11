@@ -38,7 +38,7 @@ module ApplicationHelper
       content_tag :i, '', class: 'like fa fa-heart fa-lg', onclick: 'hit_like($(this))',
         data: {id: object.id, type: object.class.to_s, likes: object.likes_count }
     else
-      content_tag :i, '', class: 'like fa fa-heart-o fa-lg', onclick: 'hit_like($(this))',
+      content_tag :i, '', class: 'like fa fa-heart-o fa-lg pulsing', onclick: 'hit_like($(this))',
         data: {id: object.id, type: object.class.to_s, likes: (object.likes_count || 0) }
     end
   end
