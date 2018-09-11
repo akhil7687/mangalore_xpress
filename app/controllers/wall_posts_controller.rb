@@ -20,13 +20,14 @@ class WallPostsController < ApplicationController
   def member
     @user = User.find(params[:id])
     @wall_posts =  @user.wall_posts.where("status=1").order("created_at desc").paginate(:page => params[:page], :per_page => 10)
-
     respond_to do |format|
       format.html{}
     end
   end
 
   def profile
+
+    
 
     respond_to do |format|
       format.html{}

@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :contests
   resources :contest_registrations
   resources :wall_posts
+  devise_scope :user do
+    get 'users/profile', to: 'devise/registrations#edit',via: [:get],as: 'profile'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>'home#index'
   match "/cards"=>"home#feeds", via: [:get],:as=>"cards"
@@ -47,5 +50,4 @@ Rails.application.routes.draw do
   match "/home/send_notification"=>"home#send_notification",via: [:post],:as=>"send_notification"
   match "/app"=>"home#app",via: [:get]
   match "/member/:id"=>"wall_posts#member",via: [:get],:as=>"member"
-  match "/profile"=>"wall_posts#profile", via: [:get], :as=>"profile"
 end
