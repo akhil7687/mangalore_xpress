@@ -47,4 +47,5 @@ Rails.application.routes.draw do
   match "/home/send_notification"=>"home#send_notification",via: [:post],:as=>"send_notification"
   match "/app"=>"home#app",via: [:get]
   match "/member/:id"=>"wall_posts#member",via: [:get],:as=>"member"
+  match "/profile"=>"wall_posts#profile", via: [:get], :as=>"profile"
 end

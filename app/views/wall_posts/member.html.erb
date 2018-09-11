@@ -1,0 +1,24 @@
+<%=render "home/page_header"%>
+
+<div class="row-fluid wall">
+  <div class="col-md-3">
+    <%=render "wall_posts/user"%>
+  </div>
+
+  <div class="col-md-5">
+    <div class="posts-section" style="margin-top: 15px;">
+      <%=render "wall_posts/posts"%>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090; text-align:right">
+      <%Ad.where("enable=1").sample(3).each do |current_img|%>
+        <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090;text-align:right" class="ad_div">
+          <%=image_tag current_img.ad_img.url(:original),:style=>"width:100%;","data-high-res-img"=>current_img.ad_img.url(:original),:class=>"viewable-image"%>
+          Ad Sponsored
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
