@@ -1,9 +1,9 @@
 
 <%=render "home/slide_banner"%>
-<%=render 'home/promotion'%>
 <%if true%>
     <%=render 'home/projects'%>
 <%end%>
+<%=render 'home/promotion'%>
 <%=render 'home/services_list'%>
 <%if request.user_agent !~ /MANGALOREXPRESS/%>
   <%=render 'home/app_promo'%>
