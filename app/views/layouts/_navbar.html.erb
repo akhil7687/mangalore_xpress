@@ -25,7 +25,11 @@
             <li><%=link_to "SERVICES",services_path%> </li>
             <li><%=link_to "CONTACT US","/contact_us"%></li>
             <%if user_signed_in?%>
-              <li> <%= link_to("#{current_user.nice_name.upcase} - LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
+              <li>
+                <%=link_to profile_path,:class=>"sign_in" do %>
+                  <%=current_user.nice_name.upcase%>
+                <%end%>
+                <%= link_to("LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
               </li>
             <%else%>
               <li>
@@ -90,7 +94,11 @@
             <li><a href="/classifieds">CLASSIFIEDS</a> </li>
             <li><a href="#">CONTACT US</a> </li>
             <%if user_signed_in?%>
-              <li> <%= link_to("#{current_user.nice_name.upcase} - LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
+              <li>
+                <%= link_to("MY PROFILE", profile_path, :class=>"sign_out") %>
+              </li>
+              <li>
+                <%= link_to("LOGOUT", destroy_user_session_path, :method => :delete,:class=>"sign_out") %>
               </li>
             <%else%>
               <li>

@@ -1,3 +1,12 @@
 <%@wall_posts.each_with_index do |post,index|%>
 	<%=render "wall_posts/post",:post=>post%>
+  <%if (index>0) && (index%4==0)%>
+    <%current_img = Ad.where("enable=1").sample%>
+    <%if current_img.present?%>
+      <div style="background:#fff; border:1px solid #d2d2d2; margin:15px auto; padding:10px; color:#909090;text-align:right" class="ad_div">
+        <%=image_tag current_img.ad_img.url(:original),:style=>"width:100%;","data-high-res-img"=>current_img.ad_img.url(:original),:class=>"viewable-image"%>
+        Ad Sponsored
+      </div>
+    <%end%>
+  <%end%>
 <%end%>
