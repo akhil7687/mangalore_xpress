@@ -12,12 +12,11 @@
  *
  *= require_self
  *= require font-awesome
- *= require materialize
  *= require jquery-ui
  *= require style
+ *= require materialize
  *= require classifieds
  *= require bootstrap
  *= require imageviewer
- *= require responsive
  *= require admin
  */
