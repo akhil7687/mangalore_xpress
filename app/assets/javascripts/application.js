@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require materialize.min
+//= require materialize
 //= require custom
 //= require imageviewer.min
 //= require_self

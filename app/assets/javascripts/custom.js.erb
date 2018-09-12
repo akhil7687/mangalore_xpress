@@ -7,6 +7,11 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
 
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true,
+      indicators: true
+    });
+
     $(".post_photo_btn").click(function(){
       $("#wall_post_photo").trigger("click");
     });
@@ -81,20 +86,20 @@ document.addEventListener("turbolinks:load", function() {
       if (val == 'House For Rent'){
         $("#real_estate_requirement_property_detail").html("<option value='1 BHK'>1 BHK</option><option value='2 BHK'>2 BHK</option><option value='3 BHK'>3 BHK</option><option value='Singe Room'>Single Room</option>");
         $("#real_estate_requirement_budget").html('<option value="Rs.3,000-6,000">Rs.3,000-6,000</option><option value="Rs.6,000-10,000">Rs.6,000-10,000</option><option value="Rs.10,000-15,000">Rs.10,000-15,000</option><option value=">Rs.15,000">&gt;Rs.15,000</option>');
-        $('#real_estate_requirement_property_detail').material_select();
-        $("#real_estate_requirement_budget").material_select();
+        $('#real_estate_requirement_property_detail').formSelect();
+        $("#real_estate_requirement_budget").formSelect();
         $(".property_detail_cont").slideUp().slideDown();
       }else if(val == 'Shop For Rent'){
         $("#real_estate_requirement_property_detail").html("<option value='1000 Sq.ft'>1000 Sq.ft</option><option value='2000 Sq.ft'>2000 Sq.ft</option><option value='> 2000 Sq.ft'>> 2000 Sq.ft</option><option value='Godown'>Godown</option>");
         $("#real_estate_requirement_budget").html('<option value="Rs.3,000-6,000">Rs.3,000-6,000</option><option value="Rs.6,000-10,000">Rs.6,000-10,000</option><option value="Rs.10,000-15,000">Rs.10,000-15,000</option><option value=">Rs.15,000">&gt;Rs.15,000</option>');
-        $('#real_estate_requirement_property_detail').material_select();
-        $("#real_estate_requirement_budget").material_select();
+        $('#real_estate_requirement_property_detail').formSelect();
+        $("#real_estate_requirement_budget").formSelect();
         $(".property_detail_cont").slideUp().slideDown();
       }else if(val == 'Property For Sale'){
         $("#real_estate_requirement_property_detail").html("<option value='PLOT / SITE'>PLOT / SITE</option><option value='FLAT / APARTMENT / VILLA'>FLAT / APARTMENT / VILLA</option><option value='AGRI LAND'>AGRI LAND</option><option value='COMMERCIAL PROPERTY'>COMMERCIAL PROPERTY</option>");
         $("#real_estate_requirement_budget").html('<option value="Rs.1,00,000-5,00,000">Rs.1,00,000-5,00,000</option><option value="Rs.5,00,000-10,00,000">Rs.5,00,000-10,00,000</option><option value="Rs.10,00,000-20,00,000">Rs.10,00,000-20,00,000</option><option value=">Rs.20,00,000">&gt;Rs.20,00,000</option>');
-        $('#real_estate_requirement_property_detail').material_select();
-        $("#real_estate_requirement_budget").material_select();
+        $('#real_estate_requirement_property_detail').formSelect();
+        $("#real_estate_requirement_budget").formSelect();
         $(".property_detail_cont").slideUp().slideDown();
       }else{
         $(".property_detail_cont").slideUp();
@@ -240,7 +245,7 @@ document.addEventListener("turbolinks:load", function() {
     $('.collapsible').collapsible();
 
     //material select
-    $('select').material_select();
+    $('select').formSelect();
 
 
     $(function() {
