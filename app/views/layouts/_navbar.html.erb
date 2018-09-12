@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <%if @enable_banner.present?%>
+  <%if @enable_banner.present? && false%>
     <div class="container dir-ho-t-sp">
       <div class="row-fluid">
         <div class="dir-hr1">
@@ -52,6 +52,7 @@
             <h1>Connect with the right Service Experts</h1>
             <p>Mangalore's best service experts all at one place.</p>
           </div>
+          <%if false%>
           <form class="tourz-search-form" autocomplete="false">
             <div class="input-field search-field" style="width: 100%;">
               <%= text_field_tag 'select-search','',:autocomplete=>"off" %>
@@ -60,6 +61,7 @@
             <div class="input-field hide">
               <input type="submit" value="search" class="waves-effect waves-light tourz-sear-btn"> </div>
           </form>
+          <%end%>
         </div>
       </div>
     </div>
