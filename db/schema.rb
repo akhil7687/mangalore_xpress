@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180917152341) do
 
-  create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
     t.string   "ad_img_content_type"
     t.integer  "ad_img_file_size"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "updated_at",          null: false
   end
 
-  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
     t.integer  "data_file_size"
@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
   end
 
-  create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "classified_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "classifieds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "classifieds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
-    t.text     "description",            limit: 16777215
+    t.text     "description",            limit: 65535
     t.integer  "classified_category_id"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
@@ -51,13 +51,14 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "pic_updated_at"
     t.string   "slug"
     t.integer  "status"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "phone"
     t.index ["classified_category_id"], name: "index_classifieds_on_classified_category_id", using: :btree
     t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
   end
 
+<<<<<<< HEAD
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
     t.string   "commentable_type"
     t.integer  "commentable_id"
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["contest_id"], name: "index_contest_registrations_on_contest_id", using: :btree
   end
 
-  create_table "contests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "contests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "user_name"
     t.string   "user_email"
     t.string   "user_phone"
@@ -105,8 +106,8 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["service_category_id"], name: "index_enquiries_on_service_category_id", using: :btree
   end
 
-  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
-    t.string   "title"
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.string   "title",                                                               null: false
     t.binary   "description",      limit: 65535
     t.string   "pic_file_name"
     t.string   "pic_content_type"
@@ -117,16 +118,15 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "updated_at",                                                          null: false
     t.text     "details",          limit: 65535
     t.string   "slug"
-    t.boolean  "is_article"
+    t.boolean  "is_article",                     default: false
     t.string   "news_source"
     t.datetime "published_date",                 default: -> { "CURRENT_TIMESTAMP" }
     t.string   "language",                       default: "English"
     t.string   "category"
-    t.index ["category"], name: "index_feeds_on_category", using: :btree
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "likeable_type"
     t.integer  "likeable_id"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
-  create_table "market_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "market_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "item_id"
     t.string   "item_group"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
+  create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.datetime "updated_at",                   null: false
   end
 
-  create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
+  create_table "service_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "description"
     t.boolean  "enable"
@@ -177,7 +177,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["slug"], name: "index_service_categories_on_slug", using: :btree
   end
 
-  create_table "service_providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "service_providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.text     "description",         limit: 65535
     t.string   "speciality"
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["service_category_id"], name: "index_service_providers_on_service_category_id", using: :btree
   end
 
-  create_table "user_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "user_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "app_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.integer  "subscribe",  default: 1
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -224,7 +224,7 @@ ActiveRecord::Schema.define(version: 20180917152341) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "wall_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+  create_table "wall_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
