@@ -16,8 +16,8 @@
  *= require style
  *= require materialize
  *= require classifieds
- *= require bootstrap
  *= require imageviewer
  *= require responsive
+ *= require bootstrap
  *= require admin
  */

@@ -5748,20 +5748,6 @@ body.keyboard-focused .dropdown-content li:focus {
   z-index: -1;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  background-color: #fafafa;
-  padding: 0;
-  max-height: 70%;
-  width: 55%;
-  margin: auto;
-  overflow-y: auto;
-  border-radius: 2px;
-  will-change: top, opacity;
-}
 
 .modal:focus {
   outline: none;
@@ -5775,10 +5761,6 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .modal h1, .modal h2, .modal h3, .modal h4 {
   margin-top: 0;
-}
-
-.modal .modal-content {
-  padding: 24px;
 }
 
 .modal .modal-close {
