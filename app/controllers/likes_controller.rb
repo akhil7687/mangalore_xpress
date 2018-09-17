@@ -2,8 +2,9 @@ class LikesController < ApplicationController
 
   def find_likeable
     params.each do |name, value|
+      name = name.gsub("wallpost","wall_post")
       if name =~ /(.+)_id$/
-        return $1.classify.constantize.friendly.find(value)
+        return $1.classify.constantize.find(value)
       end
     end
   end

@@ -18,6 +18,9 @@ document.addEventListener("turbolinks:load", function() {
       $("#post_remove_photo").val("1");
     });
 
+    $('.carousel.carousel-slider').carousel({
+      fullWidth: true
+    });
 
     $('#user_photo, #article_cover_pic, #wall_post_photo, #album_photo_photo, #family_detail_cover_pic, #family_detail_album_photo').on('change', function(event) {
       var files = event.target.files;

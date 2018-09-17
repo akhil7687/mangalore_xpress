@@ -28,7 +28,13 @@ Rails.application.routes.draw do
   resources :ads
   resources :contests
   resources :contest_registrations
-  resources :wall_posts
+  resources :comments
+  resources :wall_posts do
+    resources :comments
+    member do
+     get :comment
+    end
+  end
   devise_scope :user do
     get 'users/profile', to: 'devise/registrations#edit',via: [:get],as: 'profile'
   end

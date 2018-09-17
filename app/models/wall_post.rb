@@ -6,6 +6,7 @@ class WallPost < ApplicationRecord
   attr_accessor :remove_photo
 
   has_many :likes, as: :likeable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def self.enabled
   	where("status=1").order("created_at desc")

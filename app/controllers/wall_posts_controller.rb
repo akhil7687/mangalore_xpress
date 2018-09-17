@@ -81,6 +81,15 @@ class WallPostsController < ApplicationController
     end
   end
 
+  def comment
+    @wall_post = WallPost.find(params[:id])
+    @comments = @wall_post.comments.order("created_at desc").paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wall_post

@@ -1,0 +1,5 @@
+<div class="comment_container">
+  <%if @comments.count > 0%>
+    <%= render(partial: 'comments/comment', collection: @comments) %>
+  <%end%>
+</div>

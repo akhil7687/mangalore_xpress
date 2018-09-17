@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911153518) do
+ActiveRecord::Schema.define(version: 20180917152341) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
     t.string   "ad_img_file_name"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20180911153518) do
     t.string   "phone"
     t.index ["classified_category_id"], name: "index_classifieds_on_classified_category_id", using: :btree
     t.index ["slug"], name: "index_classifieds_on_slug", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.integer  "user_id"
+    t.text     "body",             limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "contest_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
@@ -224,10 +235,12 @@ ActiveRecord::Schema.define(version: 20180911153518) do
     t.datetime "updated_at",                                   null: false
     t.string   "description",        limit: 10000
     t.integer  "likes_count"
+    t.integer  "comments_count",                   default: 0
     t.index ["user_id"], name: "index_wall_posts_on_user_id", using: :btree
   end
 
   add_foreign_key "classifieds", "classified_categories"
+  add_foreign_key "comments", "users"
   add_foreign_key "contest_registrations", "contests"
   add_foreign_key "enquiries", "service_categories"
   add_foreign_key "likes", "users"

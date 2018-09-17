@@ -1,0 +1,19 @@
+<div style="padding:20px 10px; margin-left:-10px; margin-right:-10px; background:#f9f9f9;">
+  <%if user_signed_in?%>
+    <%=image_tag current_user.photo.url(:thumb),:style=>"width:32px; height:32px; float:left;margin-top: 10px; margin-right: 10px;"%>
+    <%= form_for [@wall_post, Comment.new],:style=>"float:left; display:inline",:remote=>true do |f| %>
+      <%= f.text_area :body, placeholder: "Write a comment",:class=>"form-control comment_text_box #{@wall_post.id}_comment_box",:style=>"resize: none; width:71%;", :rows=>"1" %>
+      <%=f.hidden_field :user_id, :value=>current_user.id%>
+      <%= button_tag(type: "submit", class: "btn btn-primary",:style=>"border-radius:0px; display:inline; float:right; margin-top:-36px; font-size:12px; padding:4px 7px; width:45px; ") do %>
+        <i class='fa fa-send'></i>
+      <%end%>
+    <%end%>
+    <div class="clearfix"></div>
+  <%end%>
+  <div style="margin-top:20px;" class="comment_section <%=(@comments.count > 0)? "" : "hide"%> <%=@wall_post.id%>_comment_section">
+      <%=render "wall_posts/comment"%>
+  </div>
+  <%if @comments.next_page%>
+    <%=link_to "Show more comments", comment_post_path(@wall_post.id,:page=>@comments.next_page),:class=>"comments_paginate_#{@wall_post.id}",:remote=>true%>
+  <%end%>
+</div>
