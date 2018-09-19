@@ -69,13 +69,24 @@ class Feed < ApplicationRecord
         desc = ""
         paragraphs = page2.at(".post-content").search('p')
         if paragraphs.size > 4
-          desc = "#{paragraphs[1]} #{paragraphs[2]} #{paragraphs[3]}"
+          if paragraphs[1].to_s !~ /<img/
+            desc = "#{desc} #{paragraphs[1]}"
+          end
+
+          if paragraphs[2].to_s !~ /<img/
+            desc = "#{desc} #{paragraphs[2]}"
+          end
+
+          if paragraphs[3].to_s !~ /<img/
+            desc = "#{desc} #{paragraphs[3]}"
+          end
+
         end
         imgs = page2.at(".post-content").search("img")
 
         if imgs.size > 0
           desc = desc.gsub(imgs[0],"")
-          desc = "#{imgs[0]} #{desc}<br><br><a href='http://www.daijiworld.com/news/#{link}'>Read More @ DaijiWorld</a>"
+          desc = "#{imgs[0]} #{desc}<br><a href='http://www.daijiworld.com/news/#{link['href']}'>Read More @ DaijiWorld</a>"
         end
 
         puts "desc"
