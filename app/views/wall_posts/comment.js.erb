@@ -1,0 +1,15 @@
+<%if params[:page].blank? %>
+  var comment_sec = "<%=@wall_post.id%>_comment_container";
+  $('.'+comment_sec).html('<%= escape_javascript(render :partial => "/wall_posts/comments" )%>').hide().show('slow');;
+<%else%>
+  var comment_sec = "<%=@wall_post.id%>_comment_section";
+  $('.'+comment_sec).append('<%= escape_javascript(render :partial => "/wall_posts/comment" )%>');
+<%end%>
+
+var comment_paginate = "comments_paginate_<%=@wall_post.id%>";
+
+<%if @comments.next_page%>
+  $("."+comment_paginate).attr('href',"<%=comment_post_path(@wall_post.id,:page=>@comments.next_page)%>");
+<%else%>
+  $("."+comment_paginate).hide();
+<%end%>

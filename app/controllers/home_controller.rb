@@ -102,6 +102,10 @@ class HomeController < ApplicationController
       end
       ut.save
     end
+
+    if user_signed_in? && ut.present?
+      current_user.update_column(:app_token,ut.app_id)
+    end
     respond_to do |format|
       format.json{render :json=>{:update_status=>"success",:status=>200}}
     end

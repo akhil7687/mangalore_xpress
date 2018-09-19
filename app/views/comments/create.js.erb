@@ -1,0 +1,17 @@
+
+<%if @commentable.class.to_s == "WallPost"%>
+  $("<%= escape_javascript(render :partial => "/comments/comment",locals: {:comment=>@comment} )%>").prependTo("."+"<%=@commentable.id%>_comment_section").hide().show('slow');
+  $("."+"<%=@commentable.id%>_comment_section").removeClass("hide");
+  $("."+"<%=@commentable.id%>_comment_box").val('');
+  <%
+   comment_count = @commentable.comments_count
+   if comment_count.blank?
+    comment_count = 0
+   end
+  %>
+  $("."+"<%=@commentable.id%>_comments_count").html("<%= pluralize(comment_count+1, 'COMMENT') %>");
+<%else%>
+  $(".comment_container").prepend("<%= escape_javascript(render :partial => "/comments/comment",locals: {:comment=>@comment} )%>")
+  $(".comment_section").removeClass("hide");
+  $(".comment_text_box").val('');
+<%end%>
