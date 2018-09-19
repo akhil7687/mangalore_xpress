@@ -21,6 +21,12 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
+#sidekiq
+set :sidekiq_role, [:app]
+set :sidekiq_pid => File.join(current_path, 'tmp', 'pids', 'sidekiq.pid')
+set :sidekiq_log => File.join(shared_path, 'log', 'sidekiq.log')
+set :sidekiq_options, "-q default -q mailers,7 -q critical,5"
+set :sidekiq_env =>  'production'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('public/system').push('public/ckeditor_assets')
 
