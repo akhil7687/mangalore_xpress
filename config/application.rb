@@ -14,6 +14,7 @@ module MangaloreXpress
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.time_zone = 'Asia/Kolkata'
     config.active_record.default_timezone = :local # Or :utc
+    config.active_job.queue_adapter = :sidekiq
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
       YAML.load(File.open(env_file)).each do |key, value|
