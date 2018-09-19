@@ -33,6 +33,67 @@ class Feed < ApplicationRecord
     return self
   end
 
+
+  def self.load_from_daiji
+    url = "http://www.daijiworld.com/news/default.aspx?nSection=topstories"
+    agent = Mechanize.new
+    page = agent.get(url)
+    last_found = Feed.where("news_source=?","DaijiWorld").take
+    row = page.at(".list-posts").search('.post-content')
+    if row.size > 0
+      if last_found.present?
+        first_post_title = row[0].search('h2').search("a").text().strip
+        if first_post_title == last_found.title
+          return
+        end
+      end
+      row.each_with_index do |r,index|
+        link = r.search('h2').at("a")
+        
+        title = link.text().strip
+
+        puts title
+
+        is_valid = false
+
+        if title =~ /mangaluru/i || title =~ /mangalore/i || title =~ /puttur/i || title =~ /bantwal/i || title =~ /sullia/i || title =~ /udupi/i || title =~ /kundapur/i || title =~ /Belthangad/i || title =~ /kasargod/i || title =~ /Moodbidri/i 
+          is_valid = true
+        end
+
+        next if !is_valid
+
+        date  = r.search(".post-tags").search("li").text().strip
+       
+        agent2 = Mechanize.new
+        page2 = agent2.get("http://www.daijiworld.com/news/#{link['href']}")
+        desc = ""
+        paragraphs = page2.at(".post-content").search('p')
+        if paragraphs.size > 4
+          desc = "#{paragraphs[1]} #{paragraphs[2]} #{paragraphs[3]}"
+        end
+        imgs = page2.at(".post-content").search("img")
+        if imgs.size > 0
+          desc = "#{imgs[0]} #{desc}"
+        end
+
+        puts "desc"
+        
+        f = Feed.where("title=?",title).take
+        if f.present?
+          next
+        end
+        f = Feed.new
+        f.title = title
+        f.description = desc
+        f.news_source = "DaijiWorld"
+        f.language = "English"
+        f.category = "Mangalore"
+        f.published_date = date[2..-1]
+        f.save
+      end
+    end
+  end
+
   def self.load_news
     # kannada prabha karnataka
     urls = ["http://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","http://www.kannadaprabha.com/rss/kannada-nation-4.xml"]
