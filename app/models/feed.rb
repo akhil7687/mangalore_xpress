@@ -72,8 +72,10 @@ class Feed < ApplicationRecord
           desc = "#{paragraphs[1]} #{paragraphs[2]} #{paragraphs[3]}"
         end
         imgs = page2.at(".post-content").search("img")
+
         if imgs.size > 0
-          desc = "#{imgs[0]} #{desc}"
+          desc = desc.gsub(imgs[0],"")
+          desc = "#{imgs[0]} #{desc}<br><br><a href='http://www.daijiworld.com/news/#{link}'>Read More @ DaijiWorld</a>"
         end
 
         puts "desc"
@@ -88,6 +90,7 @@ class Feed < ApplicationRecord
         f.news_source = "DaijiWorld"
         f.language = "English"
         f.category = "Mangalore"
+        f.link = link
         f.published_date = date[2..-1]
         f.save
       end
@@ -193,6 +196,7 @@ class Feed < ApplicationRecord
         puts "Time corect"
         f.published_date = Time.now
       end
+
       f.news_source = source
       f.category = category
       f.save
