@@ -90,7 +90,6 @@ class Feed < ApplicationRecord
         f.news_source = "DaijiWorld"
         f.language = "English"
         f.category = "Mangalore"
-        f.link = link
         f.published_date = date[2..-1]
         f.save
       end
