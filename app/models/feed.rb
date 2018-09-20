@@ -82,12 +82,14 @@ class Feed < ApplicationRecord
           end
 
         end
-        imgs = page2.at(".post-content").search("img")
+        imgs = page2.at("#ContentPlaceHolder1_col7Content_lblDesc").search("img")
 
         if imgs.size > 0
           desc = desc.gsub(imgs[0],"")
-          desc = "#{imgs[0]} #{desc}<br><a href='http://www.daijiworld.com/news/#{link['href']}'>Read More @ DaijiWorld</a>"
+          desc = "#{imgs[0]} #{desc}"
         end
+
+        desc = "#{desc}<br><a href='http://www.daijiworld.com/news/#{link['href']}'>Read More @ DaijiWorld</a>"
 
         puts "desc"
         
