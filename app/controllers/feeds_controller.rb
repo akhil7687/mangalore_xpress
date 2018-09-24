@@ -26,8 +26,10 @@ class FeedsController < ApplicationController
   end
 
   def load_feed
-    
+
     NewsScrapeWorker.perform_at(Time.now)
+
+    Feed.load_news
 
     respond_to do |format|
       format.json{render :json=>{:update_status=>"success",:status=>200}}
