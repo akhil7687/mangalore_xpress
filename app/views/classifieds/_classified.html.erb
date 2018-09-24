@@ -1,6 +1,8 @@
 <div class="home-list-pop list-spac list-spac-1">
   <div class="col-md-3">
-    <%=image_tag classified.pic.url(:original),:class=>"viewable-image"%>
+    <%if classified.pic.present?%>
+      <%=image_tag classified.pic.url(:original),:class=>"viewable-image"%>
+    <%end%>
   </div>
   <div class="col-md-9 home-list-pop-desc inn-list-pop-desc">
     <h3><%=classified.title%></h3>
