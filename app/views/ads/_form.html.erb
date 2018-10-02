@@ -7,7 +7,7 @@
 
   <%if user_signed_in? && current_user.is_admin?%>
     <div class="form-group">
-      <%=f.check_box :enable%>
+      <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
       <label for="ad_enable">Enable</label>
     </div>
   <%end%>

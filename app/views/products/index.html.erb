@@ -1,0 +1,42 @@
+<%=render "home/page_header"%>
+
+<div class="content">
+  <h1 class="text-center">Products</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Product Image</th>
+        <th>Price</th>
+        <th>MRP</th>
+        <th>Store</th>
+        <th>Enable</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= image_tag product.product_image.url(:thumb) %></td>
+          <td><%= product.price %></td>
+          <td><%= product.mrp %></td>
+          <td>
+            <%=link_to store_path(product.store) do%>
+              <%= product.store.name %>
+            <%end%>
+          </td>
+          <td><%= product.enable %></td>
+          <td><%= link_to 'Show', product %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>

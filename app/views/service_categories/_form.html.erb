@@ -52,7 +52,7 @@
   </div>
 
   <div class="form-group">
-    <%=f.check_box :enable%>
+    <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
     <label for="service_category_enable">Enable</label>
   </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924171921) do
+ActiveRecord::Schema.define(version: 20181002124649) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
     t.string   "ad_img_file_name"
@@ -145,6 +145,33 @@ ActiveRecord::Schema.define(version: 20180924171921) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.integer  "product_id"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "price"
+    t.integer  "mrp"
+    t.integer  "store_id"
+    t.boolean  "enable"
+    t.string   "product_image_file_name"
+    t.string   "product_image_content_type"
+    t.integer  "product_image_file_size"
+    t.datetime "product_image_updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["store_id"], name: "index_products_on_store_id", using: :btree
+  end
+
   create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name"
     t.string   "email"
@@ -192,6 +219,18 @@ ActiveRecord::Schema.define(version: 20180924171921) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.index ["service_category_id"], name: "index_service_providers_on_service_category_id", using: :btree
+  end
+
+  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "store_logo_file_name"
+    t.string   "store_logo_content_type"
+    t.integer  "store_logo_file_size"
+    t.datetime "store_logo_updated_at"
+    t.boolean  "enable"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "user_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -246,6 +285,8 @@ ActiveRecord::Schema.define(version: 20180924171921) do
   add_foreign_key "contest_registrations", "contests"
   add_foreign_key "enquiries", "service_categories"
   add_foreign_key "likes", "users"
+  add_foreign_key "product_pictures", "products"
+  add_foreign_key "products", "stores"
   add_foreign_key "service_providers", "service_categories"
   add_foreign_key "wall_posts", "users"
 end

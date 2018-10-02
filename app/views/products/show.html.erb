@@ -1,0 +1,33 @@
+<%=render "home/page_header"%>
+
+<div class="content" style="padding:10px; margin:10px; background:#fff; border:1px solid #ccc;">
+
+  <div class="text-center">
+    <%=image_tag @product.product_image.url(:thumb)%>
+    <div>
+      <h3><%=@product.name%></h3>
+      <h4><%=@product.description%></h4>
+    </div>
+    <div style="padding:10px">
+      <%=link_to "ADD PHOTOS",new_product_picture_path(:product_id=>@product.id),:class=>"btn btn-primary"%>
+    </div>
+
+    <div class="row-fluid">
+      <%@product.product_pictures.each do |product|%>
+        <div class="col-md-2">
+          <div style="border:1px solid #ccc; text-align:center; padding:10px;">
+            <div><%=image_tag product.pic.url(:thumb)%></div>
+            <div>
+              <%=link_to "EDIT", edit_product_path(product),:style=>"text-decoration:underline; margin-right:5px;"%>
+              <%=link_to "DESTROY", product_path(product),:method=>:delete,:style=>"margin-left:5px; text-decoration:underline;"%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <div class="clearfix"></div>
+    </div>
+
+  </div>
+
+
+</div>

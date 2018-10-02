@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  
+
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :service_providers
   resources :feeds do
@@ -41,6 +41,10 @@ Rails.application.routes.draw do
      get :comment
     end
   end
+  resources :stores
+  resources :products
+  resources :product_pictures
+
   devise_scope :user do
     get 'users/profile', to: 'devise/registrations#edit',via: [:get],as: 'profile'
   end

@@ -28,7 +28,7 @@
 
   <%if user_signed_in? && current_user.is_admin?%>
     <div class="form-group" style="padding: 4px 0px;">
-      <%=f.check_box :status%>
+      <%=f.select :status, [['Enable', true], ['Disable', false]]%>
       <label for="classified_status">ENABLE</label>
     </div>
   <%end%>

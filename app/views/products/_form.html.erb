@@ -1,0 +1,54 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name,:class=>"form-control" %>
+  </div>
+
+  <%=f.hidden_field :store_id,:value=>(params[:store_id] || @product.store.id)%>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mrp %>
+    <%= f.text_field :mrp,:class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <div class='iimg'>
+      <%if product.product_image.present?%>
+        <%=image_tag product.product_image.url(:thumb)%>
+      <%end%>
+    </div>
+    <%= f.label :product_image %>
+    <%= f.file_field :product_image,:dest_img=>"iimg",:class=>"file_with_thumb"  %>
+  </div>
+
+
+  <div class="form-group">
+    <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
+    <label for="store_enable">Enable</label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit (f.object.new_record? ? "Create" : "Update"),:class=>"btn btn-primary" %>
+  </div>
+<% end %>

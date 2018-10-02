@@ -40,12 +40,12 @@
   </div>
 
   <div class="form-group">
-    <%=f.check_box :is_article%>
+    <%=f.select :enable, [['Article', true], ['News', false]]%>
     <label for="feed_is_article">Show in Article</label>
   </div>
 
   <div class="form-group">
-    <%=f.check_box :status%>
+    <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
     <label for="feed_status">Enable</label>
   </div>
 
