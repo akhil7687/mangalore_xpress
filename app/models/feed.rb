@@ -78,21 +78,21 @@ class Feed < ApplicationRecord
       end
       row.each_with_index do |r,index|
         link = r.search('h2').at("a")
-        
+
         title = link.text().strip
 
         puts title
 
         is_valid = false
 
-        if title =~ /mangaluru/i || title =~ /mangalore/i || title =~ /puttur/i || title =~ /bantwal/i || title =~ /sullia/i || title =~ /udupi/i || title =~ /kundapur/i || title =~ /Belthangad/i || title =~ /kasargod/i || title =~ /Moodbidri/i 
+        if title =~ /mangaluru/i || title =~ /mangalore/i || title =~ /puttur/i || title =~ /bantwal/i || title =~ /sullia/i || title =~ /udupi/i || title =~ /kundapur/i || title =~ /Belthangad/i || title =~ /kasargod/i || title =~ /Moodbidri/i
           is_valid = true
         end
 
         next if !is_valid
 
         date  = r.search(".post-tags").search("li").text().strip
-       
+
         agent2 = Mechanize.new
         page2 = agent2.get("http://www.daijiworld.com/news/#{link['href']}")
         desc = ""
@@ -114,14 +114,15 @@ class Feed < ApplicationRecord
         imgs = page2.at("#ContentPlaceHolder1_col7Content_lblDesc").search("img")
         img_url = nil
         if imgs.size > 0
+          im = imgs[0]
           desc = desc.gsub(imgs[0],"")
-          img_url = imgs[0]
+          img_url = im.attr('src')
         end
 
         s_url = "http://www.daijiworld.com/news/#{link['href']}"
 
         puts "desc"
-        
+
         f = Feed.where("title=?",title).take
         if f.present?
           next
