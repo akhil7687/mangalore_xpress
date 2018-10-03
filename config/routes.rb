@@ -41,7 +41,11 @@ Rails.application.routes.draw do
      get :comment
     end
   end
-  resources :stores
+  resources :stores do 
+    member do
+      get :products
+    end
+  end
   resources :products
   resources :product_pictures
 

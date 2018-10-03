@@ -5,10 +5,11 @@ class Store < ApplicationRecord
   has_many :products
 
   def as_json
-  	json_to_return  = super(:only=>[:id,:name,:description,:enable],:methods=>[:logo_url]
+  	super(:only=>[:id,:name,:description,:enable],:methods=>[:logo_url])
   end
 
   def logo_url
-  	return self.store_logo.url(:original)
+    "#{URI.join(ActionController::Base.asset_host,self.store_logo.url(:original))}"
+  	
   end
 end

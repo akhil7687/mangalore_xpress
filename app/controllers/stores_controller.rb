@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
 
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: [:show, :edit, :update, :destroy,:products]
 
   def index
     @stores = Store.order("created_at desc").all
@@ -8,6 +8,15 @@ class StoresController < ApplicationController
       format.html
       format.json{
         render :json => @stores.as_json
+      }
+    end
+  end
+
+  def products
+    @products = @store.products.order("created_at desc")
+    respond_to do |format|
+      format.json{
+        render :json => @products.as_json
       }
     end
   end

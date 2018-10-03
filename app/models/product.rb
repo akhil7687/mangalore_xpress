@@ -4,4 +4,12 @@ class Product < ApplicationRecord
   validates_attachment_content_type :product_image, content_type: /\Aimage\/.*\z/
 
   has_many :product_pictures
+
+  def image_url
+    "#{URI.join(ActionController::Base.asset_host,self.product_image.url(:original))}"
+  end
+
+  def as_json
+  	super(:only=>[:name,:description,:mrp,:price,:enable],:methods=>[:image_url],:include => { :product_pictures =>{:only=>[],:methods=>[:image_path]}})
+  end
 end
