@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>'home#index'
+  match "/news_categories"=>"feeds#news_cats", via: [:get]
   match "/cards"=>"home#feeds", via: [:get],:as=>"cards"
   match "/articles"=>"home#feeds", via: [:get],:as=>"articles"
   match "/wall"=>"home#wall_post", via: [:get],:as=>"wall"

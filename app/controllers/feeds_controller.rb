@@ -31,6 +31,14 @@ class FeedsController < ApplicationController
   def edit
   end
 
+
+  def news_cats
+    @cats = Feed.where("category is not null").pluck(:category).uniq
+    respond_to do |format|
+      format.json{render :json=>{:categories=>@cats}}
+    end
+  end
+
   def load_feed
 
     NewsScrapeWorker.perform_at(Time.now)
