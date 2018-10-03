@@ -31,6 +31,7 @@ class Feed < ApplicationRecord
 
     des = doc.search("body").inner_html.to_s
     des = des.gsub("<br><br>","")
+    self.description = des
     puts des
     puts self.image_url
     puts self.src_url
