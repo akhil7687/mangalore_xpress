@@ -10,6 +10,5 @@ class Store < ApplicationRecord
 
   def logo_url
     "#{URI.join(ActionController::Base.asset_host,self.store_logo.url(:original))}"
-  	
   end
 end

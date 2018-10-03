@@ -16,6 +16,30 @@ class Feed < ApplicationRecord
 
   before_save :add_lang
 
+  def sort_desc
+    doc = Nokogiri::HTML(self.description)
+    im = doc.css('img')
+    if im.present?
+      self.image_url = im.attr('src').to_s
+    end
+    im.remove
+    sr = doc.css('a')
+    if sr.present?
+      self.src_url = sr.attr('href').to_s
+    end
+    sr.remove
+
+    des = doc.search("body").inner_html.to_s
+    des = des.gsub("<br><br>","")
+    puts des
+    puts self.image_url
+    puts self.src_url
+  end
+
+  def as_json
+    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:description])
+  end
+
 
   def add_lang
     return if news_source.blank?

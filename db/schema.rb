@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181002124649) do
+ActiveRecord::Schema.define(version: 20181003110315) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(version: 20181002124649) do
     t.datetime "published_date",                 default: -> { "CURRENT_TIMESTAMP" }
     t.string   "language",                       default: "English"
     t.string   "category"
+    t.string   "image_url"
+    t.string   "src_url"
     t.index ["slug"], name: "index_feeds_on_slug", using: :btree
   end
 
