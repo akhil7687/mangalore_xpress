@@ -9,6 +9,12 @@ class FeedsController < ApplicationController
     else
       @feeds = Feed.where("is_article=1").order("created_at desc").paginate(:page => params[:page], :per_page => 10)
     end
+    respond_to do |format|
+      format.html
+      format.json{
+        render :json => @feeds.as_json
+      }
+    end
   end
 
   # GET /feeds/1
