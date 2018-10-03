@@ -37,8 +37,12 @@ class Feed < ApplicationRecord
     puts self.src_url
   end
 
+  def desc
+    self.description.force_encoding("ISO-8859-1")
+  end
+
   def as_json
-    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:description])
+    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url],:methods=>[:desc])
   end
 
 
