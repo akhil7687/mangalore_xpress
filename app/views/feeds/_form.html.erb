@@ -40,12 +40,12 @@
   </div>
 
   <div class="form-group">
-    <%=f.select :enable, [['Article', true], ['News', false]]%>
+    <%=f.select :is_article, [['Article', true], ['News', false]]%>
     <label for="feed_is_article">Show in Article</label>
   </div>
 
   <div class="form-group">
-    <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
+    <%=f.select :status, [['Enable', true], ['Disable', false]]%>
     <label for="feed_status">Enable</label>
   </div>
 
