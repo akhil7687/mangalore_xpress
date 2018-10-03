@@ -112,13 +112,13 @@ class Feed < ApplicationRecord
 
         end
         imgs = page2.at("#ContentPlaceHolder1_col7Content_lblDesc").search("img")
-
+        img_url = nil
         if imgs.size > 0
           desc = desc.gsub(imgs[0],"")
-          desc = "#{imgs[0]} #{desc}"
+          img_url = imgs[0]
         end
 
-        desc = "#{desc}<br><a href='http://www.daijiworld.com/news/#{link['href']}'>Read More @ DaijiWorld</a>"
+        s_url = "http://www.daijiworld.com/news/#{link['href']}"
 
         puts "desc"
         
@@ -132,6 +132,8 @@ class Feed < ApplicationRecord
         f.news_source = "DaijiWorld"
         f.language = "English"
         f.category = "Mangalore"
+        f.src_url = s_url
+        f.image_url = img_url
         f.published_date = date[2..-1]
         f.save
       end
@@ -217,12 +219,13 @@ class Feed < ApplicationRecord
       f = Feed.new
       f.title = result.title
       next if result.description.blank?
-      f.description = "#{result.description}<br><br><a href='#{result.link}'>Read More @ #{source}</a>"
-      
+      f.description = "#{result.description}"
+      src_url = "#{result.link}"
+      img_url = nil
       if result.enclosure.present?
         if result.enclosure.url.present?
           if result.enclosure.type =~ /image/
-            f.description = "<img src='#{result.enclosure.url}'> <br> #{f.description}"
+            img_url = result.enclosure.url
           end
         end
       end
@@ -233,11 +236,12 @@ class Feed < ApplicationRecord
       else
         f.published_date = result.pubDate
       end
+      f.image_url = img_url
+      f.src_url = src_url
       if tim_correct
         puts "Time corect"
         f.published_date = Time.now
       end
-
       f.news_source = source
       f.category = category
       f.save
