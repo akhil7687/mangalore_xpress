@@ -3,9 +3,12 @@ class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
-    @stores = Store.all
+    @stores = Store.order("created_at desc").all
     respond_to do |format|
       format.html
+      format.json{
+        render :json => @stores.as_json
+      }
     end
   end
 

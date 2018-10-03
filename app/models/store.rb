@@ -3,4 +3,12 @@ class Store < ApplicationRecord
   validates_attachment_content_type :store_logo, content_type: /\Aimage\/.*\z/
 
   has_many :products
+
+  def as_json
+  	json_to_return  = super(:only=>[:id,:name,:description,:enable],:methods=>[:logo_url]
+  end
+
+  def logo_url
+  	return self.store_logo.url(:original)
+  end
 end
