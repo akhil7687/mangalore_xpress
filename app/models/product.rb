@@ -5,6 +5,12 @@ class Product < ApplicationRecord
 
   has_many :product_pictures
 
+  has_many :enquiries, as: :enquiryable
+
+  def product_desc
+    "#{self.name} / Store: #{self.store.name}"
+  end
+
   def image_url
     "#{URI.join(ActionController::Base.asset_host,self.product_image.url(:original))}"
   end

@@ -1,7 +1,7 @@
 class EnquiriesController < ApplicationController
   before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
+  
   def create
-
     @context = context
     @enquiry = @context.enquiries.new(enquiry_params)
 
@@ -55,6 +55,9 @@ class EnquiriesController < ApplicationController
     if params[:service_category_id]
       id = params[:service_category_id]
       ServiceCategory.friendly.find(params[:service_category_id])
+    elsif params[:product_id]
+      id = params[:product_id]
+      Product.find(params[:product_id])
     else
       id = params[:classified_id]
       Classified.find(params[:classified_id])
