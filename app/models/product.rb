@@ -10,6 +10,6 @@ class Product < ApplicationRecord
   end
 
   def as_json
-  	super(:only=>[:name,:description,:mrp,:price,:enable],:methods=>[:image_url],:include => { :product_pictures =>{:only=>[],:methods=>[:image_path]}})
+  	super(:only=>[:name,:description,:mrp,:price,:enable,:id],:methods=>[:image_url],:include => { :product_pictures =>{:only=>[],:methods=>[:image_path]}})
   end
 end
