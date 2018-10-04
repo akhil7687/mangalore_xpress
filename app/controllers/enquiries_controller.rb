@@ -1,7 +1,7 @@
 class EnquiriesController < ApplicationController
   before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
+  
   def create
-
     @context = context
     @enquiry = @context.enquiries.new(enquiry_params)
 
@@ -10,6 +10,7 @@ class EnquiriesController < ApplicationController
       respond_to :back
       return
     end
+
     if @enquiry.save
       flash[:success_enq] = "Thank you! Our representative will call back to you soon!"
       redirect_to :back
@@ -17,9 +18,11 @@ class EnquiriesController < ApplicationController
       flash[:error] = "Failed to create request! Please try again"
       redirect_to :back
     end
+    
     respond_to do |format|
       format.js
       format.html
+      format.json{render :json=>{:update_status=>"success",:status=>200}}
     end
   end
 
@@ -55,6 +58,9 @@ class EnquiriesController < ApplicationController
     if params[:service_category_id]
       id = params[:service_category_id]
       ServiceCategory.friendly.find(params[:service_category_id])
+    elsif params[:product_id]
+      id = params[:product_id]
+      Product.find(params[:product_id])
     else
       id = params[:classified_id]
       Classified.find(params[:classified_id])

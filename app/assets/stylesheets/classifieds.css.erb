@@ -102,7 +102,27 @@
   box-shadow: none;
 }
 
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 9999;
+}
 
+#status {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url("<%= asset_path 'preloader.gif'%>");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -60px 0 0 -60px;
+}
 
 .ribbon-wrapper {
   width: 85px;
@@ -546,6 +566,10 @@
 
 @media screen and (max-width: 640px){
 
+  #status {
+    width: 120px;
+    height: 120px;
+  }
 
   .carousel-item img{
     height: 275px;
