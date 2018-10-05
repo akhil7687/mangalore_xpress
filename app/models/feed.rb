@@ -47,6 +47,7 @@ class Feed < ApplicationRecord
 
 
   def add_lang
+    sort_desc
     return if news_source.blank?
     if news_source == "One India" || news_source == "Vijaya Karnataka"
       self.language = "Kannada"
