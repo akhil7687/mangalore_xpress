@@ -5,6 +5,11 @@ class AdsController < ApplicationController
   # GET /ads.json
   def index
     @ads = Ad.order("created_at desc")
+    redirect_to do |format|
+      format.json{
+        render :json =>Ad.where("enable=1").as_json(:methods=>[:ad_img])
+      }
+    end
   end
 
   # GET /ads/1
