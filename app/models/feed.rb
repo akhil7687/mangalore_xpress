@@ -38,7 +38,7 @@ class Feed < ApplicationRecord
   end
 
   def desc
-    self.description.force_encoding("ISO-8859-1")
+    Base64.encode64(self.description)
   end
 
   def as_json
