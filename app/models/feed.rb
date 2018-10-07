@@ -197,9 +197,9 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"OneIndia",false,false,false,"India")
     end
-    urls = ["https://www.oneindia.com/rss/news-international-fb.xml"]
+    urls = ["https://www.livemint.com/rss/homepage"]
     urls.each do |u|
-      Feed.load_from_rss(u,"OneIndia",false,false,false,"International")
+      Feed.load_from_rss(u,"LiveMint",false,false,false,"International")
     end
 
   end
