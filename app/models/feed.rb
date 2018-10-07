@@ -197,18 +197,20 @@ class Feed < ApplicationRecord
     urls.each do |u|
       Feed.load_from_rss(u,"OneIndia",false,false,false,"India")
     end
-    urls = ["https://www.livemint.com/rss/homepage"]
+    urls = ["http://feeds.bbci.co.uk/news/world/rss.xml"]
     urls.each do |u|
-      Feed.load_from_rss(u,"LiveMint",false,false,false,"International")
+      Feed.load_from_rss(u,"BBC",false,false,false,"International")
     end
 
   end
 
   def self.load_from_rss(url,source,to_offset,selective=false,tim_correct=false,category=nil)
-    require 'rss'
+    require 'simple-rss'
     require 'open-uri'
     rss_results = []
-    rss = RSS::Parser.parse(open(url).read, false).items
+    SimpleRSS.item_tags << :"enclosure#url"
+    SimpleRSS.item_tags << :"media:thumbnail#url"
+    rss = (SimpleRSS.parse open(url)).items
     rss.each do |result|
       if ((result.title =~ /mangalore/i) && (result.title =~ /mangaluru/i) && (result.title =~ /ಮಂಗಳೂರು/i))
         category = "Mangalore"
@@ -224,12 +226,25 @@ class Feed < ApplicationRecord
       f.description = "#{result.description}"
       src_url = "#{result.link}"
       img_url = nil
-      if result.enclosure.present?
-        if result.enclosure.url.present?
-          if result.enclosure.type =~ /image/
-            img_url = result.enclosure.url
-          end
+
+      if source== "TOI" || source == "Vijaya Karnataka"
+        fragment = Nokogiri::HTML.fragment(CGI.unescapeHTML(f.description))
+        lnk = fragment.search('a')
+        img = fragment.search('img')
+        if img.present?
+          img_url = img.attr('src')
         end
+        lnk.remove
+        img.remove
+        f.description = fragment.to_s
+      end
+
+      if result.media_thumbnail_url.present?
+        img_url = result.media_thumbnail_url
+      end
+
+      if result.enclosure_url.present?
+        img_url = result.enclosure_url
       end
 
       f.status = true
