@@ -12,6 +12,11 @@
     </div>
   <%end%>
 
+  <div class="form-group">
+    <%=f.select :ad_type, [['General', 'General'], ['Store', 'Store']]%>
+    <label for="ad_enable">Ad Type</label>
+  </div>
+
   <div class="actions text-center">
     <%= f.submit (f.object.new_record? ? "POST THIS AD" : "UPDATE"),:class=>"btn btn-primary",:style=>"font-size:18px; font-weight: bold; padding: 4px 30px;" %>
   </div>

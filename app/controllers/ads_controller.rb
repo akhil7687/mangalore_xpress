@@ -8,7 +8,13 @@ class AdsController < ApplicationController
     respond_to do |format|
       format.html
       format.json{
-        render :json =>Ad.where("enable=1").as_json
+        typ = params[:ad_type]
+        if typ.present?
+          @ads = Ad.where("enable=1 and ad_type=?",typ).as_json
+        else
+          @ads = Ad.where("enable=1 and ad_type=?","General").as_json
+        end
+        render :json =>@ads.as_json
       }
     end
   end
@@ -76,6 +82,6 @@ class AdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:ad_img, :enable)
+      params.require(:ad).permit(:ad_img, :enable,:ad_type)
     end
 end
