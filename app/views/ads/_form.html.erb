@@ -7,14 +7,14 @@
 
   <%if user_signed_in? && current_user.is_admin?%>
     <div class="form-group">
+      <%= f.label :enable, 'Enable' %>
       <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
-      <label for="ad_enable">Enable</label>
     </div>
   <%end%>
 
   <div class="form-group">
+    <%= f.label :ad_type, 'Ad Type' %>
     <%=f.select :ad_type, [['General', 'General'], ['Store', 'Store']]%>
-    <label for="ad_enable">Ad Type</label>
   </div>
 
   <div class="actions text-center">
