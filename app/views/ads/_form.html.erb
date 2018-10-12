@@ -7,10 +7,15 @@
 
   <%if user_signed_in? && current_user.is_admin?%>
     <div class="form-group">
+      <%= f.label :enable, 'Enable' %>
       <%=f.select :enable, [['Enable', true], ['Disable', false]]%>
-      <label for="ad_enable">Enable</label>
     </div>
   <%end%>
+
+  <div class="form-group">
+    <%= f.label :ad_type, 'Ad Type' %>
+    <%=f.select :ad_type, [['General', 'General'], ['Store', 'Store']]%>
+  </div>
 
   <div class="actions text-center">
     <%= f.submit (f.object.new_record? ? "POST THIS AD" : "UPDATE"),:class=>"btn btn-primary",:style=>"font-size:18px; font-weight: bold; padding: 4px 30px;" %>

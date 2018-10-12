@@ -26,9 +26,9 @@
     <div class='post-ex'>
       <%=raw feed.description.to_s.force_encoding("UTF-8")%>
     </div>
-    <%if !feed.is_article%>
-      <div><a href="<%=feed.src_url%>">Read More @ <%=feed.news_source%></a></div>
-    <%end%>
+  <%end%>
+  <%if !feed.is_article%>
+    <div><a href="<%=feed.src_url%>">Read More @ <%=feed.news_source%></a></div>
   <%end%>
   <%if feed.details.present?%>
     <%=link_to "READ MORE",feed_path(feed),:style=>"text-decoration:underline;"%>

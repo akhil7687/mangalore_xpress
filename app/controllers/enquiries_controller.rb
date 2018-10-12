@@ -1,6 +1,6 @@
 class EnquiriesController < ApplicationController
   before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
-  
+
   def create
     @context = context
     @enquiry = @context.enquiries.new(enquiry_params)
@@ -13,15 +13,13 @@ class EnquiriesController < ApplicationController
 
     if @enquiry.save
       flash[:success_enq] = "Thank you! Our representative will call back to you soon!"
-      redirect_to :back
     else
       flash[:error] = "Failed to create request! Please try again"
-      redirect_to :back
     end
-    
+
     respond_to do |format|
       format.js
-      format.html
+      format.html{ redirect_to :back }
       format.json{render :json=>{:update_status=>"success",:status=>200}}
     end
   end
