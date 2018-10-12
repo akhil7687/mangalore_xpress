@@ -45,9 +45,14 @@ class Feed < ApplicationRecord
     Base64.encode64(self.details)
   end
 
+  def pic_url
+    self.pic.url(:original)
+  end
+
+
   def as_json(is_article=false)
     if is_article
-      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id,:is_article],:methods=>[:detl,:desc])
+      super(:only=>[:title,:published_date,:news_source,:pic_url,:src_url,:id,:is_article],:methods=>[:detl,:desc])
     else
       super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id,:is_article],:methods=>[:desc])
     end
