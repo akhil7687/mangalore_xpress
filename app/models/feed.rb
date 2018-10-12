@@ -42,7 +42,7 @@ class Feed < ApplicationRecord
   end
 
   def as_json
-    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url],:methods=>[:desc])
+    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:details],:methods=>[:desc])
   end
 
 
