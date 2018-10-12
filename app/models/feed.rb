@@ -46,7 +46,7 @@ class Feed < ApplicationRecord
   end
 
   def pic_url
-    self.pic.url(:original)
+    "#{URI.join(ActionController::Base.asset_host,self.pic.url(:original))}"
   end
 
 
