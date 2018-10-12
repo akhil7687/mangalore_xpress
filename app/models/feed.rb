@@ -47,9 +47,9 @@ class Feed < ApplicationRecord
 
   def as_json(is_article=false)
     if is_article
-      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id],:methods=>[:detl,:desc])
+      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id,:is_article],:methods=>[:detl,:desc])
     else
-      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id],:methods=>[:desc])
+      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id,:is_article],:methods=>[:desc])
     end
   end
 
