@@ -20,6 +20,11 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    respond_to do |format|
+      format.json{
+        render :json => @feed.as_json(true)
+      }
+    end
   end
 
   # GET /feeds/new
