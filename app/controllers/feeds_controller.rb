@@ -13,7 +13,7 @@ class FeedsController < ApplicationController
       format.html
       format.json{
         if params[:type].present?
-          render :json=> @feeds.as_json(true)
+          render :json=> @feeds.as_json(:is_article=>true)
         else
           render :json => @feeds.as_json
         end
@@ -27,7 +27,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       format.html
       format.json{
-        render :json => @feed.as_json(true)
+        render :json => @feed.as_json(:is_article=>true)
       }
     end
   end
