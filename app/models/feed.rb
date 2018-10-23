@@ -41,8 +41,12 @@ class Feed < ApplicationRecord
     Base64.encode64(self.description)
   end
 
+  def detil
+    Base64.encode64(self.details)
+  end
+
   def as_json
-    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url],:methods=>[:desc])
+    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url],:methods=>[:desc,:detil])
   end
 
 
