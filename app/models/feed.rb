@@ -41,12 +41,21 @@ class Feed < ApplicationRecord
     Base64.encode64(self.description)
   end
 
-  def detil
+  def detl
     Base64.encode64(self.details)
   end
 
-  def as_json
-    super(:only=>[:title,:published_date,:news_source,:image_url,:src_url],:methods=>[:desc,:detil])
+  def pic_url
+    "#{URI.join(ActionController::Base.asset_host,self.pic.url(:original))}"
+  end
+
+
+  def as_json(options = { })
+    if options[:is_article]
+      super(:only=>[:title,:published_date,:news_source,:src_url,:id,:is_article],:methods=>[:detl,:desc,:pic_url])
+    else
+      super(:only=>[:title,:published_date,:news_source,:image_url,:src_url,:id,:is_article],:methods=>[:desc])
+    end
   end
 
 
