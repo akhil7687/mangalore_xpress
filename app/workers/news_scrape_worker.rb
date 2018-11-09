@@ -3,8 +3,14 @@ class NewsScrapeWorker
   sidekiq_options :retry => 10
 
   def perform
-  	Feed.load_news
-    Feed.load_from_daiji
+  	begin
+  		Feed.load_news
+	  rescue
+	  end
+	  begin
+    	Feed.load_from_daiji
+    rescue
+    end
   end
 
 end
