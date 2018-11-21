@@ -274,7 +274,11 @@ class Feed < ApplicationRecord
       end
       f.news_source = source
       f.category = category
-      f.save
+      begin
+        f.save
+      rescue
+
+      end
     end
   end
 
