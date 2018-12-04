@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181009142237) do
+ActiveRecord::Schema.define(version: 20181127081106) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "ad_img_file_name"
@@ -174,6 +174,26 @@ ActiveRecord::Schema.define(version: 20181009142237) do
     t.index ["store_id"], name: "index_products_on_store_id", using: :btree
   end
 
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "quiz_id"
+    t.text     "qn",          limit: 65535
+    t.text     "optn_a",      limit: 65535
+    t.text     "optn_b",      limit: 65535
+    t.text     "optn_c",      limit: 65535
+    t.text     "optn_d",      limit: 65535
+    t.integer  "correct_ans"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id", using: :btree
+  end
+
+  create_table "quizzes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "quiz_name"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "real_estate_requirements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "email"
@@ -289,6 +309,7 @@ ActiveRecord::Schema.define(version: 20181009142237) do
   add_foreign_key "likes", "users"
   add_foreign_key "product_pictures", "products"
   add_foreign_key "products", "stores"
+  add_foreign_key "questions", "quizzes"
   add_foreign_key "service_providers", "service_categories"
   add_foreign_key "wall_posts", "users"
 end

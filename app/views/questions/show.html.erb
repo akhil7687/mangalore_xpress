@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quiz:</strong>
+  <%= @question.quiz %>
+</p>
+
+<p>
+  <strong>Qn:</strong>
+  <%= @question.qn %>
+</p>
+
+<p>
+  <strong>Optn a:</strong>
+  <%= @question.optn_a %>
+</p>
+
+<p>
+  <strong>Optn b:</strong>
+  <%= @question.optn_b %>
+</p>
+
+<p>
+  <strong>Optn c:</strong>
+  <%= @question.optn_c %>
+</p>
+
+<p>
+  <strong>Optn d:</strong>
+  <%= @question.optn_d %>
+</p>
+
+<p>
+  <strong>Correct ans:</strong>
+  <%= @question.correct_ans %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

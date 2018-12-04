@@ -5,6 +5,8 @@ class NewsScrapeWorker
   def perform
   	Feed.load_news
     Feed.load_from_daiji
+    ids = Feed.group(:title).pluck('MIN(id)')
+    Feed.where.not(id: ids).destroy_all
   end
 
 end
