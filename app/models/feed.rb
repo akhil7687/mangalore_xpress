@@ -157,7 +157,7 @@ class Feed < ApplicationRecord
 
   def self.load_news
     # kannada prabha karnataka
-    urls = ["http://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","http://www.kannadaprabha.com/rss/kannada-nation-4.xml"]
+    urls = ["https://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","https://www.kannadaprabha.com/rss/kannada-nation-4.xml"]
     urls.each do |u|
       Feed.load_from_rss(u,"Kannada Prabha",true,false,false,"Karnataka")
     end
