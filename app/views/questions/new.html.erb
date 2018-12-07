@@ -1,5 +1,7 @@
-<h1>New Question</h1>
+<%=render "home/page_header"%>
 
-<%= render 'form', question: @question %>
-
-<%= link_to 'Back', questions_path %>
+<div class="content ">
+  <h1 class="text-center">New Question</h1>
+  <%= render 'form', question: @question %>
+  <%= link_to 'Back', questions_path %>
+</div>

@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :quiz_name %>
     <%= f.text_field :quiz_name %>
   </div>
 
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.number_field :status %>
+  <div class="form-group">
+    <%=f.select :status, [['Enable', 1], ['Disable', 0]]%>
+    <label for="store_enable">Enable</label>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="margin:20px 0px;">
+    <%= f.submit "SUBMIT", :class=>"btn btn-primary"%>
   </div>
 <% end %>
