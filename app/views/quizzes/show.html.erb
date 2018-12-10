@@ -12,20 +12,38 @@
     <%= @quiz.status == 1 ? "ENABLED" : "DISABLED" %>
   </p>
 
-  <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-  <%= link_to 'Back', quizzes_path %> |
+  <%= link_to 'Edit', edit_quiz_path(@quiz) %>
+  <span style="margin:0px 5px">|</span>
+  <%= link_to 'Back', quizzes_path %>
+  <span style="margin:0px 5px">|</span>
   <%= link_to 'Add Question',new_question_path(:quiz_id=>@quiz.id)%>
 
-  <%@quiz.questions.each do |question|%>
-    <div style='padding:10px; margin:10px; border: 1px solid #ccc; background:#fafafa;'>
-      <div style='padding:3px'><%=question.qn%></div>
+  <%@quiz.questions.each_with_index do |question,index|%>
+    <div style='padding:10px; margin:10px; border: 1px solid #ccc; background:#fafafa; font-size:14px;'>
+      <div style='padding:3px'><b><%=index+1%>. </b><%=question.qn%></div>
       <div style="padding-left:10px;">
-        <div><%=question.option_a%></div>
-        <div><%=question.option_b%></div>
-        <div><%=question.option_c%></div>
-        <div><%=question.option_d%></div>
+        <div>
+        <%if (question.correct_ans == 0) %>
+          <i class='fa fa-check' style='color:#00ff00;'></i>
+        <%end%>
+        <%=question.optn_a%></div>
+        <div>
+        <%if (question.correct_ans == 1) %>
+          <i class='fa fa-check' style='color:#00ff00;'></i>
+        <%end%><%=question.optn_b%></div>
+        <div><%if (question.correct_ans == 2) %>
+          <i class='fa fa-check' style='color:#00ff00;'></i>
+        <%end%><%=question.optn_c%></div>
+        <div><%if (question.correct_ans == 3) %>
+          <i class='fa fa-check' style='color:#00ff00;'></i>
+        <%end%><%=question.optn_d%></div>
+      </div>
+      <div style='padding:3px;'>
+        <%=link_to "EDIT", edit_question_path(question,:quiz_id=>@quiz.id),:style=>"font-size:12px;"%>
+        <span style="margin:0px 5px">|</span>
+        <%=link_to "DELETE", question_path(question),:method=>:delete,:style=>"font-size:12px;", data: {:confirm=>"Are you sure! You want to delete?"}%>
       </div>
     </div>
-  </div>
+  <%end%>
 </div>
 
