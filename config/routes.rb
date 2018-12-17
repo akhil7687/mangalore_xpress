@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :questions
-  resources :quizzes
+  resources :quizzes do
+    member do
+      get :questions
+    end
+  end
   require 'sidekiq/web'
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -43,7 +47,7 @@ Rails.application.routes.draw do
      get :comment
     end
   end
-  resources :stores do 
+  resources :stores do
     member do
       get :products
     end

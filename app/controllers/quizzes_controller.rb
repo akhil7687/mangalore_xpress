@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :questions]
 
   # GET /quizzes
   # GET /quizzes.json
@@ -52,6 +52,16 @@ class QuizzesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def questions
+
+    @qns = @quiz.questions
+    respond_to do |format|
+      format.json{
+        render :json => @qns.as_json
+      }
     end
   end
 
