@@ -7,7 +7,7 @@ class QuizzesController < ApplicationController
     if user_signed_in? && current_user.is_admin?
       @quizzes = Quiz.all
     else
-      @quizzes = Quiz.where("enable=1").paginate(:page => params[:page], :per_page => 10)
+      @quizzes = Quiz.where("status=1").paginate(:page => params[:page], :per_page => 10)
     end
   end
 
