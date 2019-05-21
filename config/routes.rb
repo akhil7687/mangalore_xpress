@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   match "/wall"=>"home#wall_post", via: [:get],:as=>"wall"
   match "/services"=>"home#services", via: [:get]
   match "/about_us"=>"home#about_us", via: [:get]
+  match "/terms_conditions"=>"home#terms", via: [:get]
+  match "/privacy_policy"=>"home#privacy", via: [:get]
   match "/contact_us"=>"home#contact_us", via: [:get]
   match "/admin_dashboard"=>"admin#index",via: [:get],:as=>"admin_dashboard"
   match "/mangalore-rent-real-estate"=>"home#real_estate",via: [:get],:as=>"real_estate"
