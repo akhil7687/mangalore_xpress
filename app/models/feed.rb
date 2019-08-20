@@ -157,9 +157,11 @@ class Feed < ApplicationRecord
 
   def self.load_news
     # kannada prabha karnataka
-    urls = ["https://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","https://www.kannadaprabha.com/rss/kannada-nation-4.xml"]
-    urls.each do |u|
-      Feed.load_from_rss(u,"Kannada Prabha",true,false,false,"Karnataka")
+    if false
+      urls = ["https://www.kannadaprabha.com/rss/kannada-karnataka-10.xml","https://www.kannadaprabha.com/rss/kannada-nation-4.xml"]
+      urls.each do |u|
+        Feed.load_from_rss(u,"Kannada Prabha",true,false,false,"Karnataka")
+      end
     end
     urls = ["https://kannada.oneindia.com/rss/kannada-fb.xml"]
     urls.each do |u|
