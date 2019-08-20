@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :questions
-  resources :quizzes
+  resources :quizzes do
+    member do
+      get :questions
+    end
+  end
   require 'sidekiq/web'
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -43,7 +47,7 @@ Rails.application.routes.draw do
      get :comment
     end
   end
-  resources :stores do 
+  resources :stores do
     member do
       get :products
     end
@@ -62,6 +66,8 @@ Rails.application.routes.draw do
   match "/wall"=>"home#wall_post", via: [:get],:as=>"wall"
   match "/services"=>"home#services", via: [:get]
   match "/about_us"=>"home#about_us", via: [:get]
+  match "/terms_conditions"=>"home#terms", via: [:get]
+  match "/privacy_policy"=>"home#privacy", via: [:get]
   match "/contact_us"=>"home#contact_us", via: [:get]
   match "/admin_dashboard"=>"admin#index",via: [:get],:as=>"admin_dashboard"
   match "/mangalore-rent-real-estate"=>"home#real_estate",via: [:get],:as=>"real_estate"

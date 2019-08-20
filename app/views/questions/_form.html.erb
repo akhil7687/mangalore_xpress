@@ -11,42 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :quiz_id %>
-    <%= f.text_field :quiz_id %>
-  </div>
+  <%=f.hidden_field :quiz_id, :value=>params[:quiz_id]%>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :qn %>
-    <%= f.text_area :qn %>
+    <%= f.text_area :qn,:class=>"form-control",:style=>"height:100px; margin-top:2px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :optn_a %>
-    <%= f.text_area :optn_a %>
+    <%= f.text_area :optn_a,:class=>"form-control",:style=>"height:50px; margin-top:2px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :optn_b %>
-    <%= f.text_area :optn_b %>
+    <%= f.text_area :optn_b,:class=>"form-control",:style=>"height:50px; margin-top:2px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :optn_c %>
-    <%= f.text_area :optn_c %>
+    <%= f.text_area :optn_c,:class=>"form-control",:style=>"height:50px; margin-top:2px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :optn_d %>
-    <%= f.text_area :optn_d %>
+    <%= f.text_area :optn_d,:class=>"form-control",:style=>"height:50px; margin-top:2px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :correct_ans %>
-    <%= f.number_field :correct_ans %>
+    <%=f.select :correct_ans, [['OPTION A', 0], ['OPTION B', 1], ['OPTION C', 2], ['OPTION D', 3]]%>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="margin:20px 0px;">
+    <%= f.submit "SUBMIT", :class=>"btn btn-primary"%>
   </div>
 <% end %>

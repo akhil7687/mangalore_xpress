@@ -196,6 +196,18 @@ class HomeController < ApplicationController
     end
   end
 
+  def terms
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def policy
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def about_us
     respond_to do |format|
       format.html

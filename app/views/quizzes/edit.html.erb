@@ -1,6 +1,9 @@
-<h1>Editing Quiz</h1>
+<%=render "home/page_header"%>
 
-<%= render 'form', quiz: @quiz %>
+<div class="content ">
+  <h1 class="text-center">Edit Quiz</h1>
+  <%= render 'form', quiz: @quiz %>
 
-<%= link_to 'Show', @quiz %> |
-<%= link_to 'Back', quizzes_path %>
+  <%= link_to 'Show', @quiz %> |
+  <%= link_to 'Back', quizzes_path %>
+</div>

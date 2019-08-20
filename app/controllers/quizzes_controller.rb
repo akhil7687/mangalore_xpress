@@ -1,10 +1,14 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :questions]
 
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
+    if user_signed_in? && current_user.is_admin?
+      @quizzes = Quiz.all
+    else
+      @quizzes = Quiz.where("status=1").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   # GET /quizzes/1
@@ -48,6 +52,16 @@ class QuizzesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def questions
+
+    @qns = @quiz.questions
+    respond_to do |format|
+      format.json{
+        render :json => @qns.as_json
+      }
     end
   end
 
