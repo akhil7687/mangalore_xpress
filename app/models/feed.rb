@@ -178,10 +178,10 @@ class Feed < ApplicationRecord
       Feed.load_from_rss(u,"HINDU",false,false,false,"Mangalore")
     end
 
-    urls = ["http://www.newindianexpress.com/States/Karnataka/rssfeed/?id=175&getXmlFeed=true"]
-    urls.each do |u|
-      Feed.load_from_rss(u,"Indian Express",false,true,false,"Karnataka")
-    end
+    # urls = ["http://www.newindianexpress.com/States/Karnataka/rssfeed/?id=175&getXmlFeed=true"]
+    # urls.each do |u|
+    #   Feed.load_from_rss(u,"Indian Express",false,true,false,"Karnataka")
+    # end
     urls = ["https://vijaykarnataka.indiatimes.com/rssfeeds/11182260.cms"]
     urls.each do |u|
       Feed.load_from_rss(u,"Vijaya Karnataka",false,false,false,"Mangalore")
